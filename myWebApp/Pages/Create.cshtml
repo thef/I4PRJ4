@@ -1,0 +1,28 @@
+@page
+@model myWebApp.Pages.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create product</h2>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<p>Please enter the following information about the product you wish to add to the store.</p>
+
+<form method="POST">
+    <div>Name: <input asp-for="Product.Name" /></div>
+    <span asp-validation-for="Product.Name"></span>
+
+    <div>Description: <input asp-for="Product.Description" /></div>
+    <span asp-validation-for="Product.Description"></span>
+
+    <div>Stock: <input asp-for="Product.Stock" /></div>
+    <span asp-validation-for="Product.Stock"></span>
+
+    <div>Price: <input asp-for="Product.Price" /></div>
+    <span asp-validation-for="Product.Price"></span>
+    <input type="submit"/>
+</form>

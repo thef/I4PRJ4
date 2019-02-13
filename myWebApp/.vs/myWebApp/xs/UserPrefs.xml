@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{7393A263-4550-40E5-9267-F5A93C9553E0}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Pages/Create.cshtml.cs">
+    <Files>
+      <File FileName="Pages/Create.cshtml.cs" Line="18" Column="10" />
+      <File FileName="Pages/Create.cshtml" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.myWebApp PreferredExecutionTarget="MonoDevelop.Default" />
+  <MultiItemStartupConfigurations />
+</Properties>

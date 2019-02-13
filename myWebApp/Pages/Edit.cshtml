@@ -1,0 +1,53 @@
+@page "{id:int}" //Routing parsing product.Id to edit page(exsample: /Edit/1)
+
+@model myWebApp.Pages.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Now editing product with ID: @Model.Product.Id</h2>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<p>Please enter the following changes about the product you wish to edit.</p>
+
+<form method="POST">
+    <input asp-for="Product.Id" type="hidden" />
+        <div>
+            <label asp-for="Product.Name"></label>
+        </div>
+            <div>
+                <input asp-for="Product.Name" />
+                <span asp-validation-for="Product.Name"></span>
+            </div>
+
+        <div>
+            <label asp-for="Product.Description"></label>
+        </div>
+            <div>
+                <input asp-for="Product.Description" />
+                <span asp-validation-for="Product.Description"></span>
+            </div>
+
+        <div>
+            <label asp-for="Product.Stock"></label>
+        </div>
+            <div>
+                <input asp-for="Product.Stock" />
+                <span asp-validation-for="Product.Stock"></span>
+            </div>
+
+        <div>
+            <label asp-for="Product.Price"></label>
+        </div>
+            <div>
+                <input asp-for="Product.Price" />
+                <span asp-validation-for="Product.Price"></span>
+            </div>
+
+            <div>
+                <button type="submit">Save</button>
+            </div>
+</form>

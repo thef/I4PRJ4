@@ -1,0 +1,68 @@
+﻿@page
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration 
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<head names="Development">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+</head>
+
+<div class="text-center">
+    <p>Current server time: @DateTime.Now</p>
+    <h3 class="display">Welcome to I4PRJ4 Group 4 Webstore</h3>
+    <p>Hello</p>
+</div>
+
+<h4>List of Products in store</h4>
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Stock</td>
+                <td>@product.Price</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@product.Id" 
+                        >Edit</a>
+                </td>
+                <td>
+                    <button type="submit" asp-page-handler="Delete" 
+                        asp-route-id="@product.Id">Delete</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table id="table">
+</form>
+
+<hr/>
+
+<div id="ProductCreatedMsg">
+    <b>@Model.Message</b>
+</div>
+
+<h3>Shopping Cart</h3>
+<tbody id="tableIncart">
+</tbody>
+<label id="totalPrice">Total price: 0</label>
+<input type="button" value="buy" id="btnBuy">
+
+<h5>@Configuration["Message"]</h5>
