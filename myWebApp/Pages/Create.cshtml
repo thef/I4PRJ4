@@ -4,25 +4,39 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create product</h2>
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <h5>Create a new product.</h5>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Product.Name"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Description"></label>
+                <input asp-for="Product.Description" class="form-control" />
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Stock"></label>
+                <input asp-for="Product.Stock" class="form-control" />
+                <span asp-validation-for="Product.Stock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Price"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-default">Create</button>
+        </form>
+    </div>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-
-<p>Please enter the following information about the product you wish to add to the store.</p>
-
-<form method="POST">
-    <div>Name: <input asp-for="Product.Name" /></div>
-    <span asp-validation-for="Product.Name"></span>
-
-    <div>Description: <input asp-for="Product.Description" /></div>
-    <span asp-validation-for="Product.Description"></span>
-
-    <div>Stock: <input asp-for="Product.Stock" /></div>
-    <span asp-validation-for="Product.Stock"></span>
-
-    <div>Price: <input asp-for="Product.Price" /></div>
-    <span asp-validation-for="Product.Price"></span>
-    <input type="submit"/>
-</form>

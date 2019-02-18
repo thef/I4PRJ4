@@ -6,7 +6,7 @@ namespace myWebApp
     {
          public int Id { get; set; } 
         
-         [Required, StringLength(12)]
+         [Required, StringLength(25)]
          public string Name { get; set; }
 
         [Required, StringLength(40)]

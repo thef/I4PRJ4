@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace myWebApp
 {
@@ -34,8 +36,40 @@ namespace myWebApp
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<AppDbContext>(option =>
-                option.UseInMemoryDatabase("name"));
+
+            //Add AppDbContext as a service for Products-database.
+            services.AddEntityFrameworkSqlite().AddDbContext<AppDbContext>();
+
+            //Used of Mssql local database server.
+            //services.AddDbContext<ApplicationDbContext>(option =>
+            //    option.UseSqlServer(
+            //        Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDefaultIdentity<IdentityUser>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            
+            //Add ApplicaitonDbContext as a service for Users-database.
+            services.AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>();
+            services.AddDefaultIdentity<ApplicationDbUser>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlite(
+            //        Configuration.GetConnectionString("ApplicationDbContextConnection")));
+
+            //services.AddDefaultIdentity<ApplicationDbUser>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //for products to save database
+            //services.AddDbContext<AppDbContext>(option =>
+            //    option.UseInMemoryDatabase("products")); 
+            
+
+            //Used of local InMemeryDatabae server.
+            //services.AddDefaultIdentity<IdentityUser>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //services.AddDbContext<ApplicationDbContext>(option =>
+            //    option.UseInMemoryDatabase("Users"));
         }
 
 
@@ -56,6 +90,8 @@ namespace myWebApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc();
         }

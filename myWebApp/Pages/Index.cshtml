@@ -12,7 +12,7 @@
 
 <div class="text-center">
     <p>Current server time: @DateTime.Now</p>
-    <h3 class="display">Welcome to I4PRJ4 Group 4 Webstore</h3>
+    <h3 class="display">Welcome to I4PRJ4 Group 3 Webstore</h3>
     <p>Hello</p>
 </div>
 
@@ -40,11 +40,11 @@
                 <td>@product.Stock</td>
                 <td>@product.Price</td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@product.Id" 
-                        >Edit</a>
+                    <a asp-page="./Edit" class="link link-default" 
+                        asp-route-id="@product.Id">Edit</a>
                 </td>
                 <td>
-                    <button type="submit" asp-page-handler="Delete" 
+                    <button type="submit" class="btn btn-default" asp-page-handler="Delete" 
                         asp-route-id="@product.Id">Delete</button>
                 </td>
             </tr>
