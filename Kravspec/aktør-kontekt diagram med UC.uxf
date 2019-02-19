@@ -20,7 +20,7 @@
       <w>60</w>
       <h>110</h>
     </coordinates>
-    <panel_attributes>Bruger
+    <panel_attributes>Kunde
 bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
@@ -103,7 +103,8 @@ bg=orange</panel_attributes>
       <w>150</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>UC2 Opret bruger</panel_attributes>
+    <panel_attributes>UC2 Opret 
+kundekonto</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -136,7 +137,7 @@ bg=orange</panel_attributes>
       <w>150</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>UC6 Lager status</panel_attributes>
+    <panel_attributes>UC6 Lagerstatus</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
