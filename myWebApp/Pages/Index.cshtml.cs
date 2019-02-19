@@ -20,7 +20,7 @@ namespace myWebApp.Pages
         public IList<Product> Products { get; private set; }
 
         [TempData]
-        public String Message { get; set; }
+        public string StatusMessage { get; set; }
         
         public async Task OnGetAsync()
         {

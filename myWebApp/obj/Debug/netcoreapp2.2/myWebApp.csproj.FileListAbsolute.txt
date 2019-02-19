@@ -65,10 +65,10 @@
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Account/ConfirmEmail.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Account/Index.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Account/Logout.g.cshtml.cs
-/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/_StatusMessage.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Shared/_CookieConsentPartial.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Shared/_Layout.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Shared/_ValidationScriptsPartial.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Account/ResetPassword.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Account/ResetPasswordConfirmation.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Shared/_LoginPartial.g.cshtml.cs
+/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Shared/_StatusMessage.g.cshtml.cs

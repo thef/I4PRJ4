@@ -16,6 +16,7 @@
     <p>Hello</p>
 </div>
 
+@Html.Partial("_StatusMessage", Model.StatusMessage)
 <h4>List of Products in store</h4>
 <form method="post">
     <table class="table">
@@ -54,10 +55,6 @@
 </form>
 
 <hr/>
-
-<div id="ProductCreatedMsg">
-    <b>@Model.Message</b>
-</div>
 
 <h3>Shopping Cart</h3>
 <tbody id="tableIncart">

@@ -18,7 +18,7 @@ namespace myWebApp.Pages
         }
 
         [TempData]
-        public String Message { get; set; }
+        public String StatusMessage { get; set; }
 
         [BindProperty]
         public Product Product { get; set; }
@@ -33,7 +33,7 @@ namespace myWebApp.Pages
             _db.Products.Add(Product);
             await _db.SaveChangesAsync();
 
-            Message = $"Product {Product.Name} added!";
+            StatusMessage = $"Product {Product.Name} added!";
 
             return RedirectToPage("/Index");
         }

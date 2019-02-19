@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace myWebApp
 {
@@ -51,6 +52,17 @@ namespace myWebApp
             services.AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>();
             services.AddDefaultIdentity<ApplicationDbUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //Usage of Interface IEmailSender to send mails.
+            services.AddTransient<IEmailSender, EmailSender>(i => 
+                new EmailSender(
+                    Configuration["EmailSender:Host"],
+                    Configuration.GetValue<int>("EmailSender:Port"),
+                    Configuration.GetValue<bool>("EmailSender:EnableSSL"),
+                    Configuration["EmailSender:UserName"],
+                    Configuration["EmailSender:Password"]
+                )
+            );
 
             //services.AddDbContext<ApplicationDbContext>(options =>
             //    options.UseSqlite(

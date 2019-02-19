@@ -33,7 +33,7 @@ namespace myWebApp.Pages.Account
         public string ErrorMessage { get; set; }
 
         [TempData]
-        public string Message { get; set; }
+        public string StatusMessage { get; set; }
 
         public class InputModel
         {
@@ -75,12 +75,12 @@ namespace myWebApp.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
-                    Message = $"User was logged in! with Email: {Input.Email}.";
+                    StatusMessage = $"User was logged in! with Email: {Input.Email}.";
                     return LocalRedirect(returnUrl);
                 }
                 if (result.IsLockedOut)
                 {
-                    Message = $"User was lockout due to to many failed logins in! with Email: {Input.Email}.";;
+                    StatusMessage = $"User was lockout due to to many failed logins in! with Email: {Input.Email}.";;
                     return RedirectToPage("./Lockout");
                 }
                 else

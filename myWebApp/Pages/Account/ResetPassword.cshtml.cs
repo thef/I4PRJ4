@@ -14,7 +14,7 @@ namespace myWebApp.Pages.Account
     public class ResetPasswordModel : PageModel
     {
         private readonly UserManager<ApplicationDbUser> _userManager;
-
+        
         public ResetPasswordModel(UserManager<ApplicationDbUser> userManager)
         {
             _userManager = userManager;
