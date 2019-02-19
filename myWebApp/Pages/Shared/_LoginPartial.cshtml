@@ -4,21 +4,19 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <form asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a asp-page="/Account/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-                <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
-            </li>
-        </ul>
+    <a asp-page="/Account/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+    <form asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm">
+        <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
     </form>
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <a asp-page="/Account/Register">Register</a>
-            <a asp-page="/Account/Login">Login</a>
+            <a class="nav-link text-dark" asp-page="/Account/Register">Register</a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" asp-page="/Account/Login">Login</a>
         </li>
     </ul>
 }

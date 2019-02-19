@@ -23,10 +23,13 @@ namespace myWebApp.Pages.Account
         [BindProperty]
         public InputModel Input { get; set; }
 
+        [TempData]
+        public string ForgotPasswordEmail { get; set; }
+
         public class InputModel
         {
             [Required]
-            [EmailAddress]
+            [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
             public string Email { get; set; }
 
             [Required]
@@ -50,10 +53,14 @@ namespace myWebApp.Pages.Account
             }
             else
             {
+                //set ForgotPasswordEmail as User used to request reset.
+                
+
                 Input = new InputModel
                 {
                     Code = code
                 };
+
                 return Page();
             }
         }

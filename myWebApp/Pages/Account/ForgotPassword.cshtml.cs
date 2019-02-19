@@ -26,10 +26,13 @@ namespace myWebApp.Pages.Account
         [BindProperty]
         public InputModel Input { get; set; }
 
+        [TempData]
+        public string ForgotPasswordEmail { get; set; }
+
         public class InputModel
         {
             [Required]
-            [EmailAddress]
+            [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
             public string Email { get; set; }
         }
 
@@ -38,11 +41,14 @@ namespace myWebApp.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(Input.Email);
+
                 if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return RedirectToPage("./ForgotPasswordConfirmation");
-                }
+                } 
+
+                ForgotPasswordEmail = Input.Email;
 
                 // For more information on how to enable account confirmation and password reset please 
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
