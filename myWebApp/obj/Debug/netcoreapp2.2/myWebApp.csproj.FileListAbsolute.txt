@@ -44,9 +44,6 @@
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/myWebApp.TagHelpers.input.cache
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/myWebApp.TagHelpers.output.cache
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/myWebApp.RazorCoreGenerate.cache
-/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Error.g.cshtml.cs
-/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Index.g.cshtml.cs
-/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Privacy.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/_ViewImports.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/_ViewStart.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/myWebApp.RazorTargetAssemblyInfo.cache
@@ -55,8 +52,6 @@
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/myWebApp.dll
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/myWebApp.pdb
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/myWebApp.csproj.CopyComplete
-/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Create.g.cshtml.cs
-/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Edit.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Account/ForgotPassword.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Account/ForgotPasswordConfirmation.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Account/Login.g.cshtml.cs
@@ -72,4 +67,9 @@
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Account/ResetPasswordConfirmation.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Shared/_LoginPartial.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Shared/_StatusMessage.g.cshtml.cs
-/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/CreateRole.g.cshtml.cs
+/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Product/Create.g.cshtml.cs
+/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Product/Edit.g.cshtml.cs
+/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Product/Error.g.cshtml.cs
+/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Product/Privacy.g.cshtml.cs
+/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Roles/CreateRole.g.cshtml.cs
+/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Index.g.cshtml.cs

@@ -80,8 +80,7 @@ namespace myWebApp.Pages.Account
                     StatusMessage = $"User created with Email: {Input.Email}. Please check your Email to confirm it.";
 
                     //Create role to seleced user form above.
-                    var result = await _userManager.AddToRoleAsync(user, "User");
-
+                    var result = await _userManager.AddToRoleAsync(user, "USER");
 
                     //Send email confirmation to new created user.
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
 
-namespace myWebApp
+namespace myWebApp.Pages.Product
 {
     public class AppDbContext: DbContext
     {

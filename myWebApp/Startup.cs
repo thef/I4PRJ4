@@ -14,6 +14,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
+//For using folders.
+using myWebApp.Pages.Product;
+using myWebApp.Pages.Account;
+
 namespace myWebApp
 {
     public class Startup

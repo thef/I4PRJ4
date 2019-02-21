@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace myWebApp.Pages
+namespace myWebApp.Pages.Product
 {
     public class EditModel : PageModel
     {

@@ -1,5 +1,6 @@
 ﻿@model string
 
+<!--This is a pop-up message that will enform user that action was completeted.-->
 @if (!String.IsNullOrEmpty(Model))
 {
     var statusMessageClass = Model.StartsWith("Error") ? "danger" : "success";

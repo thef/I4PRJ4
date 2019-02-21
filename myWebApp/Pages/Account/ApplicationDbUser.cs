@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace myWebApp
+namespace myWebApp.Pages.Account
 {
     public class  ApplicationDbUser : IdentityUser
     {

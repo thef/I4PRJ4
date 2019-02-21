@@ -9,7 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace myWebApp.Pages
+//using identity ApplicationUser in Account-folder.
+using myWebApp.Pages.Account;
+
+namespace myWebApp.Pages.Roles
 {
     public class CreateRoleModel : PageModel
     {

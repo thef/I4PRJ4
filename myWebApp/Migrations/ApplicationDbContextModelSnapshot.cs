@@ -5,6 +5,10 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myWebApp;
 
+//For using folders.
+using myWebApp.Pages.Product;
+using myWebApp.Pages.Account;
+
 namespace myWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]

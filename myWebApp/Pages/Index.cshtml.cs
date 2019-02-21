@@ -6,7 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace myWebApp.Pages
+//For using folders.
+using myWebApp.Pages.Product;
+
+namespace myWebApp
 {
     public class IndexModel : PageModel
     {

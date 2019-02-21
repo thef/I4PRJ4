@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace myWebApp
+namespace myWebApp.Pages.Product
 {
     public class Product
     {

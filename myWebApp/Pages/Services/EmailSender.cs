@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace myWebApp 
 {
+    //Frameswork EmailSender adds ability to send Emails to newly created users.
     public class EmailSender : IEmailSender 
     {
 

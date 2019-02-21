@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace myWebApp
+namespace myWebApp.Pages.Roles
 {
     public class ApplicationRoleManager : RoleManager<IdentityRole>
     {
