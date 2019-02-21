@@ -72,3 +72,4 @@
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Account/ResetPasswordConfirmation.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Shared/_LoginPartial.g.cshtml.cs
 /Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Shared/_StatusMessage.g.cshtml.cs
+/Users/danielappelgren/Desktop/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/CreateRole.g.cshtml.cs

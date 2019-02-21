@@ -17,26 +17,30 @@ namespace myWebApp.Pages.Account
     {
         private readonly UserManager<ApplicationDbUser> _userManager;
         private readonly SignInManager<ApplicationDbUser> _signInManager;
-
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
             UserManager<ApplicationDbUser> userManager,
             SignInManager<ApplicationDbUser> signInManager,
+            RoleManager<IdentityRole> roleManager,
             IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
             _emailSender = emailSender;
         }
 
         [TempData]
-        public String Message { get; set; }
+        public String StatusMessage { get; set; }
 
         [BindProperty]
         public InputModel Input { get; set; }
 
         public string ReturnUrl { get; set; }
+        
+        public string Username { get; set; }
 
         public class InputModel
         {
@@ -69,12 +73,17 @@ namespace myWebApp.Pages.Account
             if(ModelState.IsValid)
             {
                 var user = new ApplicationDbUser { UserName = Input.Email, Email = Input.Email };
-                var result = await _userManager.CreateAsync(user, Input.Password);
+                var userCreatedResult = await _userManager.CreateAsync(user, Input.Password);
                 
-                if(result.Succeeded)
+                if(userCreatedResult.Succeeded)
                 {
-                    Message = $"User created with Email and password! {Input.Email}.";
+                    StatusMessage = $"User created with Email: {Input.Email}. Please check your Email to confirm it.";
 
+                    //Create role to seleced user form above.
+                    var result = await _userManager.AddToRoleAsync(user, "User");
+
+
+                    //Send email confirmation to new created user.
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
@@ -93,7 +102,7 @@ namespace myWebApp.Pages.Account
                     return LocalRedirect(returnUrl);
                 }
                 //Handle errors
-                foreach (var error in result.Errors)
+                foreach (var error in userCreatedResult.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }

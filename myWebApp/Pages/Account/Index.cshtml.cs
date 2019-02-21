@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace myWebApp.Pages.Account
 {
-    public partial class IndexModel : PageModel
+    public class IndexModel : PageModel
     {
         private readonly UserManager<ApplicationDbUser> _userManager;
         private readonly SignInManager<ApplicationDbUser> _signInManager;

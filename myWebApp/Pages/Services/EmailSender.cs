@@ -6,8 +6,10 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace myWebApp {
-    public class EmailSender : IEmailSender {
+namespace myWebApp 
+{
+    public class EmailSender : IEmailSender 
+    {
 
         // Our private configuration variables
         private string host;
@@ -17,7 +19,8 @@ namespace myWebApp {
         private string password;
         
         // Get our parameterized configuration
-        public EmailSender(string host, int port, bool enableSSL, string userName, string password) {
+        public EmailSender(string host, int port, bool enableSSL, string userName, string password) 
+        {
             this.host = host;
             this.port = port;
             this.enableSSL = enableSSL;
@@ -26,8 +29,10 @@ namespace myWebApp {
         }
         
         // Use our configuration to send the email by using SmtpClient
-        public Task SendEmailAsync(string email, string subject, string htmlMessage) {
-            var client = new SmtpClient(host, port) {
+        public Task SendEmailAsync(string email, string subject, string htmlMessage) 
+        {
+            var client = new SmtpClient(host, port) 
+            {
                 Credentials = new NetworkCredential(userName, password),
                 EnableSsl = enableSSL
             };

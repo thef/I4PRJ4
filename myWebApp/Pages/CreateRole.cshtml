@@ -1,0 +1,34 @@
+@page
+@model myWebApp.Pages.CreateRoleModel
+@{
+    ViewData["Title"] = "Create role";
+}
+
+<h3>@ViewData["Title"]</h3>
+
+@Html.Partial("_StatusMessage", Model.StatusMessage)
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <h5>Create a new role</h5>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.User"></label>
+                <input asp-for="Input.User" class="form-control" />
+                <span asp-validation-for="Input.User" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Role"></label>
+                <input asp-for="Input.Role" class="form-control" />
+                <span asp-validation-for="Input.Role" class="text-danger"></span>
+            </div>
+            <hr />
+            <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
