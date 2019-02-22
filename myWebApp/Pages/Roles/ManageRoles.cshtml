@@ -1,7 +1,7 @@
 @page
-@model myWebApp.Pages.Roles.CreateRoleModel
+@model ManageRoles
 @{
-    ViewData["Title"] = "Create role";
+    ViewData["Title"] = "Manage Roles";
 }
 
 <h3>@ViewData["Title"]</h3>
@@ -10,21 +10,31 @@
 <div class="row">
     <div class="col-md-6">
         <form method="post">
-            <h5>Create a new role</h5>
+            <h5>Assign selected users to roles</h5>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Input.User"></label>
-                <input asp-for="Input.User" class="form-control" />
+                <select asp-for="Input.User" asp-items="Model.listUser" class="form-control"></select>
                 <span asp-validation-for="Input.User" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Input.Role"></label>
+                <select asp-for="Input.RoleFromlist" asp-items="Model.listRole" class="form-control"></select>
+                <span asp-validation-for="Input.Role" class="text-danger"></span>
+            </div>
+
+            <h5>Create new role</h5>
+            <h6>Usage of this will create a new role despite one being selected from rolelist.</h6>
+            <hr />
             <div class="form-group">
                 <label asp-for="Input.Role"></label>
                 <input asp-for="Input.Role" class="form-control" />
                 <span asp-validation-for="Input.Role" class="text-danger"></span>
             </div>
             <hr />
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Assign</button>
         </form>
     </div>
 </div>

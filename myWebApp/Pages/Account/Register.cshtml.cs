@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using System.Data.SqlClient;
 
 namespace myWebApp.Pages.Account
 {
@@ -77,10 +78,30 @@ namespace myWebApp.Pages.Account
                 
                 if(userCreatedResult.Succeeded)
                 {
+                    //Checks if role already exists.
+                     var resultAlreadyCreatedRole = await _roleManager.RoleExistsAsync("Customer");
+
+                    //if it DOES NOT already exists.
+                    if(resultAlreadyCreatedRole == false)
+                    {
+                        //Create the new role.
+                        var role = new IdentityRole();
+                        role.Name = "Customer";
+                        await _roleManager.CreateAsync(role);
+
+                        //Assign role to seleced user.
+                        await _userManager.AddToRoleAsync(user, role.Name);
+
+                        StatusMessage = $"User created with Email: {Input.Email}. Please check your Email to confirm it.";
+
+                    } else {
+
+                    //Assign role to seleced user.
+                    await _userManager.AddToRoleAsync(user, "Customer");
+
                     StatusMessage = $"User created with Email: {Input.Email}. Please check your Email to confirm it.";
 
-                    //Create role to seleced user form above.
-                    var result = await _userManager.AddToRoleAsync(user, "USER");
+                    }
 
                     //Send email confirmation to new created user.
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -98,6 +119,7 @@ namespace myWebApp.Pages.Account
                     );
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
+
                     return LocalRedirect(returnUrl);
                 }
                 //Handle errors

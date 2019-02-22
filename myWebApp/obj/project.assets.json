@@ -12594,11 +12594,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/danielappelgren/Desktop/myWebApp/myWebApp.csproj",
+      "projectUniqueName": "/Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/myWebApp.csproj",
       "projectName": "myWebApp",
-      "projectPath": "/Users/danielappelgren/Desktop/myWebApp/myWebApp.csproj",
+      "projectPath": "/Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/myWebApp.csproj",
       "packagesPath": "/Users/danielappelgren/.nuget/packages/",
-      "outputPath": "/Users/danielappelgren/Desktop/myWebApp/obj/",
+      "outputPath": "/Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
