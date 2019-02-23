@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -15,6 +16,7 @@ using myWebApp.Pages.Account;
 
 namespace myWebApp.Pages.Roles
 {
+    [Authorize(Roles="Admin")]
     public class ManageRoles : PageModel
     {
         private readonly UserManager<ApplicationDbUser> _userManager;

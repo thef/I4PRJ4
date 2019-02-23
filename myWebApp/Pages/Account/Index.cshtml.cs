@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace myWebApp.Pages.Account
 {
@@ -15,19 +16,24 @@ namespace myWebApp.Pages.Account
     {
         private readonly UserManager<ApplicationDbUser> _userManager;
         private readonly SignInManager<ApplicationDbUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManger;
         private readonly IEmailSender _emailSender;
 
         public IndexModel(
             UserManager<ApplicationDbUser> userManager,
             SignInManager<ApplicationDbUser> signInManager,
+            RoleManager<IdentityRole> roleManager,
             IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManger = roleManager;
             _emailSender = emailSender;
         }
 
         public string Username { get; set; }
+
+        public IList<string> Roles { get; set; }
 
         public bool IsEmailConfirmed { get; set; }
 
@@ -46,21 +52,27 @@ namespace myWebApp.Pages.Account
 
         public async Task<IActionResult> OnGetAsync()
         {
+            //Get current user.
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
+            //Get current user username.
             var userName = await _userManager.GetUserNameAsync(user);
-            var email = await _userManager.GetEmailAsync(user);
-
             Username = userName;
+
+            //Get current user email.
+            var email = await _userManager.GetEmailAsync(user);
 
             Input = new InputModel
             {
                 Email = email,
             };
+
+            //Create list with all the roles assigned to current user.
+            Roles = await _userManager.GetRolesAsync(user);
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
 

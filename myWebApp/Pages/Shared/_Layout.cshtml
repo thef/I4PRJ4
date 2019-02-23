@@ -31,12 +31,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
+                        <!--Deny access to edit and delete IF NOT Admin or manager role--> 
+                        @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                        {   
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Product/Create">Product</a>
                         </li>
-                        <li class="nav-item">
+                        }
+                        <!--Deny access to edit and delete IF NOT Admin role-->
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Roles/ManageRoles">Role</a>
                         </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Product/Privacy">Privacy</a>
                         </li>
