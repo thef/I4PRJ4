@@ -8,6 +8,8 @@ namespace myWebApp.Pages.Product
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<Rating> Rates { get; set; }
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

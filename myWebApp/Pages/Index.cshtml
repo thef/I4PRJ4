@@ -37,6 +37,7 @@
 
                 } else {
                     <th>Buy</th>
+                    <th>Rating</th>
                 }
                 
             </tr>
@@ -67,7 +68,25 @@
                     <td>
                         <button type="submit" class="btn btn-primary" asp-page-handler=""
                             asp-route-id="">Buy</button>
-                        
+                    </td>
+
+                    <td>
+                        <div class="form-group">
+                            <!--Create 5 radio-button for ratiing-->
+                            @if (Model.RatedYet(@product.Id))
+                            {
+                                <p>Overall rating: @Model.OverallRating(@product.Id)</p>
+                            } else {
+                                <p>First to rate product!</p>
+                            }
+
+                            @for (int i = 1; i < 6; i++)
+                            {
+                                <input type="radio" name="rate" value="@i"/>
+                            }
+                            <button type="submit" class="btn btn-primary" asp-page-handler="Rate"
+                                asp-route-id="@product.Id" asp-route-id="rate">Rate</button>
+                        </div>
                     </td>
                 }
             </tr>

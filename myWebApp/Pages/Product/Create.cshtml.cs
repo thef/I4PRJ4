@@ -35,7 +35,7 @@ namespace myWebApp.Pages.Product
             _db.Products.Add(Product);
             await _db.SaveChangesAsync();
 
-            StatusMessage = $"Product {Product.Name} added!";
+            StatusMessage = $"Product: {Product.Name} added!";
 
             return RedirectToPage("/Index");
         }

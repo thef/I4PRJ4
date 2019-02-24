@@ -7,6 +7,7 @@
 @inject SignInManager<ApplicationDbUser> SignInManager
 @inject UserManager<ApplicationDbUser> UserManager
 
+<!--Check if a User is logged in-->
 @if (SignInManager.IsSignedIn(User))
 {
     <a asp-page="/Account/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>

@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 //For using folders.
 using myWebApp.Pages.Product;
+using myWebApp.Pages.Account;
+using System.Data;
 
 namespace myWebApp
 {
@@ -20,26 +23,103 @@ namespace myWebApp
             _db = db;
         }
 
-        public IList<Product> Products { get; private set; }
-
         [TempData]
         public string StatusMessage { get; set; }
-        
+
+        public IList<Product> Products { get; private set; }
+
+        public IList<Rating> Rates { get; private set; }
+
+        //On Get loading page.
         public async Task OnGetAsync()
         {
             Products = await _db.Products.AsNoTracking().ToListAsync();
+
+            Rates = await _db.Rates.AsNoTracking().ToListAsync();
         }
 
+        //On Delete button-handler.
         public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
             var Product = await _db.Products.FindAsync(id);
 
+            //Delete selected product if found.
             if(Product != null)
             {
                 _db.Products.Remove(Product);
                 await _db.SaveChangesAsync();
+                
+                //Delete ratings for selected product
+                 _db.Rates.RemoveRange(_db.Rates.Where(x => x.ProductId == id));
+                await _db.SaveChangesAsync();
             }
+
             return RedirectToPage();
+        }
+
+        //On Rate button-handler.
+        public async Task<IActionResult> OnPostRateAsync(int id, double rate)
+        {
+            //Check if rate-value is 0.0/ a radio-button value has been selected.
+            if(rate <= 0.0)
+            {   
+                StatusMessage = $"Error: Select a value before submitting!";
+            } else {
+
+            //Find selected product from list.
+            var product = await _db.Products.FindAsync(id);
+
+                //If product DO exist!
+                if(product != null)
+                {
+                    Rating rating = new Rating();
+                    rating.ProductId = id;
+                    rating.Rate = rate;
+                    rating.UserName = User.Identity.Name; 
+
+                    _db.Rates.Add(rating);
+                    await _db.SaveChangesAsync();
+                }
+            }
+
+            return RedirectToPage();
+        }
+
+        //For a defined productId find all rates, return average.
+        public double OverallRating(int id)
+        {
+            var result = 0.0;
+            var foundAmountofTimes = 0;
+            foreach (var rating in Rates)
+            {
+                if (rating.ProductId == id)
+                {
+                    result += rating.Rate;
+                    foundAmountofTimes ++;
+                }
+            }
+            //Round result exsample: 12.54233565 to 12.54.
+            return System.Math.Round(result = result / foundAmountofTimes, 2);
+        }
+
+        //For a defined productId tell if it exist, return true or false.
+        public bool RatedYet(int id)
+        {
+            var result = false;
+            foreach (var rating in Rates)
+            {
+                if(rating.ProductId == id)
+                {
+                    result = true;
+                    //Jump out if we found a rating.
+                    break;
+
+                } else {
+                    result = false;
+                }
+            }
+
+            return result;
         }
     }
 }

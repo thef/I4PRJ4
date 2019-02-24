@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System.Data.SqlClient;
 
 namespace myWebApp.Pages.Account
 {
@@ -128,7 +127,7 @@ namespace myWebApp.Pages.Account
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-            //if we reach this, something failed! Just redirect.
+            //if we reach this, something failed! Just stat on current page.
             return Page();
         }  
     }
