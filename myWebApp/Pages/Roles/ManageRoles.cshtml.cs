@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 //using identity ApplicationUser in Account-folder.
 using myWebApp.Pages.Account;
+using myWebApp.Pages.Product;
 
 namespace myWebApp.Pages.Roles
 {
@@ -40,6 +41,10 @@ namespace myWebApp.Pages.Roles
 
         public List<SelectListItem> listRole { get; set; }
 
+        public IList<string> Users { get; set; }
+
+        public List<string> Roles { get; set; }
+
         public class InputModel
         {
             [Required(AllowEmptyStrings = false)]
@@ -53,7 +58,7 @@ namespace myWebApp.Pages.Roles
             public string Role { get; set; }
         }
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
             //Create list with all Users created
             List<SelectListItem> listUsers = new List<SelectListItem>();
@@ -71,7 +76,13 @@ namespace myWebApp.Pages.Roles
             }
             listRole = listRoles;
 
-            return Page();
+            //Create list of User.
+            List<string> listStringUsers = new List<string>();
+            foreach (var user in _userManager.Users)
+            {
+                listStringUsers.Add(user.ToString());
+            }
+            Users = listStringUsers;
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -144,6 +155,79 @@ namespace myWebApp.Pages.Roles
 
         }
         return RedirectToPage();
+        }
+
+        //Get roles for selected user by it's username.
+        public IList<string> GetRolesForUser(string userName)
+        {
+            IList<string> roles = new List<string>();
+
+            //Get all users and loop though them to find selected user.
+            var users = _userManager.Users.ToList();
+
+            foreach (var user in users)
+            {
+                //Check for selected userName
+                if(user.UserName == userName)
+                {
+                    //Get roles for selected user.
+                    roles =  _userManager.GetRolesAsync(user).Result;
+                }
+            }
+
+            return roles;
+        }
+
+
+
+        public async Task<IActionResult> OnPostDeleteAsync()
+        {
+             //Check if listRole or Input.Role is empty, if so replace it's value to the other.
+             //Assign Input text field if not null over listRole.
+            if(Input.RoleFromlist == null)
+            {
+                Input.RoleFromlist = Input.Role;
+
+            } else if(Input.Role == null) {
+
+                Input.Role = Input.RoleFromlist;
+
+            } else if(Input.RoleFromlist != null & Input.Role != null) {
+
+                Input.RoleFromlist = Input.Role;
+            }
+
+            //Check user exist
+            if(Input.User != null)
+            {
+                //Get all users and loop though them to find selected user.
+                var users = _userManager.Users.ToList();
+
+                foreach (var user in users)
+                {
+                    //Check for selected userName
+                    if(user.UserName == Input.User)
+                    {
+                        //Check for selected userName is the the selected role.
+                        var result = await _userManager.IsInRoleAsync(user, Input.Role);
+
+                        //IF TRUE user is in the that role
+                        if(result)
+                        {
+                            //Remove role from selected user.
+                            await _userManager.RemoveFromRoleAsync(user, Input.Role);
+
+                            StatusMessage = $"Role {Input.Role} was removed form {user}.";
+
+                        } else {
+
+                            StatusMessage = $"Error: User: {user} is not in {Input.Role}.";
+                        }
+                    }
+                }
+            }
+
+            return RedirectToPage();
         }
     }
 }

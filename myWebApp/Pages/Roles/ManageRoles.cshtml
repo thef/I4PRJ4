@@ -1,17 +1,44 @@
 @page
 @model ManageRoles
 @{
-    ViewData["Title"] = "Manage Roles";
+    ViewData["Title"] = "Manage Users & Roles";
 }
 
 <h3>@ViewData["Title"]</h3>
 
 @Html.Partial("_StatusMessage", Model.StatusMessage)
+<h5>All Users & Roles in database</h5>
+<hr/>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var user in @Model.Users)
+            {
+                <tr>
+                    <td>
+                        @user 
+                    </td>
+                    <td>
+                        @string.Join(", ", Model.GetRolesForUser(user))
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+<hr/>
+<br/>
+
 <div class="row">
     <div class="col-md-6">
         <form method="post">
-            <h5>Assign selected users to roles</h5>
-            <hr />
+            <h5>Assign/delete selected user to/from role</h5>
+            <hr/>
             <div asp-validation-summary="All" class="text-danger"></div>
 
             <div class="form-group">
@@ -35,7 +62,10 @@
                 <span asp-validation-for="Input.Role" class="text-danger"></span>
             </div>
             <hr />
-            <button type="submit" class="btn btn-primary">Assign</button>
+                <button type="submit" class="btn btn-primary">Assign</button>
+                <button type="submit" class="btn btn-danger" asp-page-handler="Delete">Delete</button>
+            <hr />
+            <br/>
         </form>
     </div>
 </div>

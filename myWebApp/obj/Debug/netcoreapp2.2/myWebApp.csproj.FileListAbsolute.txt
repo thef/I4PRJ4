@@ -118,3 +118,4 @@
 /Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/obj/Debug/netcoreapp2.2/myWebApp.pdb
 /Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/obj/Debug/netcoreapp2.2/myWebApp.csproj.CopyComplete
 /Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Roles/ManageRoles.g.cshtml.cs
+/Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Account/AccessDenied.g.cshtml.cs

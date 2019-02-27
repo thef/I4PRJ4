@@ -46,14 +46,14 @@ namespace myWebApp
             //Delete selected product if found.
             if(Product != null)
             {
+                //Remove selected product.
                 _db.Products.Remove(Product);
-                await _db.SaveChangesAsync();
-                
+
                 //Delete ratings for selected product
-                 _db.Rates.RemoveRange(_db.Rates.Where(x => x.ProductId == id));
+                _db.Rates.RemoveRange(_db.Rates.Where(x => x.ProductId == id));
                 await _db.SaveChangesAsync();
             }
-
+            //Update current page.
             return RedirectToPage();
         }
 
@@ -81,7 +81,7 @@ namespace myWebApp
                     await _db.SaveChangesAsync();
                 }
             }
-
+            //Update current page.
             return RedirectToPage();
         }
 
@@ -118,7 +118,22 @@ namespace myWebApp
                     result = false;
                 }
             }
+            //Return result.
+            return result;
+        }
 
+        //Find number of rates for selected product, return count.
+        public double NumberOfVotes(int id)
+        {
+            var result = 0.0;
+            foreach (var rating in Rates)
+            {
+                if(rating.ProductId == id)
+                {
+                    result ++;
+                }
+            }
+            //Return result.
             return result;
         }
     }
