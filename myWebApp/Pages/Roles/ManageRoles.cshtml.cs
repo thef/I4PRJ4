@@ -37,13 +37,14 @@ namespace myWebApp.Pages.Roles
         [BindProperty]
         public InputModel Input { get; set; }
 
+        //List all users in dropdownlist view.
         public List<SelectListItem> listUser { get; set; }
 
+        //List all roles in dropdownlist view.
         public List<SelectListItem> listRole { get; set; }
 
+        //List of users in string format.
         public IList<string> Users { get; set; }
-
-        public List<string> Roles { get; set; }
 
         public class InputModel
         {
@@ -178,12 +179,10 @@ namespace myWebApp.Pages.Roles
             return roles;
         }
 
-
-
+        //Deletehandler to delete user roles form users.
         public async Task<IActionResult> OnPostDeleteAsync()
         {
-             //Check if listRole or Input.Role is empty, if so replace it's value to the other.
-             //Assign Input text field if not null over listRole.
+            //Check if listRole or Input.Role is empty, if so replace it's value to the other.
             if(Input.RoleFromlist == null)
             {
                 Input.RoleFromlist = Input.Role;
@@ -191,10 +190,6 @@ namespace myWebApp.Pages.Roles
             } else if(Input.Role == null) {
 
                 Input.Role = Input.RoleFromlist;
-
-            } else if(Input.RoleFromlist != null & Input.Role != null) {
-
-                Input.RoleFromlist = Input.Role;
             }
 
             //Check user exist

@@ -92,9 +92,11 @@ namespace myWebApp.Pages.Account
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
+            //If the input email from user is different from the users, 
             var email = await _userManager.GetEmailAsync(user);
             if (Input.Email != email)
             {
+                //set the new email as new user email.
                 var setEmailResult = await _userManager.SetEmailAsync(user, Input.Email);
                 if (!setEmailResult.Succeeded)
                 {
@@ -115,21 +117,26 @@ namespace myWebApp.Pages.Account
                 return Page();
             }
 
+            //Check if we can get the current user.
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
-
+            //Get current User account informations,
             var userId = await _userManager.GetUserIdAsync(user);
             var email = await _userManager.GetEmailAsync(user);
+
+            //Generate email cofirmationToken to confirm email.
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var callbackUrl = Url.Page(
                 "/Account/ConfirmEmail",
                 pageHandler: null,
                 values: new { userId = userId, code = code },
                 protocol: Request.Scheme);
+
+            //Send the email to users email.
             await _emailSender.SendEmailAsync(
                 email,
                 "Confirm your email",

@@ -56,7 +56,7 @@ namespace myWebApp.Pages.Account
 
             returnUrl = returnUrl ?? Url.Content("~/");
 
-            // Clear the existing external cookie to ensure a clean login process
+            //Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ReturnUrl = returnUrl;
@@ -68,6 +68,7 @@ namespace myWebApp.Pages.Account
 
             if (ModelState.IsValid)
             {
+                //Sign in user with it's information.
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {

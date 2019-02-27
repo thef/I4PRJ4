@@ -72,6 +72,7 @@ namespace myWebApp.Pages.Account
         
             if(ModelState.IsValid)
             {
+                //Create new User
                 var user = new ApplicationDbUser { UserName = Input.Email, Email = Input.Email };
                 var userCreatedResult = await _userManager.CreateAsync(user, Input.Password);
                 

@@ -26,6 +26,7 @@ namespace myWebApp.Pages.Account
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
+            //Sign current user out.
             await _signInManager.SignOutAsync();
             if (returnUrl != null)
             {
