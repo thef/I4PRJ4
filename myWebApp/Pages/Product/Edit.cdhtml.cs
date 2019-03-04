@@ -40,6 +40,7 @@ namespace myWebApp.Pages.Product
                 return Page();
             }
 
+            //Check for state-changes (some or all values) and attached new values.
             _db.Attach(Product).State = EntityState.Modified;
 
             try

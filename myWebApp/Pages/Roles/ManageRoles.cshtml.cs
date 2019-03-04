@@ -61,29 +61,7 @@ namespace myWebApp.Pages.Roles
 
         public void OnGet()
         {
-            //Create list with all Users created
-            List<SelectListItem> listUsers = new List<SelectListItem>();
-            foreach (var user in _userManager.Users)
-            {
-                listUsers.Add(new SelectListItem() { Value = user.Email, Text = user.Email });
-            };
-            listUser = listUsers;
-
-            //Create list with all Roles created
-            List<SelectListItem> listRoles = new List<SelectListItem>();
-            foreach (var role in _roleManager.Roles)
-            {
-                listRoles.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
-            }
-            listRole = listRoles;
-
-            //Create list of User.
-            List<string> listStringUsers = new List<string>();
-            foreach (var user in _userManager.Users)
-            {
-                listStringUsers.Add(user.ToString());
-            }
-            Users = listStringUsers;
+            listsForDropDowns();
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -158,6 +136,33 @@ namespace myWebApp.Pages.Roles
         return RedirectToPage();
         }
 
+        public void listsForDropDowns()
+        {
+            //Create list with all Users created
+            List<SelectListItem> listUsers = new List<SelectListItem>();
+            foreach (var user in _userManager.Users)
+            {
+                listUsers.Add(new SelectListItem() { Value = user.Email, Text = user.Email });
+            };
+            listUser = listUsers;
+
+            //Create list with all Roles created
+            List<SelectListItem> listRoles = new List<SelectListItem>();
+            foreach (var role in _roleManager.Roles)
+            {
+                listRoles.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+            }
+            listRole = listRoles;
+
+            //Create list of User.
+            List<string> listStringUsers = new List<string>();
+            foreach (var user in _userManager.Users)
+            {
+                listStringUsers.Add(user.ToString());
+            }
+            Users = listStringUsers;
+        }
+
         //Get roles for selected user by it's username.
         public IList<string> GetRolesForUser(string userName)
         {
@@ -223,6 +228,7 @@ namespace myWebApp.Pages.Roles
             }
 
             return RedirectToPage();
-        }
+        }        
+        
     }
 }

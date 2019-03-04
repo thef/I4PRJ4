@@ -51,7 +51,13 @@ namespace myWebApp
 
                 //Delete ratings for selected product
                 _db.Rates.RemoveRange(_db.Rates.Where(x => x.ProductId == id));
-                await _db.SaveChangesAsync();
+                var result = await _db.SaveChangesAsync();
+
+                StatusMessage = $"Product with ID: {id} deleted";
+
+            } else {
+
+                StatusMessage = $"Error: Can't find product with ID: {id}!";
             }
             //Update current page.
             return RedirectToPage();
@@ -79,6 +85,8 @@ namespace myWebApp
 
                     _db.Rates.Add(rating);
                     await _db.SaveChangesAsync();
+
+                    StatusMessage = $"Thanks for your rating";
                 }
             }
             //Update current page.

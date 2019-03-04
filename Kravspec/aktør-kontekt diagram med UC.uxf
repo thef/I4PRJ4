@@ -4,10 +4,10 @@
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>100</x>
+      <x>120</x>
       <y>0</y>
       <w>580</w>
-      <h>710</h>
+      <h>800</h>
     </coordinates>
     <panel_attributes>Use case diagram</panel_attributes>
     <additional_attributes/>
@@ -15,7 +15,7 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>150</x>
+      <x>170</x>
       <y>320</y>
       <w>60</w>
       <h>110</h>
@@ -27,7 +27,7 @@ bg=yellow</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>130</x>
+      <x>150</x>
       <y>200</y>
       <w>100</w>
       <h>110</h>
@@ -39,7 +39,7 @@ bg=red</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>510</x>
+      <x>530</x>
       <y>500</y>
       <w>160</w>
       <h>110</h>
@@ -51,10 +51,10 @@ bg=green</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>280</x>
+      <x>300</x>
       <y>50</y>
       <w>190</w>
-      <h>640</h>
+      <h>690</h>
     </coordinates>
     <panel_attributes>Webstore
 halign=center</panel_attributes>
@@ -63,7 +63,7 @@ halign=center</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>560</x>
+      <x>580</x>
       <y>200</y>
       <w>60</w>
       <h>110</h>
@@ -75,7 +75,7 @@ bg=cyan</panel_attributes>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>540</x>
+      <x>560</x>
       <y>340</y>
       <w>100</w>
       <h>110</h>
@@ -87,7 +87,7 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>300</x>
+      <x>320</x>
       <y>80</y>
       <w>150</w>
       <h>50</h>
@@ -98,7 +98,7 @@ bg=orange</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>300</x>
+      <x>320</x>
       <y>140</y>
       <w>150</w>
       <h>50</h>
@@ -110,7 +110,7 @@ kundekonto</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>300</x>
+      <x>320</x>
       <y>260</y>
       <w>150</w>
       <h>50</h>
@@ -121,7 +121,7 @@ kundekonto</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>300</x>
+      <x>320</x>
       <y>320</y>
       <w>150</w>
       <h>50</h>
@@ -132,41 +132,41 @@ kundekonto</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>300</x>
-      <y>440</y>
+      <x>320</x>
+      <y>500</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>UC7 Lagerstatus</panel_attributes>
+    <panel_attributes>UC8 Lagerstatus</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>300</x>
-      <y>500</y>
+      <x>320</x>
+      <y>560</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>UC8 Kontakt 
+    <panel_attributes>UC9 Kontakt 
 kundeservice</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>300</x>
-      <y>560</y>
+      <x>320</x>
+      <y>620</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>UC9 Anmeldelse</panel_attributes>
+    <panel_attributes>UC10 Anmeldelse</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>220</x>
       <y>90</y>
       <w>120</w>
       <h>290</h>
@@ -179,7 +179,7 @@ bg=yellow
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>220</x>
       <y>150</y>
       <w>120</w>
       <h>230</h>
@@ -192,7 +192,7 @@ bg=yellow
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>220</x>
       <y>330</y>
       <w>120</w>
       <h>50</h>
@@ -205,7 +205,7 @@ bg=yellow
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>220</x>
       <y>240</y>
       <w>120</w>
       <h>60</h>
@@ -218,20 +218,33 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>220</x>
       <y>240</y>
       <w>120</w>
-      <h>240</h>
+      <h>300</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=red
 </panel_attributes>
-    <additional_attributes>100.0;220.0;10.0;10.0</additional_attributes>
+    <additional_attributes>100.0;280.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>220</x>
+      <y>350</y>
+      <w>120</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=yellow
+</panel_attributes>
+    <additional_attributes>100.0;290.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>220</x>
       <y>350</y>
       <w>120</w>
       <h>250</h>
@@ -244,33 +257,20 @@ bg=yellow
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
-      <y>350</y>
-      <w>120</w>
-      <h>190</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
-bg=yellow
-</panel_attributes>
-    <additional_attributes>100.0;170.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>440</x>
+      <x>460</x>
       <y>530</y>
       <w>140</w>
-      <h>70</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=green
 </panel_attributes>
-    <additional_attributes>10.0;50.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;110.0;120.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>300</x>
+      <x>320</x>
       <y>380</y>
       <w>150</w>
       <h>50</h>
@@ -281,7 +281,7 @@ bg=green
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>220</x>
       <y>240</y>
       <w>120</w>
       <h>180</h>
@@ -294,20 +294,20 @@ bg=red
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
+      <x>460</x>
       <y>370</y>
       <w>140</w>
-      <h>170</h>
+      <h>230</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=orange
 </panel_attributes>
-    <additional_attributes>10.0;150.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;210.0;120.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
+      <x>460</x>
       <y>230</y>
       <w>140</w>
       <h>130</h>
@@ -320,44 +320,44 @@ bg=cyan
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>300</x>
-      <y>620</y>
+      <x>320</x>
+      <y>680</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>UC10 Administration 
+    <panel_attributes>UC11 Administration 
 web-klient</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
+      <x>460</x>
       <y>530</y>
       <w>140</w>
-      <h>130</h>
+      <h>190</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=green
 </panel_attributes>
-    <additional_attributes>10.0;110.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;170.0;120.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>300</x>
+      <x>320</x>
       <y>200</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes>UC3 Opret
-forhandlerkonto</panel_attributes>
+    <panel_attributes>UC3 Tildel
+forhandlerrolle</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
+      <x>460</x>
       <y>220</y>
       <w>140</w>
       <h>340</h>
@@ -370,7 +370,7 @@ bg=green
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>110</x>
+      <x>130</x>
       <y>440</y>
       <w>140</w>
       <h>110</h>
@@ -382,7 +382,7 @@ bg=black</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>220</x>
       <y>280</y>
       <w>120</w>
       <h>220</h>
@@ -395,7 +395,7 @@ bg=black
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
+      <x>220</x>
       <y>400</y>
       <w>120</w>
       <h>100</h>
@@ -408,14 +408,39 @@ bg=black
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>200</x>
-      <y>450</y>
+      <x>220</x>
+      <y>470</y>
       <w>120</w>
-      <h>50</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 bg=black
 </panel_attributes>
-    <additional_attributes>100.0;10.0;10.0;30.0</additional_attributes>
+    <additional_attributes>100.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>320</x>
+      <y>440</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>UC7 Rediger
+produkt</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>220</x>
+      <y>240</y>
+      <w>120</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+bg=red
+</panel_attributes>
+    <additional_attributes>100.0;220.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

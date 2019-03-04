@@ -7,7 +7,7 @@ namespace myWebApp.Pages.Product
         [Key]
         public int Id { get; set; } 
         
-         [Required, StringLength(25)]
+        [Required, StringLength(25)]
         public string Name { get; set; }
 
         [Required, StringLength(40)]
