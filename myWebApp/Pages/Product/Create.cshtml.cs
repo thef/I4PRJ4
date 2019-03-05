@@ -24,7 +24,7 @@ namespace myWebApp.Pages.Product
 
         [BindProperty]
         public Product Product { get; set; }
-        
+
         public async Task<IActionResult> OnPostAsync()
         {
             if(!ModelState.IsValid)

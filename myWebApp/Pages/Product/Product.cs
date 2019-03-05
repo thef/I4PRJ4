@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace myWebApp.Pages.Product
@@ -18,5 +19,10 @@ namespace myWebApp.Pages.Product
 
         [Range(1, int.MaxValue, ErrorMessage = "Price must be greater than: 0!")]
         public int Price { get; set; }
+
+        internal object FindAsync(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

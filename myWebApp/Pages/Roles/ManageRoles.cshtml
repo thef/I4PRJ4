@@ -6,7 +6,7 @@
 
 <h3>@ViewData["Title"]</h3>
 
-@Html.Partial("_StatusMessage", Model.StatusMessage)
+@Html.PartialAsync("_StatusMessage", Model.StatusMessage).Result
 <h5>All Users & Roles in database</h5>
 <hr/>
     <table>

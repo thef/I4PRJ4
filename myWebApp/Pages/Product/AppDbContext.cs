@@ -3,9 +3,11 @@ using Microsoft.EntityFrameworkCore.Sqlite;
 
 namespace myWebApp.Pages.Product
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext : DbContext
     {
+        /* 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        */
 
         public DbSet<Product> Products { get; set; }
 

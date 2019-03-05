@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -51,7 +50,7 @@ namespace myWebApp
 
                 //Delete ratings for selected product
                 _db.Rates.RemoveRange(_db.Rates.Where(x => x.ProductId == id));
-                var result = await _db.SaveChangesAsync();
+                await _db.SaveChangesAsync();
 
                 StatusMessage = $"Product with ID: {id} deleted";
 

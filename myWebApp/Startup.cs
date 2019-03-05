@@ -11,7 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
 //For using folders.
