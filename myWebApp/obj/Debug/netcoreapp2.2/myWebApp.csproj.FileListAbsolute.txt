@@ -122,3 +122,4 @@
 /Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/bin/Debug/netcoreapp2.2/xunit.runner.visualstudio.dotnetcore.testadapter.dll
 /Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/bin/Debug/netcoreapp2.2/xunit.runner.reporters.netcoreapp10.dll
 /Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/bin/Debug/netcoreapp2.2/xunit.runner.utility.netcoreapp10.dll
+/Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Chat/ServiceChat.g.cshtml.cs
