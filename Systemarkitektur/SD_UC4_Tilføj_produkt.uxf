@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>7</zoom_level>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>182</x>
-      <y>84</y>
-      <w>77</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
-Website</panel_attributes>
-    <additional_attributes/>
-  </element>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>42</x>
-      <y>77</y>
-      <w>70</w>
-      <h>77</h>
+      <x>150</x>
+      <y>96</y>
+      <w>60</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>Forhandler</panel_attributes>
     <additional_attributes/>
@@ -27,22 +15,33 @@ Website</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>406</x>
-      <y>84</y>
-      <w>84</w>
-      <h>28</h>
+      <x>450</x>
+      <y>102</y>
+      <w>96</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Controller&gt;&gt;
-Webserver</panel_attributes>
+Create.cshtml.cs</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>105</y>
-      <w>21</w>
-      <h>84</h>
+      <x>294</x>
+      <y>120</y>
+      <w>18</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>492</x>
+      <y>120</y>
+      <w>18</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
@@ -50,32 +49,21 @@ Webserver</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>441</x>
-      <y>105</y>
-      <w>21</w>
-      <h>98</h>
+      <x>174</x>
+      <y>150</y>
+      <w>18</w>
+      <h>456</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;740.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>70</x>
-      <y>140</y>
-      <w>21</w>
-      <h>462</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;640.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>448</x>
-      <y>329</y>
-      <w>287</w>
-      <h>28</h>
+      <x>498</x>
+      <y>342</y>
+      <w>246</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 void Products.Add(Product)</panel_attributes>
@@ -84,10 +72,10 @@ void Products.Add(Product)</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>70</x>
-      <y>161</y>
-      <w>154</w>
-      <h>28</h>
+      <x>174</x>
+      <y>156</y>
+      <w>132</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Presses Create</panel_attributes>
@@ -96,21 +84,21 @@ Presses Create</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>210</x>
-      <y>175</y>
-      <w>14</w>
-      <h>350</h>
+      <x>294</x>
+      <y>282</y>
+      <w>12</w>
+      <h>60</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=red</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>217</x>
-      <y>175</y>
-      <w>238</w>
-      <h>28</h>
+      <x>300</x>
+      <y>168</y>
+      <w>204</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Task OnGetAsync()</panel_attributes>
@@ -119,10 +107,10 @@ Task OnGetAsync()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>441</x>
-      <y>189</y>
-      <w>14</w>
-      <h>203</h>
+      <x>492</x>
+      <y>324</y>
+      <w>12</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -130,10 +118,10 @@ Task OnGetAsync()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>196</y>
-      <w>189</w>
-      <h>42</h>
+      <x>498</x>
+      <y>216</y>
+      <w>162</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 GET /Product/Create.cshtml.cs
@@ -143,10 +131,10 @@ GET /Product/Create.cshtml.cs
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>70</x>
-      <y>259</y>
-      <w>154</w>
-      <h>28</h>
+      <x>174</x>
+      <y>294</y>
+      <w>132</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 Inputs product data</panel_attributes>
@@ -155,10 +143,10 @@ Inputs product data</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>217</x>
-      <y>273</y>
-      <w>238</w>
-      <h>28</h>
+      <x>300</x>
+      <y>324</y>
+      <w>204</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Task OnPostAsync()</panel_attributes>
@@ -167,23 +155,10 @@ Task OnPostAsync()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>294</y>
-      <w>154</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-POST /.Create.cshtml.cs
-</panel_attributes>
-    <additional_attributes>10.0;40.0;40.0;40.0;40.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>217</x>
-      <y>224</y>
-      <w>238</w>
-      <h>28</h>
+      <x>300</x>
+      <y>270</y>
+      <w>204</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 /Product/Create.cshtml</panel_attributes>
@@ -192,10 +167,10 @@ POST /.Create.cshtml.cs
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>686</x>
-      <y>84</y>
-      <w>84</w>
-      <h>28</h>
+      <x>702</x>
+      <y>102</y>
+      <w>72</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
 Database (Sql)
@@ -205,10 +180,10 @@ Database (Sql)
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>721</x>
-      <y>343</y>
-      <w>14</w>
-      <h>175</h>
+      <x>732</x>
+      <y>354</y>
+      <w>12</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -216,58 +191,32 @@ Database (Sql)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>721</x>
-      <y>105</y>
-      <w>21</w>
-      <h>252</h>
+      <x>732</x>
+      <y>120</y>
+      <w>18</w>
+      <h>246</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;340.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;390.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>217</x>
-      <y>441</y>
-      <w>238</w>
+      <x>408</x>
+      <y>396</y>
+      <w>24</w>
       <h>42</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.
-RedirectToPage(returnUrl, "succes")
-
-</panel_attributes>
-    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>105</x>
-      <y>322</y>
-      <w>77</w>
-      <h>35</h>
-    </coordinates>
-    <panel_attributes>Website will
-display msg.</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>133</x>
-      <y>350</y>
-      <w>63</w>
-      <h>91</h>
-    </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>70.0;110.0;10.0;10.0</additional_attributes>
+    <additional_attributes>20.0;50.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>721</x>
-      <y>511</y>
-      <w>21</w>
-      <h>91</h>
+      <x>732</x>
+      <y>528</y>
+      <w>18</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
@@ -275,32 +224,32 @@ display msg.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>441</x>
-      <y>385</y>
-      <w>21</w>
-      <h>77</h>
+      <x>492</x>
+      <y>396</y>
+      <w>18</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;330.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>518</y>
-      <w>21</w>
+      <x>294</x>
+      <y>522</y>
+      <w>18</w>
       <h>84</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>364</y>
-      <w>287</w>
-      <h>28</h>
+      <x>498</x>
+      <y>384</y>
+      <w>246</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 Task SaveChangesAsync()</panel_attributes>
@@ -309,10 +258,10 @@ Task SaveChangesAsync()</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>21</x>
-      <y>35</y>
-      <w>938</w>
-      <h>553</h>
+      <x>132</x>
+      <y>60</y>
+      <w>810</w>
+      <h>534</h>
     </coordinates>
     <panel_attributes>SD Webstore UC4: Tilføj produkt</panel_attributes>
     <additional_attributes/>
@@ -320,10 +269,10 @@ Task SaveChangesAsync()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>728</x>
-      <y>406</y>
-      <w>189</w>
-      <h>42</h>
+      <x>738</x>
+      <y>432</y>
+      <w>162</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 bool Result(SaveChangesAsync)
@@ -333,10 +282,10 @@ bool Result(SaveChangesAsync)
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>182</x>
-      <y>399</y>
-      <w>749</w>
-      <h>161</h>
+      <x>252</x>
+      <y>426</y>
+      <w>660</w>
+      <h>138</h>
     </coordinates>
     <panel_attributes>Alt</panel_attributes>
     <additional_attributes/>
@@ -345,9 +294,9 @@ bool Result(SaveChangesAsync)
     <id>UMLGeneric</id>
     <coordinates>
       <x>798</x>
-      <y>511</y>
-      <w>56</w>
-      <h>14</h>
+      <y>522</y>
+      <w>48</w>
+      <h>12</h>
     </coordinates>
     <panel_attributes>[false]
 valign=center
@@ -358,9 +307,9 @@ bg=red</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>798</x>
-      <y>434</y>
-      <w>56</w>
-      <h>14</h>
+      <y>456</y>
+      <w>48</w>
+      <h>12</h>
     </coordinates>
     <panel_attributes>[true]
 valign=center
@@ -370,70 +319,185 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>175</x>
-      <y>469</y>
-      <w>770</w>
-      <h>21</h>
+      <x>246</x>
+      <y>486</y>
+      <w>678</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;1080.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;1110.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>434</y>
-      <w>287</w>
-      <h>28</h>
+      <x>300</x>
+      <y>456</y>
+      <w>444</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 RedirectToPage(returnUrl, "succes")</panel_attributes>
-    <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;720.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>300</x>
+      <y>510</y>
+      <w>444</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+RedirectToPage(returnUrl, "error")</panel_attributes>
+    <additional_attributes>10.0;20.0;720.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>441</x>
-      <y>448</y>
-      <w>14</w>
-      <h>77</h>
+      <x>258</x>
+      <y>102</y>
+      <w>84</w>
+      <h>24</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
+Index.cshtml</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>294</x>
+      <y>168</y>
+      <w>12</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>448</x>
-      <y>497</y>
-      <w>287</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-RedirectToPage(returnUrl, "error")</panel_attributes>
-    <additional_attributes>10.0;20.0;390.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>217</x>
-      <y>504</y>
-      <w>238</w>
-      <h>28</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-RedirectToPage(returnUrl, "error")</panel_attributes>
-    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>441</x>
-      <y>518</y>
-      <w>21</w>
-      <h>84</h>
+      <x>294</x>
+      <y>180</y>
+      <w>18</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>294</x>
+      <y>198</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>type=termination</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>492</x>
+      <y>180</y>
+      <w>12</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>252</x>
+      <y>234</y>
+      <w>96</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
+Create.cshtml.cs</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>252</y>
+      <w>18</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>366</x>
+      <y>354</y>
+      <w>102</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>Note:
+
+Index will display 
+message for result.</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>258</x>
+      <y>384</y>
+      <w>84</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Boundary&gt;&gt;
+Index.cshtml</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>336</y>
+      <w>18</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>294</x>
+      <y>360</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>type=termination</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>294</x>
+      <y>402</y>
+      <w>18</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>294</x>
+      <y>468</y>
+      <w>12</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>bg=yellow</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

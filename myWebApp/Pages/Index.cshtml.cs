@@ -30,12 +30,20 @@ namespace myWebApp
         public IList<Rating> Rates { get; private set; }
 
         //On Get loading page.
+        public void OnGet()
+        {
+            Products = _db.Products.AsNoTracking().ToList();
+
+            Rates = _db.Rates.AsNoTracking().ToList();
+        }
+        /*
         public async Task OnGetAsync()
         {
             Products = await _db.Products.AsNoTracking().ToListAsync();
 
             Rates = await _db.Rates.AsNoTracking().ToListAsync();
         }
+        */
 
         //On Delete button-handler.
         public async Task<IActionResult> OnPostDeleteAsync(int id)
@@ -118,18 +126,20 @@ namespace myWebApp
                 if(rating.ProductId == id)
                 {
                     result = true;
+
                     //Jump out if we found a rating.
                     break;
 
                 } else {
+
                     result = false;
                 }
             }
-            //Return result.
+            //Return statment.
             return result;
         }
 
-        //Find number of rates for selected product, return count.
+        //Find number of ratings for selected product, return count.
         public double NumberOfVotes(int id)
         {
             var result = 0.0;
@@ -140,7 +150,7 @@ namespace myWebApp
                     result ++;
                 }
             }
-            //Return result.
+            //Return count.
             return result;
         }
     }
