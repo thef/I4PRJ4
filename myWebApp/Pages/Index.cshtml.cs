@@ -25,9 +25,9 @@ namespace myWebApp
         [TempData]
         public string StatusMessage { get; set; }
 
-        public IList<Product> Products { get; private set; }
+        public List<Product> Products { get; set; }
 
-        public IList<Rating> Rates { get; private set; }
+        public List<Rating> Rates { get; set; }
 
         //On Get loading page.
         public void OnGet()
