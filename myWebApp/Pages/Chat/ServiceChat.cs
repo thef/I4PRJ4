@@ -1,20 +1,26 @@
-//For using folders.
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+
+//For using folders.
+using myWebApp.Pages.Product;
+using myWebApp.Pages.Account;
 
 namespace myWebApp.Pages.Chat
 {
     public class ServiceChat : PageModel
     {
-        public List<string> log = new List<string>();
+        private readonly AppDbContext _db;
 
-        /*
-        //List of logs in string format.
-        public List<string> log { get; set; }
-        */
-
+        public ServiceChat(AppDbContext db)
+        {
+            _db = db;
+        }
+        
         [TempData]
         public string StatusMessage { get; set; }
 
@@ -26,22 +32,35 @@ namespace myWebApp.Pages.Chat
             public string Message { get; set; }
             public string Log { get; set; }
         }
+
+        public List<Message> Messages { get; set; }
         
         //On GET page load.
         public void OnGet()
         {
+            Messages = _db.Messages.AsNoTracking().ToList();
 
         }
 
         //On POST page submit from button.
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
-            StatusMessage = $"Message: {Input.Message}";
+            if(!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-            log.Add("{Input.Message}");
+            Message message = new Message();
+            message.UserName = User.Identity.Name;
+            message.Msg = Input.Message;
+
+            _db.Messages.Add(message);
+            await _db.SaveChangesAsync();
+
+            StatusMessage = $"Message: {Input.Message} was save in database";
 
             //Update current page.
-            return Page();
+            return RedirectToPage();
         }
     }
 }

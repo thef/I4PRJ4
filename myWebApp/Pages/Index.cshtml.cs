@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 //For using folders.
 using myWebApp.Pages.Product;
 using myWebApp.Pages.Account;
-using System.Data;
 
 namespace myWebApp
 {
