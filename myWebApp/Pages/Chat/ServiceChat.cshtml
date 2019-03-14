@@ -13,12 +13,17 @@
         <section></section>
             <form method="post">
                 <input  type="hidden"/>
-                <h5>Please enter the following changes about the product you wish to edit.</h5>
+                <h5>------</h5>
                 <hr/>
                 <div asp-validation-summary="All" class="text-danger"></div>
 
                 <div class="form-group">   
-                    <label asp-for="Log"></label>
+                    <label asp-for="Input.Log"></label>
+                    <br/>
+                    @foreach (var log in @Model.log)
+                    {
+                        @log
+                    }
                 </div>
 
                 <div class="form-group">

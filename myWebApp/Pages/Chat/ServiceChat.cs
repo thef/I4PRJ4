@@ -8,8 +8,12 @@ namespace myWebApp.Pages.Chat
 {
     public class ServiceChat : PageModel
     {
-        //List of Messages in string format.
-        public List<string> Log { get; set; }
+        public List<string> log = new List<string>();
+
+        /*
+        //List of logs in string format.
+        public List<string> log { get; set; }
+        */
 
         [TempData]
         public string StatusMessage { get; set; }
@@ -20,12 +24,13 @@ namespace myWebApp.Pages.Chat
         public class InputModel
         {
             public string Message { get; set; }
+            public string Log { get; set; }
         }
         
         //On GET page load.
         public void OnGet()
         {
-            
+
         }
 
         //On POST page submit from button.
@@ -33,8 +38,10 @@ namespace myWebApp.Pages.Chat
         {
             StatusMessage = $"Message: {Input.Message}";
 
+            log.Add("{Input.Message}");
+
             //Update current page.
-            return RedirectToPage();
+            return Page();
         }
     }
 }
