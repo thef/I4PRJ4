@@ -104,11 +104,11 @@ namespace myWebApp.Pages.Roles
                     //Assign role to seleced user.
                     await _userManager.AddToRoleAsync(selectedUser, Input.Role);
 
-                    StatusMessage = $"Role was created and assigned to selected user!";
+                    StatusMessage = $"Role '{Input.Role}' was created and assigned to selected user '{Input.User}'";
 
                 } else {
 
-                    StatusMessage = $"User: '{selectedUser.Email}' is already assigned to that role!";
+                    StatusMessage = $"Error: User '{selectedUser.Email}' is already assigned to role '{Input.Role}'";
                 }
 
             //IF ROLE ALREADY DOES EXIST!.
@@ -124,11 +124,11 @@ namespace myWebApp.Pages.Roles
                     //Assign role to seleced user.
                     await _userManager.AddToRoleAsync(selectedUser, Input.Role);
 
-                    StatusMessage = $"Role was created and assigned to selected user!";
+                    StatusMessage = $"Role '{Input.Role}' was assigned to user '{Input.User}'.";
 
                 } else {
                     
-                    StatusMessage = $"User: '{selectedUser.Email}' is already assigned to that role!";
+                    StatusMessage = $"Error: User '{selectedUser.Email}' is already assigned to role '{Input.Role}'";
                 }
             }
 
@@ -217,11 +217,11 @@ namespace myWebApp.Pages.Roles
                             //Remove role from selected user.
                             await _userManager.RemoveFromRoleAsync(user, Input.Role);
 
-                            StatusMessage = $"Role {Input.Role} was removed form {user}.";
+                            StatusMessage = $"Role '{Input.Role}' was removed form '{user}'.";
 
                         } else {
 
-                            StatusMessage = $"Error: User: {user} is not in {Input.Role}.";
+                            StatusMessage = $"Error: User '{user}' is not in '{Input.Role}'.";
                         }
                     }
                 }

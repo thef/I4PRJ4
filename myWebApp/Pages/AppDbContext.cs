@@ -1,6 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
 
+//For using folders.
+using myWebApp.Pages.Chat;
+using myWebApp.Pages.Product;
+using myWebApp.Pages.Account;
+
 namespace myWebApp.Pages.Product
 {
     public class AppDbContext : DbContext
@@ -12,6 +17,8 @@ namespace myWebApp.Pages.Product
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Rating> Rates { get; set; }
+
+        public DbSet<Message> Messages { get; set; }
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
