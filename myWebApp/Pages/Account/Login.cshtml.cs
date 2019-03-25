@@ -16,10 +16,15 @@ namespace myWebApp.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<ApplicationDbUser> _signInManager;
+
+        private readonly ILogger<LoginModel> _logger;
         
-        public LoginModel(SignInManager<ApplicationDbUser> signInManager)
+        public LoginModel(
+            SignInManager<ApplicationDbUser> signInManager,
+            ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
+            _logger = logger;
         }
 
         [BindProperty]
@@ -73,11 +78,19 @@ namespace myWebApp.Pages.Account
                 if (result.Succeeded)
                 {
                     StatusMessage = $"User was logged in! with Email: {Input.Email}.";
+
+                    //Write to log
+                    _logger.LogInformation($"User: {Input.Email} logged in.");
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.IsLockedOut)
                 {
-                    StatusMessage = $"User was lockout due to to many failed logins in! with Email: {Input.Email}.";;
+                    StatusMessage = $"User was lockout due to to many failed logins in! with Email: {Input.Email}.";
+
+                    //Write to log
+                    _logger.LogWarning($"User: {Input.Email} locked out.");
+
                     return RedirectToPage("./Lockout");
                 }
                 else

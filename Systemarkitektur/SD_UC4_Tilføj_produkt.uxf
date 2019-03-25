@@ -4,7 +4,7 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>150</x>
+      <x>30</x>
       <y>96</y>
       <w>60</w>
       <h>66</h>
@@ -15,7 +15,7 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>450</x>
+      <x>330</x>
       <y>102</y>
       <w>96</w>
       <h>24</h>
@@ -27,7 +27,7 @@ Create.cshtml.cs</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>294</x>
+      <x>174</x>
       <y>120</y>
       <w>18</w>
       <h>60</h>
@@ -38,7 +38,7 @@ Create.cshtml.cs</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>492</x>
+      <x>372</x>
       <y>120</y>
       <w>18</w>
       <h>72</h>
@@ -49,7 +49,7 @@ Create.cshtml.cs</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>174</x>
+      <x>54</x>
       <y>150</y>
       <w>18</w>
       <h>456</h>
@@ -60,19 +60,19 @@ Create.cshtml.cs</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>498</x>
+      <x>378</x>
       <y>342</y>
       <w>246</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 void Products.Add(Product)</panel_attributes>
     <additional_attributes>390.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>174</x>
+      <x>54</x>
       <y>156</y>
       <w>132</w>
       <h>24</h>
@@ -84,7 +84,7 @@ Presses Create</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>294</x>
+      <x>174</x>
       <y>282</y>
       <w>12</w>
       <h>60</h>
@@ -95,19 +95,19 @@ Presses Create</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
+      <x>180</x>
       <y>168</y>
       <w>204</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;-
 Task OnGetAsync()</panel_attributes>
     <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>492</x>
+      <x>372</x>
       <y>324</y>
       <w>12</w>
       <h>78</h>
@@ -118,12 +118,12 @@ Task OnGetAsync()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>498</x>
+      <x>378</x>
       <y>216</y>
       <w>162</w>
       <h>36</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 GET /Product/Create.cshtml.cs
 </panel_attributes>
     <additional_attributes>10.0;40.0;40.0;40.0;40.0;10.0;10.0;10.0</additional_attributes>
@@ -131,7 +131,7 @@ GET /Product/Create.cshtml.cs
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>174</x>
+      <x>54</x>
       <y>294</y>
       <w>132</w>
       <h>24</h>
@@ -143,19 +143,19 @@ Inputs product data</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
+      <x>180</x>
       <y>324</y>
       <w>204</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;-
 Task OnPostAsync()</panel_attributes>
     <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
+      <x>180</x>
       <y>270</y>
       <w>204</w>
       <h>24</h>
@@ -167,7 +167,7 @@ Task OnPostAsync()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>702</x>
+      <x>582</x>
       <y>102</y>
       <w>72</w>
       <h>24</h>
@@ -180,7 +180,7 @@ Database (Sql)
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>732</x>
+      <x>612</x>
       <y>354</y>
       <w>12</w>
       <h>180</h>
@@ -191,7 +191,7 @@ Database (Sql)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>732</x>
+      <x>612</x>
       <y>120</y>
       <w>18</w>
       <h>246</h>
@@ -202,7 +202,7 @@ Database (Sql)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>408</x>
+      <x>288</x>
       <y>396</y>
       <w>24</w>
       <h>42</h>
@@ -213,7 +213,7 @@ Database (Sql)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>732</x>
+      <x>612</x>
       <y>528</y>
       <w>18</w>
       <h>78</h>
@@ -224,7 +224,7 @@ Database (Sql)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>492</x>
+      <x>372</x>
       <y>396</y>
       <w>18</w>
       <h>210</h>
@@ -235,7 +235,7 @@ Database (Sql)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>294</x>
+      <x>174</x>
       <y>522</y>
       <w>18</w>
       <h>84</h>
@@ -246,19 +246,19 @@ Database (Sql)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>498</x>
+      <x>378</x>
       <y>384</y>
       <w>246</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;-
+    <panel_attributes>lt=&lt;-
 Task SaveChangesAsync()</panel_attributes>
     <additional_attributes>390.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>132</x>
+      <x>12</x>
       <y>60</y>
       <w>810</w>
       <h>534</h>
@@ -269,7 +269,7 @@ Task SaveChangesAsync()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>738</x>
+      <x>618</x>
       <y>432</y>
       <w>162</w>
       <h>36</h>
@@ -282,7 +282,7 @@ bool Result(SaveChangesAsync)
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>252</x>
+      <x>132</x>
       <y>426</y>
       <w>660</w>
       <h>138</h>
@@ -293,7 +293,7 @@ bool Result(SaveChangesAsync)
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>798</x>
+      <x>678</x>
       <y>522</y>
       <w>48</w>
       <h>12</h>
@@ -306,7 +306,7 @@ bg=red</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>798</x>
+      <x>678</x>
       <y>456</y>
       <w>48</w>
       <h>12</h>
@@ -319,7 +319,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>246</x>
+      <x>126</x>
       <y>486</y>
       <w>678</w>
       <h>18</h>
@@ -330,7 +330,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
+      <x>180</x>
       <y>456</y>
       <w>444</w>
       <h>24</h>
@@ -342,7 +342,7 @@ RedirectToPage(returnUrl, "succes")</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>300</x>
+      <x>180</x>
       <y>510</y>
       <w>444</w>
       <h>24</h>
@@ -354,7 +354,7 @@ RedirectToPage(returnUrl, "error")</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>258</x>
+      <x>138</x>
       <y>102</y>
       <w>84</w>
       <h>24</h>
@@ -366,7 +366,7 @@ Index.cshtml</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>294</x>
+      <x>174</x>
       <y>168</y>
       <w>12</w>
       <h>18</h>
@@ -377,7 +377,7 @@ Index.cshtml</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>294</x>
+      <x>174</x>
       <y>180</y>
       <w>18</w>
       <h>36</h>
@@ -388,7 +388,7 @@ Index.cshtml</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>294</x>
+      <x>174</x>
       <y>198</y>
       <w>12</w>
       <h>12</h>
@@ -399,7 +399,7 @@ Index.cshtml</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>492</x>
+      <x>372</x>
       <y>180</y>
       <w>12</w>
       <h>108</h>
@@ -410,7 +410,7 @@ Index.cshtml</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>252</x>
+      <x>132</x>
       <y>234</y>
       <w>96</w>
       <h>24</h>
@@ -422,7 +422,7 @@ Create.cshtml.cs</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>294</x>
+      <x>174</x>
       <y>252</y>
       <w>18</w>
       <h>42</h>
@@ -433,7 +433,7 @@ Create.cshtml.cs</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>366</x>
+      <x>246</x>
       <y>354</y>
       <w>102</w>
       <h>48</h>
@@ -447,7 +447,7 @@ message for result.</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>258</x>
+      <x>138</x>
       <y>384</y>
       <w>84</w>
       <h>24</h>
@@ -459,7 +459,7 @@ Index.cshtml</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>294</x>
+      <x>174</x>
       <y>336</y>
       <w>18</w>
       <h>36</h>
@@ -470,7 +470,7 @@ Index.cshtml</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>294</x>
+      <x>174</x>
       <y>360</y>
       <w>12</w>
       <h>12</h>
@@ -481,7 +481,7 @@ Index.cshtml</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>294</x>
+      <x>174</x>
       <y>402</y>
       <w>18</w>
       <h>78</h>
@@ -492,7 +492,7 @@ Index.cshtml</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>294</x>
+      <x>174</x>
       <y>468</y>
       <w>12</w>
       <h>60</h>

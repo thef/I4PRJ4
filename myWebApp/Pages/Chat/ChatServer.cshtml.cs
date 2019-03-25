@@ -12,7 +12,16 @@ namespace myWebApp.Pages.Chat
 {
     public class ChatServer : PageModel
     {
-        public string ChatContent { get; set; }
+        [BindProperty]
+        public InputModel Input { get; set; }
+
+        public class InputModel
+        {
+            public string Message { get; set; }
+            public string Log { get; set; }
+        }
+        public string ClientMsg { get; set; }
+
         public string ServerStatus { get; set; }
 
         //benyt bindproperty fra HTML variabler til CS.
@@ -25,7 +34,7 @@ namespace myWebApp.Pages.Chat
         private static Socket _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //Internetwork således at serveren fungerer på IPv4
         private static List<Socket> _clientSockets = new List<Socket>(); //En liste over alle tilsluttede client sockets
         private const int BUFFER_SIZE = 1024;
-        private const int PORT = 100;
+        private const int PORT = 2000;
         private static byte[] _buffer = new byte[1024];
         private static string chatSession = string.Empty;
         private static bool messageReceived = false;
@@ -72,12 +81,11 @@ namespace myWebApp.Pages.Chat
 
             byte[] dataBuf = new byte[received];
             Array.Copy(_buffer, dataBuf, received);
-            string text = Encoding.ASCII.GetString(dataBuf);
-            //Console.WriteLine(text);
-            ChatContent = text;
-            string response = string.Empty;
 
-            response = Console.ReadLine();
+            //Converts received data byte to string.
+            ClientMsg = Encoding.ASCII.GetString(dataBuf);
+
+            string response = "Server answer";
 
             byte[] data = Encoding.ASCII.GetBytes(response);
             socket.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(SendCallback), socket);

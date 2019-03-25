@@ -23,7 +23,7 @@
     <table class="table">
         <thead>
             <tr>
-                <!--Deny access to edit and delete IF NOT ADmin or manager role-->
+                <!--Deny access to edit and delete IF NOT Admin or Manager role-->
                 @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                 {   
                     <th>ID</th>
@@ -50,7 +50,7 @@
             @foreach (var product in Model.Products)
             {
             <tr>
-                <!--Deny access to edit and delete IF NOT Admin or manager role and show product Id-->
+                <!--Deny access to edit and delete IF NOT Admin or Manager role and show product Id-->
                 @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                 {
                     <td>@product.Id</td>
@@ -67,7 +67,7 @@
                                 <hr />
                                 <p>Ratings: @Model.NumberOfVotes(@product.Id)</p>
                             } else {
-                                <p>Not rated yet.</p>
+                                <p>Not rated.</p>
                             }
                         </div>
                     </td>
@@ -82,7 +82,8 @@
                     </td>
 
                 <!--LOGGED IN AS CUSTOMER-->
-                } else if(User.IsInRole("Customer")){
+                } else if (User.IsInRole("Customer"))
+                {
                     <td>@product.Name</td>
                     <td>@product.Description</td>
                     <td>@product.Stock</td>
@@ -95,19 +96,35 @@
                             {
                                 <p>Overall rating: @Model.OverallRating(@product.Id)</p>
                                 <hr />
+                                <p>Ratings: @Model.NumberOfVotes(@product.Id)</p>
+
+                                @if (!Model.UserHasRatedProduct(@product.Id))
+                                {
+                                    @for (int i = 1; i < 6; i++)
+                                    {
+                                        <input type="radio" name="rate" value="@i"/>
+                                    }
+                                    <!--Force button on next line-->
+                                    <br />
+                                    <button type="submit" class="btn btn-primary" asp-page-handler="Rate"
+                                        asp-route-id="@product.Id" asp-route-id="rate" class="form-control">Rate</button>
+                                    } 
+                                    
                             } else {
                                 <p>Be the first to rate this product.</p>
                                 <hr />
+
+                                @for (int i = 1; i < 6; i++)
+                                {
+                                    <input type="radio" name="rate" value="@i"/>
+                                }
+                                <!--Force button on next line-->
+                                <br />
+                                <button type="submit" class="btn btn-primary" asp-page-handler="Rate"
+                                    asp-route-id="@product.Id" asp-route-id="rate" class="form-control">Rate</button>
                             }
 
-                            @for (int i = 1; i < 6; i++)
-                            {
-                                <input type="radio" name="rate" value="@i"/>
-                            }
-                            <!--Force button on next line-->
-                            <br />
-                            <button type="submit" class="btn btn-primary" asp-page-handler="Rate"
-                                asp-route-id="@product.Id" asp-route-id="rate" class="form-control">Rate</button>
+                            
                         </div>
                     </td>
                     <td>
@@ -128,6 +145,7 @@
                             @if (Model.RatedYet(@product.Id))
                             {
                                 <p>Overall rating: @Model.OverallRating(@product.Id)</p>
+                                <p>Ratings: @Model.NumberOfVotes(@product.Id)</p>
                                 <hr />
                                 <p><a asp-page="/Account/Login">Login</a> to rate.</p>
                             } else {

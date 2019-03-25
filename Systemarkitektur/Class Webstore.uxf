@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>160</x>
+      <y>200</y>
+      <w>200</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract class&gt;&gt;
+PageModel
+--
++User: System.Security.Claims.ClaimsPrincipal
+--
++RedirectToPage(): Microsoft.AspNetCore.Mvc.RedirectToPageResult
++Page(): Microsoft.AspNetCore.Mvc.RazorPages.PageResult
++LocalRedirect(): Microsoft.AspNetCore.Mvc.LocalRedirectResult
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>48</x>
+      <y>120</y>
+      <w>732</w>
+      <h>336</h>
+    </coordinates>
+    <panel_attributes>Class Webstore</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>208</x>
+      <y>140</y>
+      <w>108</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ModelStateDictionary
+--
++IsValid: bool
+--
++ModelState: ModelStateDictionary
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>256</x>
+      <y>176</y>
+      <w>12</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>68</x>
+      <y>280</y>
+      <w>120</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+CreateModel
+--
+-_db: AppDbContext {readonly}
++String: StatusMessage
++Product: Product
+--
++OnPostAsync(): Task&lt;IActionResult&gt; 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>124</x>
+      <y>244</y>
+      <w>144</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>340.0;10.0;340.0;60.0;10.0;60.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>200</x>
+      <y>280</y>
+      <w>120</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+EditModel
+--
+-_db: AppDbContext {readonly}
++String: StatusMessage
++Product: Product
+--
++OnPostAsync(): Task&lt;IActionResult&gt; 
++OnGetAsync(int id): Task&lt;IActionResult&gt; 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>332</x>
+      <y>280</y>
+      <w>208</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+RegisterModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
+-_roleManager: RoleManager&lt;IdentityRole&gt; {readonly}
+-_emailSender: IEmailSender {readonly}
++String: StatusMessage
++Input: InputModel
++ReturnUrl: string
++Username: string
+--
++OnGet(string returnUrl = null): void
++OnPostAsync(string returnUrl = null): Task&lt;IActionResult&gt; 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>256</x>
+      <y>244</y>
+      <w>12</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>256</x>
+      <y>244</y>
+      <w>188</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;450.0;60.0;450.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>156</x>
+      <y>368</y>
+      <w>76</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+Product
+--
++Id: int
++Name: string
++Description: sting
++Stock: int
++Price: int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>188</x>
+      <y>332</y>
+      <w>80</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;10.0;180.0;50.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>124</x>
+      <y>324</y>
+      <w>76</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;170.0;70.0;170.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>396</y>
+      <w>76</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+InputModel
+--
++Email: string
++Password: string
++ConfirmPassword: sting
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>436</x>
+      <y>364</y>
+      <w>12</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>552</x>
+      <y>280</y>
+      <w>208</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+LoginModel
+--
+-_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
++String: StatusMessage
++Input: InputModel
++ReturnUrl: string
++Username: string
+--
++OnGetAsync(string returnUrl = null): Task
++OnPostAsync(string returnUrl = null): Task&lt;IActionResult&gt; 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>616</x>
+      <y>396</y>
+      <w>76</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+InputModel
+--
++Email: string
++Password: string
++RememberMe: bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>652</x>
+      <y>344</y>
+      <w>12</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>256</x>
+      <y>244</y>
+      <w>408</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;1000.0;60.0;1000.0;90.0</additional_attributes>
+  </element>
+</diagram>

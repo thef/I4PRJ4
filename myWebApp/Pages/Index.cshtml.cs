@@ -92,7 +92,7 @@ namespace myWebApp
                     _db.Rates.Add(rating);
                     await _db.SaveChangesAsync();
 
-                    StatusMessage = $"Thanks for your rating";
+                    StatusMessage = $"Thanks for your rating.";
                 }
             }
             //Update current page.
@@ -150,6 +150,30 @@ namespace myWebApp
                 }
             }
             //Return count.
+            return result;
+        }
+
+        //For a defined productId tell if current User has rated or not, return true or false.
+        public bool UserHasRatedProduct(int id)
+        {
+            var result = false;
+            foreach (var rating in Rates)
+            {
+                if(rating.Id == id)
+                {
+                    if (rating.UserName == User.Identity.Name)
+                    {
+                        result = true;
+
+                        //Jump out if we found the rating for product by current user.
+                        break;
+
+                    } else {
+
+                        result = false;
+                    }
+                }
+            }
             return result;
         }
     }

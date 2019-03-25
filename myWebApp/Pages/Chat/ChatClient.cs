@@ -61,6 +61,9 @@ namespace myWebApp.Pages.Chat
             //Add Message to Database.
             AddMsg(Input.Message);
 
+            //Connect Socket server.
+            LoopConnect();
+
             //Send a message to Chatserver and wait for response.
             SendLoop(Input.Message);
 
@@ -108,7 +111,7 @@ namespace myWebApp.Pages.Chat
                 try
                 {
                     attempts++;
-                    _clientSocket.Connect(IPAddress.Loopback, 100);
+                    _clientSocket.Connect(IPAddress.Loopback, 2000);
                 }
                 catch (SocketException)
                 {
