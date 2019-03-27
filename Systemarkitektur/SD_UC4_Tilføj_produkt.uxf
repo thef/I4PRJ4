@@ -416,7 +416,7 @@ Index.cshtml</panel_attributes>
       <h>24</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Boundary&gt;&gt;
-Create.cshtml.cs</panel_attributes>
+Create.cshtml</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -499,5 +499,16 @@ Index.cshtml</panel_attributes>
     </coordinates>
     <panel_attributes>bg=yellow</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>372</x>
+      <y>282</y>
+      <w>18</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
   </element>
 </diagram>

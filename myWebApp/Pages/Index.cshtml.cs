@@ -28,21 +28,17 @@ namespace myWebApp
 
         public List<Rating> Rates { get; set; }
 
-        //On Get loading page.
-        public void OnGet()
-        {
-            Products = _db.Products.AsNoTracking().ToList();
+        //Search funtion
+        [BindProperty]
+        public string Search { get; set; }
 
-            Rates = _db.Rates.AsNoTracking().ToList();
-        }
-        /*
+        //On Get loading page.
         public async Task OnGetAsync()
         {
             Products = await _db.Products.AsNoTracking().ToListAsync();
 
             Rates = await _db.Rates.AsNoTracking().ToListAsync();
         }
-        */
 
         //On Delete button-handler.
         public async Task<IActionResult> OnPostDeleteAsync(int id)
@@ -175,6 +171,45 @@ namespace myWebApp
                 }
             }
             return result;
+        }
+
+        //On Search button-handler.
+        public async Task<IActionResult> OnPostSearchAsync(string searchString)
+        {
+            var products = from p in _db.Products
+                select p;
+
+            var ratings = from r in _db.Rates
+                select r;
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    products = products.Where(p => p.Name.Contains(searchString));
+
+                    //Check if we found anyting
+                    if (products.ToList().Count != 0)
+                    {
+                        StatusMessage = $"Displaying products that contains Name: '{searchString}'.";
+
+                    } else {
+
+                        StatusMessage = $"Error: No products contains Name: '{searchString}'.";
+
+                        //Run OnGetAsync() a clean reload of current page.
+                        return RedirectToPage();
+                    }
+
+                } else {
+
+                    StatusMessage = $"Displaying every product.";
+                }
+
+                //Update tables
+                Products = await products.AsNoTracking().ToListAsync();
+                Rates = await ratings.AsNoTracking().ToListAsync();
+
+            //Update current page.
+            return Page();
         }
     }
 }

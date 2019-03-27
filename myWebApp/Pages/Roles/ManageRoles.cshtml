@@ -7,32 +7,37 @@
 <h3>@ViewData["Title"]</h3>
 
 @Html.PartialAsync("_StatusMessage", Model.StatusMessage).Result
-<h5>All Users & Roles in database</h5>
-<hr/>
-    <table>
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Role</th>
-            </tr>
-        </thead>
 
-        <tbody>
-            @foreach (var user in @Model.Users)
-            {
-                <tr>
-                    <td>
-                        @user 
-                    </td>
-                    <td>
-                        @string.Join(", ", Model.GetRolesForUser(user))
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-<hr/>
-<br/>
+<div class="row">
+    <div class="col-md-6">
+        <h5>All Users & Roles in database</h5>
+        <hr/>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var user in @Model.Users)
+                    {
+                        <tr>
+                            <td>
+                                @user 
+                            </td>
+                            <td>
+                                @string.Join(", ", Model.GetRolesForUser(user))
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        <hr/>
+        <br/>
+    </div>
+</div>
 
 <div class="row">
     <div class="col-md-6">

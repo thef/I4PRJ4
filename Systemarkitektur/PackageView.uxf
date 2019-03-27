@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>32</x>
+      <y>0</y>
+      <w>112</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>
+--
+Webstore</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>352</x>
+      <y>320</y>
+      <w>168</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;access&gt;&gt;</panel_attributes>
+    <additional_attributes>190.0;10.0;190.0;60.0;10.0;60.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>392</x>
+      <y>264</y>
+      <w>96</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Authentication
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>368</x>
+      <y>240</y>
+      <w>264</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Account
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>512</x>
+      <y>264</y>
+      <w>96</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Credentials
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>648</x>
+      <y>432</y>
+      <w>88</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Password
+group=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>544</x>
+      <y>432</y>
+      <w>80</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Username
+group=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>520</x>
+      <y>408</y>
+      <w>360</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Credentials
+group=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>760</x>
+      <y>432</y>
+      <w>96</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Email
+group=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>496</x>
+      <y>320</y>
+      <w>216</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;access&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;250.0;60.0;250.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>152</x>
+      <y>704</y>
+      <w>216</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;class&gt;&gt;
+ApplicationDbUser : IdentityUser
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>464</x>
+      <y>696</y>
+      <w>328</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;class&gt;&gt;
+ApplicationRoleManager : RoleManager&lt;IdentityRole&gt;
+--
+
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>32</x>
+      <y>112</y>
+      <w>112</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>
+--
+LagerKing</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>240</x>
+      <y>624</y>
+      <w>96</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Name</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>368</x>
+      <y>432</y>
+      <w>88</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Role
+group=6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>264</x>
+      <y>432</y>
+      <w>80</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+User
+group=6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>240</x>
+      <y>408</y>
+      <w>240</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Authentication
+group=6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>216</x>
+      <y>264</y>
+      <w>88</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Client
+group=7</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>112</x>
+      <y>264</y>
+      <w>80</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Server
+group=7</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>88</x>
+      <y>240</y>
+      <w>240</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Chat
+group=7</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>832</x>
+      <y>264</y>
+      <w>88</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Edit product
+group=8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>696</x>
+      <y>264</y>
+      <w>112</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Create product
+group=8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>672</x>
+      <y>240</y>
+      <w>392</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Product
+group=8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>944</x>
+      <y>264</y>
+      <w>96</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Delete product
+group=8</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>896</x>
+      <y>120</y>
+      <w>96</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Delete rating
+group=9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>776</x>
+      <y>120</y>
+      <w>96</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>
+--
+Create rating
+group=9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>752</x>
+      <y>96</y>
+      <w>264</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Rating
+group=9</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>872</x>
+      <y>176</y>
+      <w>72</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;access&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>192</x>
+      <y>320</y>
+      <w>184</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;access&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0;210.0;60.0;210.0;130.0</additional_attributes>
+  </element>
+</diagram>
