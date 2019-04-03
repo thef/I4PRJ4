@@ -124,3 +124,11 @@
 /Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/bin/Debug/netcoreapp2.2/xunit.runner.utility.netcoreapp10.dll
 /Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Chat/ChatClient.g.cshtml.cs
 /Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/obj/Debug/netcoreapp2.2/Razor/Pages/Chat/ChatServer.g.cshtml.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.csprojAssemblyReference.cache
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.csproj.CoreCompileInputs.cache
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.RazorAssemblyInfo.cache
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.RazorAssemblyInfo.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.AssemblyInfoInputs.cache
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.AssemblyInfo.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.dll
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.pdb
