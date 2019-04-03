@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Xml
 @model myWebApp.Pages.Chat.ChatServer
 @{
     ViewData["Title"] = "ChatServer";
@@ -6,42 +7,17 @@
 
 <h3>@ViewData["Title"]</h3>
 
-<p>Welcome to the server:</p>
-
-<div class="row">
-    <div class="col-md-6">
-        <section></section>
-            <form method="post">
-                <h5>------</h5>
-                <hr/>
-                <div asp-validation-summary="All" class="text-danger"></div>
-
-                <div class="form-group">
-                    ClientStatus: @Model.ServerStatus
-                    <br>
-                    
-                    <label asp-for="Input.Log"></label>
-                    <br/>
-                    @Model.ClientMsg
-
-                    
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="Input.Message"></label>
-                    <input asp-for="Input.Message" class="form-control" />
-                    <span asp-validation-for="Input.Message" class="text-danger"></span>
-                </div>
-
-                <hr/>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
-        </section>
-    </div>
-</div>
-
-
+<p>Welcome to the server!</p><br/>
+Chathistory: 
+<br/>
+<textarea readonly="readonly" rows="15" cols="100">
+@foreach (var chatMsg in Model.testlist)
+{
+    @chatMsg
+    
+}
+</textarea>
+<br/>
 <form method="post">
     <input type="submit" value="Start Server"/>
 </form>
-

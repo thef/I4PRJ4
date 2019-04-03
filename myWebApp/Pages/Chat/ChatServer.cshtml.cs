@@ -12,6 +12,11 @@ namespace myWebApp.Pages.Chat
 {
     public class ChatServer : PageModel
     {
+        public string test = "aloha\nbreakline\nhello hello hello";
+        public List<string> testlist = new List<string>{"hej\n", "med\n", "dig\n"};
+
+        public Database ChatDB;
+
         [BindProperty]
         public InputModel Input { get; set; }
 
