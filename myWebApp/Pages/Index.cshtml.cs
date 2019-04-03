@@ -28,10 +28,6 @@ namespace myWebApp
 
         public List<Rating> Rates { get; set; }
 
-        //Search funtion
-        [BindProperty]
-        public string Search { get; set; }
-
         //On Get loading page.
         public async Task OnGetAsync()
         {
@@ -187,7 +183,7 @@ namespace myWebApp
                     products = products.Where(p => p.Name.Contains(searchString));
 
                     //Check if we found anyting
-                    if (products.ToList().Count != 0)
+                    if (products.AsNoTracking().ToList().Count != 0)
                     {
                         StatusMessage = $"Displaying products that contains Name: '{searchString}'.";
 

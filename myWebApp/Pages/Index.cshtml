@@ -18,21 +18,22 @@
 
 @Html.PartialAsync("_StatusMessage", Model.StatusMessage).Result
 
-<div class="row">
-    <div class="col-md-3">
-        <form method="post">
-            <h5>Search</h5>
-            <div class="form-group">
-                <input type="text" name="SearchString" class="form-control"/>
-                <hr />
-                <button type="submit" class="btn btn-primary" asp-page-handler="Search" 
-                    asp-route-id="SearchString">Search</button>
-            </div>
-            
-        </form>
-    </div>
+<!-- For usage of button to javascript.
+<div>
+    <button type="submit" class="btn btn-primary" onclick="showSearch('searchField')">Search</button>
 </div>
+-->
 
+<h5>Search</h5>
+<form method="post">
+    <div id="searchField" class="input-group">
+        <input type="text" class="form-control" name="SearchString"/>
+        <span class="input-group-addon"></span>
+        <button type="submit" class="btn btn-primary" asp-page-handler="Search" 
+            asp-route-id="SearchString" class="form-control">Search</button>
+    </div>
+</form>
+<br/>
 
 <h5>List of Products in store</h5>
 <hr/>
