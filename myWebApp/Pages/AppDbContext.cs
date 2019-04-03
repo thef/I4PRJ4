@@ -28,5 +28,17 @@ namespace myWebApp.Pages.Product
         {
             optionsBuilder.UseSqlite("Filename=WebStoreDatabase.db");
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Cart.cart>().HasKey(c => new { c.UserId, c.ProductId });
+            modelBuilder.Entity<Cart.cart>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Carts)
+                .HasForeignKey(c => c.UserId);
+            modelBuilder.Entity<Cart.cart>()
+                .HasOne(c => c.Product)
+                .WithMany(p => p.Carts)
+                .HasForeignKey(c => c.ProductId);
+        }
     }
 }
