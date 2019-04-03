@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 
-namespace ChatServer
+namespace myWebApp.Pages.Chat
 {
     class ChatRoom
     {

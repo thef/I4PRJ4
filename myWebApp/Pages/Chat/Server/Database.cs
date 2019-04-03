@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Sockets;
 
-namespace ChatServer
+namespace myWebApp.Pages.Chat
 {
     public class Database
     {
@@ -17,11 +17,6 @@ namespace ChatServer
         {
             _ChatSession.Add(newMsg);
         }
-
-        //public void UpdateConnectedClients(Socket ClientSocket)
-        //{
-        //    _ConnectedClients.Add(ClientSocket);
-        //}
 
     }
 }

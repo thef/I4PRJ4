@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 
-namespace ChatServer
+namespace myWebApp.Pages.Chat
 {
     public class MessageReceiver
     {
@@ -76,15 +76,15 @@ namespace ChatServer
                 ReceiverSocket.Close();
                 return;
             }
-
+            //TODO: Refactor this to another object.
             byte[] dataBuf = new byte[received];
             Array.Copy(_buffer, dataBuf, received);
             string text = Encoding.ASCII.GetString(dataBuf);
+            ChatSessionDB._ChatSession.Add(text);
+
             string[] inputs = text.Split(';');
             Console.WriteLine("Text Received: " + inputs[0]);
             Console.WriteLine("Port to send: " + inputs[1]);
-
-            // = Encoding.ASCII.GetString(inputs[0]);
 
             IPEndPoint remoteIpEndPoint = ReceiverSocket.RemoteEndPoint as IPEndPoint;
             remoteIpEndPoint.Port = Int32.Parse(inputs[1]);
