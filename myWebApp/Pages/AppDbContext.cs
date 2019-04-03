@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Sqlite;
 using myWebApp.Pages.Chat;
 using myWebApp.Pages.Product;
 using myWebApp.Pages.Account;
+using myWebApp.Pages.Cart;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace myWebApp.Pages.Product
@@ -20,6 +21,8 @@ namespace myWebApp.Pages.Product
         public DbSet<Rating> Rates { get; set; }
 
         public DbSet<Message> Messages { get; set; }
+
+        public DbSet<cart> Carts { get; set; }
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
