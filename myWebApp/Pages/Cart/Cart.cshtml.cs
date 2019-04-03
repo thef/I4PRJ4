@@ -20,20 +20,34 @@ namespace myWebApp.Pages.Cart
 {
     public class CartModel : PageModel
     {
+        private readonly AppDbContext _db;
+
+        public CartModel(AppDbContext db)
+        {
+            _db = db;
+        }
         private readonly UserManager<ApplicationDbUser> _userManager;
         public CartModel(UserManager<ApplicationDbUser> userManager)
         {
             _userManager = userManager;
         }
 
-        public List<cart> Carts { get; set; }
+        public int getprice(cart c)
+        {
+            var price = c.Quantity * c.Product.Price;
+            return price;
+        }
+
+        public List<cart> cartlist { get; set; }
 
         public async Task OnGetAsync()
         {
-            var user = _userManager.FindByEmailAsync(User.Identity.Name);
-            foreach (var cart in Carts)
+            foreach (var cart in _db.Carts.ToList())
             {
-                
+                if (cart.User.Id == User.Identity.Name)
+                {
+                    cartlist.Add(cart);
+                }
             }
         }
     }

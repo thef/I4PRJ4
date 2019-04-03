@@ -5,4 +5,22 @@
 }
 
 <h1>Cart</h1>
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Remove</th>
 
+    </tr>
+
+    @foreach (var product in @Model.cartlist)
+    {
+        <tr>
+            <td>@product.Product.Name</td>
+            <td>@product.Quantity</td>
+            <td>@Model.getprice(product)</td>
+
+        </tr>
+    }
+</table>
