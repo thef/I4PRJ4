@@ -23,7 +23,7 @@ namespace myWebApp.Pages.Product
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=WebStoreDatabase.db");
+            optionsBuilder.UseSqlite("Data Source=WebStoreDatabase.db");
         }
     }
 }

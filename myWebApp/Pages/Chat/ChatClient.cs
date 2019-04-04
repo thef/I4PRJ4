@@ -50,6 +50,11 @@ namespace myWebApp.Pages.Chat
             Messages = _db.Messages.AsNoTracking().ToList();
         }
 
+        public void OnPostFirstAsync()
+        {
+
+        }
+
         //On POST page submit from button.
         public async Task<IActionResult> OnPostAsync()
         {

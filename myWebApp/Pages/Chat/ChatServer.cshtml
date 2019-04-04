@@ -1,6 +1,6 @@
 ﻿@page
 @using System.Xml
-@model myWebApp.Pages.Chat.ChatServer
+@model myWebApp.Pages.Chat.ChatServerModel
 @{
     ViewData["Title"] = "ChatServer";
 }
@@ -10,14 +10,25 @@
 <p>Welcome to the server!</p><br/>
 Chathistory: 
 <br/>
-<textarea readonly="readonly" rows="15" cols="100">
-@foreach (var chatMsg in Model.testlist)
+<textarea readonly="readonly" rows="15" cols="100" name="TextArea">
+Please press "Start Server" to activate Server.
+@foreach (var chatMsg in Model.Messages)
 {
-    @chatMsg
-    
+    @chatMsg.Msg
 }
+
 </textarea>
 <br/>
 <form method="post">
-    <input type="submit" value="Start Server"/>
+    <input type="submit" value="Start Server" asp-page-handler="StartServer"/>
+</form>
+
+<br/>
+
+<form method="post">
+    <input type="submit" value="TestButton" asp-page-handler="Test"/>
+</form>
+
+<form method="post">
+    <input type="submit" value="TestButton2" asp-page-handler="Test2" />
 </form>

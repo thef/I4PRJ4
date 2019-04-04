@@ -54,6 +54,13 @@
     </div>
 </div>
 
+<form method="post">
+    <div>
+        <input type="submit" value="first button" asp-page-handler="First"/>
+    </div>
+</form>
+
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

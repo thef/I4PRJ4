@@ -21,7 +21,7 @@
 //        private static string chatSession = string.Empty;
 //        private static string name = string.Empty;
 
-        
+
 //        static void Main(string[] args)
 //        {
 //            PORT_Server = 1000; //Debugging.
@@ -33,11 +33,11 @@
 //            PORT_Receiver = Int32.Parse(Console.ReadLine());
 
 //            //Create messageSender
-//            MessageSender MsgSender = new MessageSender(_SenderSocket,PORT_Server, PORT_Sender,PORT_Receiver);
+//            MessageSender MsgSender = new MessageSender(_SenderSocket, PORT_Server, PORT_Sender, PORT_Receiver);
 //            Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
 
 //            //Create MessageReceiver
-//            MessageReceiver MsgReceiver = new MessageReceiver(_ReceiverSocket,PORT_Receiver);
+//            MessageReceiver MsgReceiver = new MessageReceiver(_ReceiverSocket, PORT_Receiver);
 //            Task ReceiveMessages = Task.Run(MsgReceiver.StartReceiverAction);
 
 //            while (true)
