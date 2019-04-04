@@ -156,8 +156,6 @@ C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pa
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Account\Register.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Account\ResetPassword.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Account\ResetPasswordConfirmation.g.cshtml.cs
-C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Chat\ChatClient.g.cshtml.cs
-C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Chat\ChatServer.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Index.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Product\Create.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Product\Edit.g.cshtml.cs
@@ -175,3 +173,5 @@ C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.RazorTargetAssemblyInfo.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.Views.pdb
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.csproj.CopyComplete
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Chat\Client\ChatClient.g.cshtml.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Chat\Server\ChatServer.g.cshtml.cs

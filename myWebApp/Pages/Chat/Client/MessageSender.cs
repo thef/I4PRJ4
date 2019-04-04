@@ -6,9 +6,9 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChatClient
+namespace myWebApp.Pages.Chat.Client
 {
-    public class MessageSender
+    public class MessageSenderClient
     {
         private static string _Message;
         public static string Message
@@ -30,7 +30,7 @@ namespace ChatClient
         /// <param name="PORT">TODO: Change from integer to IPEndpoiont. The specifiec PORT in an IPAddress</param>
         /// <param name="ReceiverPORT">The Port to the receiver for this host</param>
         //public MessageSender(Socket SenderSocket, int PORT, int ReceiverPORT)
-        public MessageSender(Socket SenderSocket, int ServerPORT, int SenderPORT, int ReceiverPort)
+        public MessageSenderClient(Socket SenderSocket, int ServerPORT, int SenderPORT, int ReceiverPort)
         {
             _ServerPORT = ServerPORT;
             _SenderPORT = SenderPORT;
@@ -49,9 +49,9 @@ namespace ChatClient
             string msg = _Message + ";" + _ReceiverPORT.ToString();
             byte[] buffer = Encoding.ASCII.GetBytes(msg);
             _SenderSocket.Send(buffer);
-           
+
             //Create new instance
-            MessageSender MsgSender = new MessageSender(_SenderSocket, _ServerPORT, _SenderPORT, _ReceiverPORT);
+            MessageSenderClient MsgSender = new MessageSenderClient(_SenderSocket, _ServerPORT, _SenderPORT, _ReceiverPORT);
             Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
             
         }

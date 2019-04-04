@@ -6,7 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChatClient
+namespace myWebApp.Pages.Chat.Client
 {
     public class SocketConnector
     {

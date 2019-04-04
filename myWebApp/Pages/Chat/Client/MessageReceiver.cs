@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 
-namespace ChatClient
+namespace myWebApp.Pages.Chat.Client
 {
     public class MessageReceiver
     {

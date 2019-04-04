@@ -23,7 +23,9 @@ namespace myWebApp.Pages.Product
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=WebStoreDatabase.db");
+            //optionsBuilder.UseSqlite("Data Source=WebStoreDatabase.db");
+            optionsBuilder.UseSqlite(@"Data Source=C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\WebStoreDatabase.db");
+        
         }
     }
 }

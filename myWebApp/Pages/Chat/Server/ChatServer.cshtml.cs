@@ -12,7 +12,7 @@ using System.Text;
 using myWebApp.Pages.Product;
 using Microsoft.EntityFrameworkCore;
 
-namespace myWebApp.Pages.Chat
+namespace myWebApp.Pages.Chat.Server
 {
     public class ChatServerModel : PageModel
     {

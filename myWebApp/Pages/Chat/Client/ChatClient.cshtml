@@ -1,5 +1,5 @@
 @page
-@model myWebApp.Pages.Chat.ChatClient
+@model myWebApp.Pages.Chat.Client.ChatClient
 @{
     ViewData["Title"] = "Chat";
 }
@@ -54,12 +54,40 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <h5>Insert IPEndpoint for client</h5>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ClientReceiverEndPoint.Address"></label>
+                <input asp-for="ClientReceiverEndPoint.Address" class="form-control" />
+                <span asp-validation-for="ClientReceiverEndPoint.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientSenderEndPoint.Address"></label>
+                <input asp-for="ClientSenderEndPoint.Address" class="form-control" />
+                <span asp-validation-for="ClientSenderEndPoint.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServerEndPoint.Port">Server Port</label>
+                <input asp-for="ServerEndPoint.Port" class="form-control" />
+                <span asp-validation-for="ServerEndPoint.Port" class="text-danger"></span>
+            </div>
+
+            <hr />
+            <button type="submit" class="btn btn-primary" asp-page-handler="SetClientEndpoint">Set IPEndpoint for client</button>
+        </form>
+    </div>
+</div>
+
+<br/>
 <form method="post">
     <div>
-        <input type="submit" value="first button" asp-page-handler="First"/>
+        <input type="submit" value="Start Client" asp-page-handler="ClientStart" />
     </div>
 </form>
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
