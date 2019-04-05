@@ -5,6 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net;
+using myWebApp.Pages.Product;
 
 namespace myWebApp.Pages.Chat.Client
 {
@@ -17,6 +18,7 @@ namespace myWebApp.Pages.Chat.Client
         //Buffer, Buffersize, and Ports for setup
         private const int BUFFER_SIZE = 1000;
         private static byte[] _buffer = new byte[1000];
+        private readonly AppDbContext _db;
 
         public MessageReceiver(Socket ServerSocket, int PORT)
         {
@@ -36,14 +38,9 @@ namespace myWebApp.Pages.Chat.Client
 
         private static void AcceptCallback(IAsyncResult AR)
         {
-            //TODO: add list to database instead
-            Socket AcceptSocket = _ReceiverSocket.EndAccept(AR);
-            //_clientSockets.Add(clientSocket);
-
-            AcceptSocket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, ReceiveCallback, AcceptSocket);
-
-            //Start new thread to wait for client to connect.
-            _ReceiverSocket.BeginAccept(AcceptCallback, null);
+           Socket AcceptSocket = _ReceiverSocket.EndAccept(AR);
+           AcceptSocket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, ReceiveCallback, AcceptSocket);
+           _ReceiverSocket.BeginAccept(AcceptCallback, null);
         }
 
         private static void ReceiveCallback(IAsyncResult AR)

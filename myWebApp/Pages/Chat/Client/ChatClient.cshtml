@@ -6,89 +6,63 @@
 
 <h3>@ViewData["Title"]</h3>
 
-@Html.PartialAsync("_StatusMessage", Model.StatusMessage).Result
+<p>Welcome to the ChatClient!</p><br />
+Chathistory:
+<br />
+<textarea readonly="readonly" rows="15" cols="100" name="TextArea">
+Please press "Start Server" to activate Server.
+@if (Model.Messages != null)
+{
+    @foreach (var chatMsg in Model.Messages)
+     {
+         @chatMsg.Msg
+     }
+}
 
-<div class="row">
-    <div class="col-md-6">
-        <section></section>
-            <form method="post">
-                <input  type="hidden"/>
-                <h5>------</h5>
-                <hr/>
-                <div asp-validation-summary="All" class="text-danger"></div>
+</textarea>
 
-                <div class="form-group">
-                    ClientStatus: @Model.ClientStatus
-                    <br>
-                    
-                    <label asp-for="Input.Log"></label>
-                    <br/>
-                    <table>
-                        <thead>
-                            <th>Id</th>
-                            <th>User</th>
-                            <th>Message</th>
-                        </thead>
-
-                            @foreach (var msg in @Model.Messages)
-                            {
-                                <tbody>
-                                <td>@msg.Id</td>
-                                <td>@msg.UserName</td>
-                                <td>@msg.Msg</td>
-                                </tbody>
-                            }
-                    </table>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="Input.Message"></label>
-                    <input asp-for="Input.Message" class="form-control" />
-                    <span asp-validation-for="Input.Message" class="text-danger"></span>
-                </div>
-
-                <hr/>
-                <button type="submit" class="btn btn-primary">Send</button>
-            </form>
-        </section>
-    </div>
+<div class="form-group">
+    <label asp-for="Message"></label>
+    <input asp-for="Message" class="form-control" />
+    <span asp-validation-for="Message" class="text-danger"></span>
 </div>
+<br/>
+<form method="post">
+    <input type="submit" value="TestSend" asp-page-handler="SendMessage" />
+</form>
+<br/>
 
 <div class="row">
     <div class="col-md-6">
         <form method="post">
             <h5>Insert IPEndpoint for client</h5>
-            <hr />
+            
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ClientReceiverEndPoint.Address"></label>
-                <input asp-for="ClientReceiverEndPoint.Address" class="form-control" />
-                <span asp-validation-for="ClientReceiverEndPoint.Address" class="text-danger"></span>
+                <label asp-for="ReceiverPort">Port for Receiver</label>
+                <input asp-for="ReceiverPort" class="form-control" />
+                <span asp-validation-for="ReceiverPort" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ClientSenderEndPoint.Address"></label>
-                <input asp-for="ClientSenderEndPoint.Address" class="form-control" />
-                <span asp-validation-for="ClientSenderEndPoint.Address" class="text-danger"></span>
+                <label asp-for="SenderPort">Port for Sender</label>
+                <input asp-for="SenderPort" class="form-control" />
+                <span asp-validation-for="SenderPort" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ServerEndPoint.Port">Server Port</label>
-                <input asp-for="ServerEndPoint.Port" class="form-control" />
-                <span asp-validation-for="ServerEndPoint.Port" class="text-danger"></span>
+                <label asp-for="ServerPort">Server Port</label>
+                <input asp-for="ServerPort" class="form-control" />
+                <span asp-validation-for="ServerPort" class="text-danger"></span>
             </div>
 
             <hr />
-            <button type="submit" class="btn btn-primary" asp-page-handler="SetClientEndpoint">Set IPEndpoint for client</button>
+            <button type="submit" class="btn btn-primary" asp-page-handler="StartClient">Set IPEndpoint for client and server and start</button>
         </form>
     </div>
 </div>
 
-<br/>
-<form method="post">
-    <div>
-        <input type="submit" value="Start Client" asp-page-handler="ClientStart" />
-    </div>
-</form>
+<br />
 
 @section Scripts {
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

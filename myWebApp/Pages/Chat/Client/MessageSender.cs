@@ -52,16 +52,14 @@ namespace myWebApp.Pages.Chat.Client
 
             //Create new instance
             MessageSenderClient MsgSender = new MessageSenderClient(_SenderSocket, _ServerPORT, _SenderPORT, _ReceiverPORT);
-            Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
-            
+            //Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
         }
 
         public Action PromptUserAndSendMessageAction = () =>
         {
-            PromptUserMessage(); 
+            //PromptUserMessage(); 
             SocketConnector.LoopConnect();
             SendMessage();
         };
-        
     }
 }

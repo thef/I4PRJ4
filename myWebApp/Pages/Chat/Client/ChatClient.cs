@@ -19,13 +19,12 @@ namespace myWebApp.Pages.Chat.Client
     {
         private static Socket _senderSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private static Socket _receiverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        private static MessageSenderClient MsgSender;
 
-        [BindProperty]
-        public IPEndPoint ClientSenderEndPoint { get; set; }
-        [BindProperty]
-        public IPEndPoint ClientReceiverEndPoint { get; set; }
-        [BindProperty]
-        public IPEndPoint ServerEndPoint { get; set; }
+        [BindProperty] public int SenderPort { get; set; }
+        [BindProperty] public int ReceiverPort { get; set; }
+        [BindProperty] public int ServerPort { get; set; }
+        [BindProperty] public string Message { get; set; }
 
         private readonly AppDbContext _db;
 
@@ -34,20 +33,20 @@ namespace myWebApp.Pages.Chat.Client
             _db = db;
         }
         
-        [TempData]
-        public string StatusMessage { get; set; }
+        //[TempData]
+        //public string StatusMessage { get; set; }
 
-        [TempData]
-        public string ClientStatus { get; set; }
+        //[TempData]
+        //public string ClientStatus { get; set; }
 
-        [BindProperty]
-        public InputModel Input { get; set; }
+        //[BindProperty]
+        //public InputModel Input { get; set; }
 
-        public class InputModel
-        {
-            public string Message { get; set; }
-            public string Log { get; set; }
-        }
+        //public class InputModel
+        //{
+        //    public string Message { get; set; }
+        //    public string Log { get; set; }
+        //}
 
         public List<Message> Messages { get; set; }
         
@@ -57,19 +56,50 @@ namespace myWebApp.Pages.Chat.Client
             //Get all messages from database.
             Messages = _db.Messages.AsNoTracking().ToList();
         }
+
         
-        public void OnPostClientStart()
+        public void OnPostStartClient()
         {
             //Database ChatDB = new Database();
-            MessageSenderClient MsgSender = new MessageSenderClient(_senderSocket, ServerEndPoint.Port, ClientSenderEndPoint.Port, ClientReceiverEndPoint.Port);
-            Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
+            MsgSender = new MessageSenderClient(_senderSocket, ServerPort, SenderPort, ReceiverPort);
+            //Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
+            
+            MessageReceiver MsgReceiver = new MessageReceiver(_receiverSocket, ReceiverPort);
+            Task ReceiveMessages = Task.Run(MsgReceiver.StartReceiverAction);
         }
 
-        public void OnPostSetClientEndpoint()
+        public void OnPostSendMessage()
         {
-
+            MessageSenderClient.Message = "hej fra client";
+            Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
+            //MsgSender.PromptUserAndSendMessageAction
         }
+ 
+        //[BindProperty]
+        //public IPEndPoint ClientSenderEndPoint { get; set; }
+        //[BindProperty]
+        //public IPEndPoint ClientReceiverEndPoint { get; set; }
+        //[BindProperty]
+        //public IPEndPoint ServerEndPoint { get; set; }
 
+        //public async Task<IActionResult> SetClientEndpoint()
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return Page();
+        //    }
+
+        //    //Set IP-Addresses for Endpoints
+        //    ClientReceiverEndPoint.Address = IPAddress.Loopback;
+        //    ClientSenderEndPoint.Address = IPAddress.Loopback;
+        //    ServerEndPoint.Address = IPAddress.Loopback;
+
+        //    //Add Endpoints to database
+        //    _db.ClientEndPoints.Add(ClientSenderEndPoint);
+        //    _db.ServerEndPoints.Add(ServerEndPoint);
+
+        //    return RedirectToPage("/Chat/ChatServer");
+        //}
 
         ////On POST page submit from button.
         //public async Task<IActionResult> OnPostAsync()
@@ -78,7 +108,7 @@ namespace myWebApp.Pages.Chat.Client
         //    {
         //        return Page();
         //    }
-            
+
         //    //Add Message to Database.
         //    AddMsg(Input.Message);
 
@@ -94,7 +124,7 @@ namespace myWebApp.Pages.Chat.Client
         //    //Update current page.
         //    return RedirectToPage();
         //}
-    
+
         ////ChatServer Client
         //private string SendLoop(string msg)
         //{

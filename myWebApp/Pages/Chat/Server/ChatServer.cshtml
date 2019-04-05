@@ -12,9 +12,12 @@ Chathistory:
 <br/>
 <textarea readonly="readonly" rows="15" cols="100" name="TextArea">
 Please press "Start Server" to activate Server.
-@foreach (var chatMsg in Model.Messages)
+@if (Model.Messages != null)
 {
-    @chatMsg.Msg
+    @foreach (var chatMsg in Model.Messages)
+     {
+         @chatMsg.Msg
+     }
 }
 
 </textarea>

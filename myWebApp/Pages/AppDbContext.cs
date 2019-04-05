@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
 
@@ -20,12 +21,16 @@ namespace myWebApp.Pages.Product
         public DbSet<Rating> Rates { get; set; }
 
         public DbSet<Message> Messages { get; set; }
-    
+
+        public DbSet<ChatEndpoint> ChatEndpoints { get; set; }
+
+        //public DbSet<IPEndPoint> ServerEndPoints { get; set; }
+        //public DbSet<IPEndPoint> ClientEndPoints { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlite("Data Source=WebStoreDatabase.db");
             optionsBuilder.UseSqlite(@"Data Source=C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\WebStoreDatabase.db");
-        
         }
     }
 }
