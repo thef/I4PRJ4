@@ -20,6 +20,8 @@ namespace myWebApp.Pages.Chat.Client
         private static byte[] _buffer = new byte[1000];
         private readonly AppDbContext _db;
 
+        public static string ReceivedString = null;
+
         public MessageReceiver(Socket ServerSocket, int PORT)
         {
             _ReceiverSocket = ServerSocket;
@@ -63,8 +65,8 @@ namespace myWebApp.Pages.Chat.Client
             Array.Copy(_buffer, dataBuf, received);
             string text = Encoding.ASCII.GetString(dataBuf);
 
-            Console.WriteLine("Message Received: " + text);
-
+            //Console.WriteLine("Message Received: " + text);
+            ReceivedString = text;
             
             ReceiverSocket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, ReceiveCallback, ReceiverSocket);
         }

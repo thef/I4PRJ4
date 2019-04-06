@@ -20,11 +20,13 @@ namespace myWebApp.Pages.Chat.Client
         private static Socket _senderSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private static Socket _receiverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private static MessageSenderClient MsgSender;
+        private static MessageReceiver MsgReceiver;
 
         [BindProperty] public int SenderPort { get; set; }
         [BindProperty] public int ReceiverPort { get; set; }
         [BindProperty] public int ServerPort { get; set; }
         [BindProperty] public string Message { get; set; }
+        [BindProperty] public string ReceivedMessage { get; set; }
 
         private readonly AppDbContext _db;
 
@@ -64,7 +66,7 @@ namespace myWebApp.Pages.Chat.Client
             MsgSender = new MessageSenderClient(_senderSocket, ServerPort, SenderPort, ReceiverPort);
             //Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
             
-            MessageReceiver MsgReceiver = new MessageReceiver(_receiverSocket, ReceiverPort);
+            MsgReceiver = new MessageReceiver(_receiverSocket, ReceiverPort);
             Task ReceiveMessages = Task.Run(MsgReceiver.StartReceiverAction);
         }
 
@@ -72,6 +74,7 @@ namespace myWebApp.Pages.Chat.Client
         {
             MessageSenderClient.Message = "hej fra client";
             Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
+            ReceivedMessage = ReceivedMessage + "\n" + MessageReceiver.ReceivedString;
             //MsgSender.PromptUserAndSendMessageAction
         }
  
