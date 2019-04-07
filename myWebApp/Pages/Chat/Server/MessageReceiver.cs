@@ -6,23 +6,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 
+using myWebApp.Pages.Product;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+
 namespace myWebApp.Pages.Chat.Server
 {
-    public class MessageReceiver
+    public class MessageReceiver : PageModel
     {
         //Socketsetup
         private static Socket _ServerSocket;
         private int _PORT;
         private string Msg = string.Empty; //todo: is this unused?
-        
+
         //Buffer, Buffersize, and Ports for setup
         private const int BUFFER_SIZE = 1000;
         private static byte[] _buffer = new byte[1000];
-        
+
         //Setup objects
         public static Database ChatSessionDB;
         public static MessageSender MsgSender;
         private static SocketConnector Connector;
+
+        //Database
+        private static AppDbContext _db;
+
+        //List for Connected Clients
+        public List<Socket> ConnectedClients = new List<Socket>();
 
         /// <summary>
         /// Constructor for MessageReceiver class. 
@@ -30,12 +40,13 @@ namespace myWebApp.Pages.Chat.Server
         /// <param name="ServerSocket">This serversocket is used as an endpoint for clients.</param>
         /// <param name="PORT">Specifies which port is used for serversocket.</param>
         /// <param name="DB">Database for ChatSessions.</param>
-        public MessageReceiver(Socket ServerSocket, int PORT, Database DB)
+        public MessageReceiver(Socket ServerSocket, int PORT, AppDbContext db)
         {
             _ServerSocket = ServerSocket;
             _PORT = PORT;
-            Connector = new SocketConnector(ServerSocket,PORT);
-            ChatSessionDB = DB;
+            Connector = new SocketConnector(ServerSocket, PORT);
+            _db = db;
+            ConnectedClients = new List<Socket>();
         }
 
         /// <summary>
@@ -46,14 +57,26 @@ namespace myWebApp.Pages.Chat.Server
             _ServerSocket.Bind(new IPEndPoint(IPAddress.Any, _PORT));
             _ServerSocket.Listen(10);
             _ServerSocket.BeginAccept(AcceptCallback, null);
-            Console.WriteLine("Server setup complete");
+            //Task t1 = new Task(DatabaseManager);
         }
+
+        ///// <summary>
+        ///// Purpose is to keep database alive
+        ///// </summary>
+        //private Action DatabaseManager = () =>
+        //{
+        //    AppDbContext DbContext = _db;
+        //    while (true)
+        //    {
+        //        //Keep the DatabaseContext alive.
+        //    }
+        //};
 
         /// <summary>
         /// Asynchron callbackfunction for accepting incomming connections from clients.
         /// </summary>
         /// <param name="AR">This is the result form _serverSocket.BeginAccept function. WARNING: Works recursively without a basecase!</param>
-        private static void AcceptCallback(IAsyncResult AR)
+        private void AcceptCallback(IAsyncResult AR)
         {
             //TODO: add list to database instead
             Socket clientSocket = _ServerSocket.EndAccept(AR);
@@ -62,7 +85,7 @@ namespace myWebApp.Pages.Chat.Server
             _ServerSocket.BeginAccept(AcceptCallback, null);
         }
 
-        private static void ReceiveCallback(IAsyncResult AR)
+        private void ReceiveCallback(IAsyncResult AR)
         {
             Socket ReceiverSocket = (Socket)AR.AsyncState;
             int received;
@@ -80,17 +103,22 @@ namespace myWebApp.Pages.Chat.Server
             byte[] dataBuf = new byte[received];
             Array.Copy(_buffer, dataBuf, received);
             string text = Encoding.ASCII.GetString(dataBuf);
-            ChatSessionDB._ChatSession.Add(text);
+            //ChatSessionDB._ChatSession.Add(text);
 
             string[] inputs = text.Split(';');
             Console.WriteLine("Text Received: " + inputs[0]);
             Console.WriteLine("Port to send: " + inputs[1]);
 
+            //Create Message-object and add to database
+            Message NewMsg = new Message();
+            NewMsg.Msg = inputs[0];
+            _db.Messages.Add(NewMsg);
+
             IPEndPoint remoteIpEndPoint = ReceiverSocket.RemoteEndPoint as IPEndPoint;
             remoteIpEndPoint.Port = Int32.Parse(inputs[1]);
             
             bool doesIPEndPointExist = false;
-            foreach (var socket in ChatSessionDB._ConnectedClients)
+            foreach (var socket in ConnectedClients)
             {
                 IPEndPoint test = socket.RemoteEndPoint as IPEndPoint;
                 //if RemoteEndPoint exist...
@@ -104,11 +132,11 @@ namespace myWebApp.Pages.Chat.Server
             if (!doesIPEndPointExist)
             {
                 Socket SenderSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                ChatSessionDB._ConnectedClients.Add(SenderSocket);
-                ChatSessionDB._ConnectedClients[ChatSessionDB._ConnectedClients.Count-1].Connect(IPAddress.Loopback,remoteIpEndPoint.Port);
+                ConnectedClients.Add(SenderSocket);
+                ConnectedClients[ConnectedClients.Count-1].Connect(IPAddress.Loopback,remoteIpEndPoint.Port);
             }
             
-            foreach (var socket in ChatSessionDB._ConnectedClients)
+            foreach (var socket in ConnectedClients)
             {
                 if (!socket.Connected)
                 {
@@ -123,7 +151,7 @@ namespace myWebApp.Pages.Chat.Server
             ReceiverSocket.BeginReceive(_buffer, 0, _buffer.Length, SocketFlags.None, ReceiveCallback, ReceiverSocket);
         }
 
-        private static void SendCallback(IAsyncResult AR)
+        private void SendCallback(IAsyncResult AR)
         {
             Socket socket = (Socket)AR.AsyncState;
             socket.EndSend(AR);

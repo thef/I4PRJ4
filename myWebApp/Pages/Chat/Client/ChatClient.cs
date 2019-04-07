@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Net.Sockets;
 using System.Text;
 using System.Net;
+using System.Net.WebSockets;
+using Microsoft.AspNetCore.WebSockets;
 
 //For using folders.
 using myWebApp.Pages.Product;
@@ -28,13 +30,31 @@ namespace myWebApp.Pages.Chat.Client
         [BindProperty] public string Message { get; set; }
         [BindProperty] public string ReceivedMessage { get; set; }
 
+        public string Testo = "I am Testo";
+
+        void OnFoo()
+        {
+            GetListContents();
+        }
+
+        public string GetListContents()
+        {
+            string Contents = null;
+            foreach (var StringVariable in TestList)
+            {
+                Contents = Contents + "\n" + StringVariable;
+            }
+            return Contents;
+        }
+
         private readonly AppDbContext _db;
 
         public ChatClient(AppDbContext db)
         {
             _db = db;
         }
-        
+
+        public string ServerIPAddress = IPAddress.Loopback.ToString();
         //[TempData]
         //public string StatusMessage { get; set; }
 
@@ -51,7 +71,9 @@ namespace myWebApp.Pages.Chat.Client
         //}
 
         public List<Message> Messages { get; set; }
-        
+
+        public List<string> TestList = new List<string>();
+
         //On GET page load.
         public void OnGet()
         {
@@ -59,8 +81,18 @@ namespace myWebApp.Pages.Chat.Client
             Messages = _db.Messages.AsNoTracking().ToList();
         }
 
+        public void OnPostButtonTester()
+        {
+            TestList.Add("Hello1\n");
+        }
         
-        public void OnPostStartClient()
+        public string ReturnAString()
+        {
+            string testo1 = "hej med dig";
+            return testo1;
+        }
+        
+        public Task OnPostStartClient()
         {
             //Database ChatDB = new Database();
             MsgSender = new MessageSenderClient(_senderSocket, ServerPort, SenderPort, ReceiverPort);
@@ -68,117 +100,25 @@ namespace myWebApp.Pages.Chat.Client
             
             MsgReceiver = new MessageReceiver(_receiverSocket, ReceiverPort);
             Task ReceiveMessages = Task.Run(MsgReceiver.StartReceiverAction);
+
+            //while (true)
+            //{
+            //    if (MessageReceiver.ReceivedString != null)
+            //    {
+            //        ReceivedMessage = ReceivedMessage + "\n" + MessageReceiver.ReceivedString;
+            //    }
+            //}
+            return null;
         }
 
-        public void OnPostSendMessage()
+        public Task OnPostSendMessage()
         {
             MessageSenderClient.Message = "hej fra client";
             Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
             ReceivedMessage = ReceivedMessage + "\n" + MessageReceiver.ReceivedString;
             //MsgSender.PromptUserAndSendMessageAction
+            return null;
         }
- 
-        //[BindProperty]
-        //public IPEndPoint ClientSenderEndPoint { get; set; }
-        //[BindProperty]
-        //public IPEndPoint ClientReceiverEndPoint { get; set; }
-        //[BindProperty]
-        //public IPEndPoint ServerEndPoint { get; set; }
 
-        //public async Task<IActionResult> SetClientEndpoint()
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return Page();
-        //    }
-
-        //    //Set IP-Addresses for Endpoints
-        //    ClientReceiverEndPoint.Address = IPAddress.Loopback;
-        //    ClientSenderEndPoint.Address = IPAddress.Loopback;
-        //    ServerEndPoint.Address = IPAddress.Loopback;
-
-        //    //Add Endpoints to database
-        //    _db.ClientEndPoints.Add(ClientSenderEndPoint);
-        //    _db.ServerEndPoints.Add(ServerEndPoint);
-
-        //    return RedirectToPage("/Chat/ChatServer");
-        //}
-
-        ////On POST page submit from button.
-        //public async Task<IActionResult> OnPostAsync()
-        //{
-        //    if(!ModelState.IsValid) 
-        //    {
-        //        return Page();
-        //    }
-
-        //    //Add Message to Database.
-        //    AddMsg(Input.Message);
-
-        //    //Connect Socket server.
-        //    LoopConnect();
-
-        //    //Send a message to Chatserver and wait for response.
-        //    SendLoop(Input.Message);
-
-        //    //Shoe status message for user.
-        //    StatusMessage = $"Message: {Input.Message} was save in database";
-
-        //    //Update current page.
-        //    return RedirectToPage();
-        //}
-
-        ////ChatServer Client
-        //private string SendLoop(string msg)
-        //{
-        //    //Console.Write("Enter chatmessage: ");
-        //    //string req = name + " says: " + Console.ReadLine();
-        //    string req = msg;
-        //    byte[] buffer = Encoding.ASCII.GetBytes(req);
-        //    _clientSocket.Send(buffer);
-
-        //    byte[] receivedBuf = new byte[1024];
-        //    int rec = _clientSocket.Receive(receivedBuf);
-        //    byte[] data = new byte[rec];
-        //    Array.Copy(receivedBuf, data, rec);
-
-        //    return Encoding.ASCII.GetString(data);        
-        //    //Console.WriteLine("Support says: " + Encoding.ASCII.GetString(data));
-        //}
-
-        //public void AddMsg(string msg)
-        //{
-        //    Message message = new Message();
-        //    message.UserName = User.Identity.Name;
-        //    message.Msg = msg;
-
-        //    _db.Messages.Add(message);
-        //    _db.SaveChangesAsync();
-        //}
-
-        //private void LoopConnect()
-        //{
-        //    int attempts = 0;
-
-        //    while (!_clientSocket.Connected)
-        //    {
-        //        try
-        //        {
-        //            attempts++;
-        //            _clientSocket.Connect(IPAddress.Loopback, 2000);
-        //        }
-        //        catch (SocketException)
-        //        {
-        //            //do nothing
-        //            //Console.Clear();
-        //            ClientStatus = "Connection attempts: " + attempts.ToString();
-        //            //Console.WriteLine("Connection attempts: " + attempts.ToString());
-        //        }
-        //    }
-        //    ClientStatus = "Connected";
-        //    //Console.Clear();
-        //    //Console.WriteLine("Connected");
-        //}
-        ////ChatServer Server
     }
 }

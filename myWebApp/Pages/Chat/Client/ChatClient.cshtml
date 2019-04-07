@@ -1,68 +1,26 @@
 @page
-@model myWebApp.Pages.Chat.Client.ChatClient
-@{
-    ViewData["Title"] = "Chat";
-}
-
-<h3>@ViewData["Title"]</h3>
-
-<p>Welcome to the ChatClient!</p><br />
-Chathistory:
-<br />
-<textarea readonly="readonly" rows="15" cols="100" name="TextArea">
-Please press "Start Server" to activate Server.
-@if (Model.Messages != null)
-{
-    @foreach (var chatMsg in Model.Messages)
-     {
-         @chatMsg.Msg
-     }
-}
-@Model.ReceivedMessage
-</textarea>
-
-<div class="form-group">
-    <label asp-for="Message"></label>
-    <input asp-for="Message" class="form-control" />
-    <span asp-validation-for="Message" class="text-danger"></span>
-</div>
-<br/>
-<form method="post">
-    <input type="submit" value="TestSend" asp-page-handler="SendMessage" />
-</form>
-<br/>
-
-<div class="row">
-    <div class="col-md-6">
-        <form method="post">
-            <h5>Insert IPEndpoint for client</h5>
-            
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ReceiverPort">Port for Receiver</label>
-                <input asp-for="ReceiverPort" class="form-control" />
-                <span asp-validation-for="ReceiverPort" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SenderPort">Port for Sender</label>
-                <input asp-for="SenderPort" class="form-control" />
-                <span asp-validation-for="SenderPort" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ServerPort">Server Port</label>
-                <input asp-for="ServerPort" class="form-control" />
-                <span asp-validation-for="ServerPort" class="text-danger"></span>
-            </div>
-
+<div class="container">
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            User..........<input type="text" id="userInput" />
+            <br />
+            Message...<input type="text" id="messageInput" />
+            <input type="button" id="sendButton" value="Send Message" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
             <hr />
-            <button type="submit" class="btn btn-primary" asp-page-handler="StartClient">Set IPEndpoint for client and server and start</button>
-        </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            <ul id="messagesList"></ul>
+        </div>
     </div>
 </div>
-
-<br />
-
-@section Scripts {
-
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>

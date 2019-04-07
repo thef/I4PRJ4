@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using SignalRChat.Hubs;
 
 //For using folders.
 using myWebApp.Pages.Product;
@@ -52,6 +53,9 @@ namespace myWebApp
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            //For the chat
+            services.AddSignalR();
+
             //Usage of Interface IEmailSender to send mails.
             services.AddTransient<IEmailSender, EmailSender>(i => 
                 new EmailSender(
@@ -61,6 +65,7 @@ namespace myWebApp
                     Configuration["EmailSender:UserName"],
                     Configuration["EmailSender:Password"]
                 )
+
             );
 
             
@@ -112,11 +117,17 @@ namespace myWebApp
                 app.UseHsts();
             }
 
+            app.UseWebSockets();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chatHub");
+            });
 
             app.UseMvc();
         }

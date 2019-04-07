@@ -20,6 +20,7 @@ namespace myWebApp.Pages.Chat.Client
         private static byte[] _buffer = new byte[1000];
         private readonly AppDbContext _db;
 
+
         public static string ReceivedString = null;
 
         public MessageReceiver(Socket ServerSocket, int PORT)

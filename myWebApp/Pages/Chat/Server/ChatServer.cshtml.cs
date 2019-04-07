@@ -17,7 +17,7 @@ namespace myWebApp.Pages.Chat.Server
     public class ChatServerModel : PageModel
     {
         //Database setup
-        public readonly AppDbContext _db;
+        public AppDbContext _db;
         public List<Message> Messages { get; set; }
         
         public Database ChatDB;
@@ -36,13 +36,20 @@ namespace myWebApp.Pages.Chat.Server
             public string Log { get; set; }
         }
 
-        public void OnPostStartServer()
+        public Task OnPostStartServer()
         {
             Database ChatDB = new Database();
             Socket _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //Internetwork således at serveren fungerer på IPv4
             int _Server_PORT = 1000;
-            MessageReceiver msgReceiver = new MessageReceiver(_serverSocket, _Server_PORT, ChatDB);
+            MessageReceiver msgReceiver = new MessageReceiver(_serverSocket, _Server_PORT, _db);
             msgReceiver.SetupServer();
+
+            while (true)
+            {
+                //Never end thread. Server needs Database Context.
+            }
+
+            return null;
         }
 
         public void OnPostTest()
@@ -51,17 +58,6 @@ namespace myWebApp.Pages.Chat.Server
             msgtest.Msg = "Goddag";
             _db.Messages.Add(msgtest);
         }
-
-        //public void OnPostTest2()
-        //{
-        //    Message Message = new Message();
-        //    //Message.Id = 2;
-        //    Message.Msg = "hejhej ";
-        //    Message.UserName = "Kaj";
-
-        //    _db.Messages.Add(Message);
-        //    _db.SaveChanges();
-        //}
 
         public async Task<IActionResult> OnPostTest2Async()
         {
