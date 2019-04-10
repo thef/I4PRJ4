@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 //For using folders.
 using myWebApp.Pages.Product;
 using myWebApp.Pages.Account;
+using myWebApp.Pages.Cart;
+using Microsoft.AspNetCore.Identity;
 
 namespace myWebApp
 {
@@ -20,6 +22,8 @@ namespace myWebApp
         {
             _db = db;
         }
+
+        private readonly UserManager<ApplicationDbUser> _userManager;
 
         [TempData]
         public string StatusMessage { get; set; }
@@ -58,6 +62,46 @@ namespace myWebApp
                 StatusMessage = $"Product with ID: {id} deleted";
 
             } else {
+
+                StatusMessage = $"Error: Can't find product with ID: {id}!";
+            }
+            //Update current page.
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostAddToCartAsync(int id)
+        {
+            var Product = await _db.Products.FindAsync(id);
+
+            //Delete selected product if found.
+            if (Product != null)
+            {
+                if (Product.Stock != 0)
+                {
+                    var Activeuser = _userManager.FindByEmailAsync(User.Identity.Name).Result;
+                    _db.Carts.Add(new cart
+                        {
+                            Product = Product, ProductId = id, Quantity = 1, User = Activeuser,
+                            UserId = User.Identity.Name
+                        }
+                    );
+
+                    Product.Stock --;
+                    _db.Attach(Product).State = EntityState.Modified;
+
+                    //Delete ratings for selected product
+                    await _db.SaveChangesAsync();
+
+                    StatusMessage = $"Product with ID: {id} added to cart";
+                }
+                else
+                {
+                    StatusMessage = $"Error: Product with id: {id} out of stock!";
+                }
+
+            }
+            else
+            {
 
                 StatusMessage = $"Error: Can't find product with ID: {id}!";
             }
