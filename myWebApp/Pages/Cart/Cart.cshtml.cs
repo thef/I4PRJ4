@@ -22,15 +22,12 @@ namespace myWebApp.Pages.Cart
     {
         private readonly AppDbContext _db;
 
-        public CartModel(AppDbContext db)
+        public CartModel(AppDbContext db, UserManager<ApplicationDbUser> userManager)
         {
             _db = db;
-        }
-        private readonly UserManager<ApplicationDbUser> _userManager;
-        public CartModel(UserManager<ApplicationDbUser> userManager)
-        {
             _userManager = userManager;
         }
+        private readonly UserManager<ApplicationDbUser> _userManager;
 
         public int getprice(cart c)
         {
