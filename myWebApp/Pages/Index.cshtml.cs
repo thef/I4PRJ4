@@ -71,34 +71,36 @@ namespace myWebApp
 
         public async Task<IActionResult> OnPostAddToCartAsync(int id)
         {
-            var Product = await _db.Products.FindAsync(id);
+            var product = await _db.Products.FindAsync(id);
 
             //Delete selected product if found.
-            if (Product != null)
+            if (product != null)
             {
-                if (Product.Stock != 0)
+                if (User.IsInRole("Customer"))
                 {
-                    var Activeuser = _userManager.FindByEmailAsync(User.Identity.Name).Result;
-                    _db.Carts.Add(new cart
-                        {
-                            Product = Product, ProductId = id, Quantity = 1, User = Activeuser,
-                            UserId = User.Identity.Name
-                        }
-                    );
+                    if (product.Stock != 0)
+                    {
+                        var Activeuser = _userManager.FindByEmailAsync(User.Identity.Name).Result;
+                        _db.Carts.Add(new cart
+                            {
+                                Product = product, ProductId = id, Quantity = 1, User = Activeuser,
+                                UserId = User.Identity.Name
+                            }
+                        );
 
-                    Product.Stock --;
-                    _db.Attach(Product).State = EntityState.Modified;
+                        product.Stock--;
+                        _db.Attach(product).State = EntityState.Modified;
 
-                    //Delete ratings for selected product
-                    await _db.SaveChangesAsync();
+                        //Delete ratings for selected product
+                        await _db.SaveChangesAsync();
 
-                    StatusMessage = $"Product with ID: {id} added to cart";
+                        StatusMessage = $"Product with ID: {id} added to cart";
+                    }
+                    else
+                    {
+                        StatusMessage = $"Error: Product with id: {id} out of stock!";
+                    }
                 }
-                else
-                {
-                    StatusMessage = $"Error: Product with id: {id} out of stock!";
-                }
-
             }
             else
             {

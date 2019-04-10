@@ -115,9 +115,9 @@
                                 <hr />
                                 <p>Ratings: @Model.NumberOfVotes(@product.Id)</p>
 
-                                @if (!Model.UserHasRatedProduct(@product.Id))
+                                if (!Model.UserHasRatedProduct(@product.Id))
                                 {
-                                    @for (int i = 1; i < 6; i++)
+                                    for (int i = 1; i < 6; i++)
                                     {
                                         <input type="radio" name="rate" value="@i"/>
                                     }
@@ -131,7 +131,7 @@
                                 <p>Be the first to rate this product.</p>
                                 <hr />
 
-                                @for (int i = 1; i < 6; i++)
+                                for (int i = 1; i < 6; i++)
                                 {
                                     <input type="radio" name="rate" value="@i"/>
                                 }
@@ -173,8 +173,8 @@
                         </div>
                     </td>
                     <td>
-                        <button type="submit" class="btn btn-primary" asp-page-handler=""
-                            asp-route-id="">Add</button>
+                        <button type="submit" class="btn btn-primary" asp-page-handler="AddToCart"
+                            asp-route-id="@product.Id">Add</button>
                     </td>
                 }
             </tr>
