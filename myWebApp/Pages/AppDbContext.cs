@@ -23,7 +23,7 @@ namespace myWebApp.Pages.Product
         public DbSet<Message> Messages { get; set; }
 
         public DbSet<cart> Carts { get; set; }
-        public DbSet<BuyFirstPageModel.Order> Orders { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDeteails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
