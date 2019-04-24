@@ -66,12 +66,12 @@ namespace myWebApp.Pages.Cart
 
             [Required(ErrorMessage = "Card Number is required")]
             [DisplayName("Card Number")]
-            [RegularExpression(@"[[z0-9]{4}+-[z0-9]{4}+-[z0-9]{4}+-[z0-9]{4}]", ErrorMessage = "Invalid Card Number")]
+            [RegularExpression(@"[[z0-9]{4} -[z0-9]{4} -[z0-9]{4} -[z0-9]{4}", ErrorMessage = "Invalid Card Number")]
             public int cardNumber { get; set; }
 
             [Required(ErrorMessage = "Expression date is required")]
             [DisplayName("Expression date")]
-            [RegularExpression(@"[[z0-9]{2}+-[z0-9]{2}]", ErrorMessage = "Invalid Expression date")]
+            [RegularExpression(@"[[z0-9]{2} -[z0-9]{2}]", ErrorMessage = "Invalid Expression date")]
             public int experessionDate { get; set; }
 
             [Required(ErrorMessage = "CVC number required")]
