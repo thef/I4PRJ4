@@ -30,23 +30,6 @@ namespace myWebApp.Pages.Chat.Client
         [BindProperty] public string Message { get; set; }
         [BindProperty] public string ReceivedMessage { get; set; }
 
-        public string Testo = "I am Testo";
-
-        void OnFoo()
-        {
-            GetListContents();
-        }
-
-        public string GetListContents()
-        {
-            string Contents = null;
-            foreach (var StringVariable in TestList)
-            {
-                Contents = Contents + "\n" + StringVariable;
-            }
-            return Contents;
-        }
-
         private readonly AppDbContext _db;
 
         public ChatClient(AppDbContext db)
@@ -55,20 +38,6 @@ namespace myWebApp.Pages.Chat.Client
         }
 
         public string ServerIPAddress = IPAddress.Loopback.ToString();
-        //[TempData]
-        //public string StatusMessage { get; set; }
-
-        //[TempData]
-        //public string ClientStatus { get; set; }
-
-        //[BindProperty]
-        //public InputModel Input { get; set; }
-
-        //public class InputModel
-        //{
-        //    public string Message { get; set; }
-        //    public string Log { get; set; }
-        //}
 
         public List<Message> Messages { get; set; }
 
@@ -79,36 +48,6 @@ namespace myWebApp.Pages.Chat.Client
         {
             //Get all messages from database.
             Messages = _db.Messages.AsNoTracking().ToList();
-        }
-
-        public void OnPostButtonTester()
-        {
-            TestList.Add("Hello1\n");
-        }
-        
-        public string ReturnAString()
-        {
-            string testo1 = "hej med dig";
-            return testo1;
-        }
-        
-        public Task OnPostStartClient()
-        {
-            //Database ChatDB = new Database();
-            MsgSender = new MessageSenderClient(_senderSocket, ServerPort, SenderPort, ReceiverPort);
-            //Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
-            
-            MsgReceiver = new MessageReceiver(_receiverSocket, ReceiverPort);
-            Task ReceiveMessages = Task.Run(MsgReceiver.StartReceiverAction);
-
-            //while (true)
-            //{
-            //    if (MessageReceiver.ReceivedString != null)
-            //    {
-            //        ReceivedMessage = ReceivedMessage + "\n" + MessageReceiver.ReceivedString;
-            //    }
-            //}
-            return null;
         }
 
         public Task OnPostSendMessage()
