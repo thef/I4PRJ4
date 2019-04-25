@@ -83,7 +83,10 @@ namespace myWebApp
                         var Activeuser = _userManager.FindByEmailAsync(User.Identity.Name).Result;
                         _db.Carts.Add(new cart
                             {
-                                Product = product, ProductId = id, Quantity = 1, User = Activeuser,
+                                Product = product,
+                                ProductId = id,
+                                Quantity = 1,
+                                User = Activeuser,
                                 UserId = User.Identity.Name
                             }
                         );

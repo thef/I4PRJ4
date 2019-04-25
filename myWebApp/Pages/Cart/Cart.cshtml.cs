@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -73,7 +74,7 @@ namespace myWebApp.Pages.Cart
                 //Do nothing if no search-string id entered.
             }
             //Load list of StudentGroups
-            Carts = await cartcontains.AsNoTracking().ToListAsync();
+            Carts = await cartcontains.AsNoTracking().Include(c=>c.Product).ToListAsync();
             //Update current page.
             return Page();
         }
@@ -136,7 +137,6 @@ namespace myWebApp.Pages.Cart
 
                     StatusMessage = $"Product with ID: {id} removed from cart";
                 }
-
             }
             else
             {
@@ -171,6 +171,11 @@ namespace myWebApp.Pages.Cart
             }
             //Update current page.
             return RedirectToPage();
+        }
+
+        public RedirectToPageResult OnPostAsync()
+        {
+            return RedirectToPage("BuyFirstPage");
         }
     }
 }
