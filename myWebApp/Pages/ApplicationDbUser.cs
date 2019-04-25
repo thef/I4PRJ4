@@ -5,8 +5,5 @@ using Microsoft.AspNetCore.Identity;
 
 namespace myWebApp.Pages.Account
 {
-    public class  ApplicationDbUser : IdentityUser
-    {
-        
-    }
+    public class  ApplicationDbUser : IdentityUser { }
 }

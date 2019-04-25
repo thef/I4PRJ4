@@ -77,13 +77,13 @@
                     <td>@product.Stock</td>
                     <td>@product.Price</td>
                     <td>
-                        <div class="form-group">
+                        <div class="form-group">          
                             <!--Create 5 radio-button for ratiing-->
-                            @if (Model.RatedYet(@product.Id))
+                            @if (Model.RatedYet(@product.Id).Result)
                             {
-                                <p>Overall rating: @Model.OverallRating(@product.Id)</p>
+                                <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
                                 <hr />
-                                <p>Ratings: @Model.NumberOfVotes(@product.Id)</p>
+                                <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
                             } else {
                                 <p>Not rated.</p>
                             }
@@ -110,13 +110,13 @@
                     <td>
                         <div class="form-group">
                             <!--Create 5 radio-button for ratiing-->
-                            @if (Model.RatedYet(@product.Id))
+                            @if (Model.RatedYet(@product.Id).Result)
                             {
-                                <p>Overall rating: @Model.OverallRating(@product.Id)</p>
+                                <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
                                 <hr />
-                                <p>Ratings: @Model.NumberOfVotes(@product.Id)</p>
+                                <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
 
-                                @if (!Model.UserHasRatedProduct(@product.Id))
+                                @if (!Model.UserHasRatedProduct(@product.Id).Result)
                                 {
                                     @for (int i = 1; i < 6; i++)
                                     {
@@ -160,10 +160,10 @@
                     <td>
                         <div class="form-group">
                             <!--Create 5 radio-button for ratiing-->
-                            @if (Model.RatedYet(@product.Id))
+                            @if (Model.RatedYet(@product.Id).Result)
                             {
-                                <p>Overall rating: @Model.OverallRating(@product.Id)</p>
-                                <p>Ratings: @Model.NumberOfVotes(@product.Id)</p>
+                                <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
+                                <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
                                 <hr />
                                 <p><a asp-page="/Account/Login">Login</a> to rate.</p>
                             } else {

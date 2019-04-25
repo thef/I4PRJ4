@@ -52,6 +52,7 @@ namespace myWebApp.Pages.Account
             public bool RememberMe { get; set; }
         }
 
+        //Get the page which the User come from. Store in returnUrl.
         public async Task OnGetAsync(string returnUrl = null)
         {
             if (!string.IsNullOrEmpty(ErrorMessage))
@@ -59,11 +60,14 @@ namespace myWebApp.Pages.Account
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
+            //Used to set redirect-option. This will redirect User back to the page which they come from, 
+            //after some process is completed.
             returnUrl = returnUrl ?? Url.Content("~/");
 
             //Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
+            //Store the Url, which User come from.
             ReturnUrl = returnUrl;
         }
 
@@ -73,7 +77,7 @@ namespace myWebApp.Pages.Account
 
             if (ModelState.IsValid)
             {
-                //Sign in user with it's information.
+                //Sign in User with it's information.
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
@@ -82,8 +86,10 @@ namespace myWebApp.Pages.Account
                     //Write to log
                     _logger.LogInformation($"User: {Input.Email} logged in.");
 
+                    //Using LocalRedirect to ensures that the "returnUrl" is a route actually on your site. For safe.
                     return LocalRedirect(returnUrl);
                 }
+
                 if (result.IsLockedOut)
                 {
                     StatusMessage = $"User was lockout due to to many failed logins in! with Email: {Input.Email}.";
@@ -91,11 +97,13 @@ namespace myWebApp.Pages.Account
                     //Write to log
                     _logger.LogWarning($"User: {Input.Email} locked out.");
 
+                    //Redirect User to lockout-page.
                     return RedirectToPage("./Lockout");
-                }
-                else
-                {
+
+                } else {
+
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+
                     return Page();
                 }
             }

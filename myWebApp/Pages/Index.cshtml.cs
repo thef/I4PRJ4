@@ -16,24 +16,51 @@ namespace myWebApp
     {
         private readonly AppDbContext _db;
 
+        private List<Product> _products = null;
+
+        private List<Rating> _rates = null;
+
         public IndexModel(AppDbContext db)
         {
             _db = db;
+            //Load Products and Rates once from database.
+            //_rates = _db.Rates.AsNoTracking().ToList();
+            //_products = db.Products.AsNoTracking().ToList();
         }
 
         [TempData]
         public string StatusMessage { get; set; }
+ 
+        //Get list of products from database once.
+        public List<Product> Products {
+          get {
+              if (_products == null) {
+                _products = _db.Products.AsNoTracking().ToList();
+              }
+              return _products;
+          }
+          private set {
+            _products = value;
+          }
+        }
 
-        public List<Product> Products { get; set; }
-
-        public List<Rating> Rates { get; set; }
+        //Get list of ratings from database once.
+        public List<Rating> Rates {
+          get {
+              if (_rates == null) {
+                _rates = _db.Rates.AsNoTracking().ToList();
+              }
+              return _rates;
+          }
+          private set {
+            _rates = value;
+          }
+        }
 
         //On Get loading page.
-        public async Task OnGetAsync()
+        public void OnGetAsync()
         {
-            Products = await _db.Products.AsNoTracking().ToListAsync();
-
-            Rates = await _db.Rates.AsNoTracking().ToListAsync();
+            
         }
 
         //On Delete button-handler.
@@ -68,7 +95,7 @@ namespace myWebApp
             if(rate <= 0.0)
             {   
                 StatusMessage = $"Error: Select a value before submitting!";
-            } else {
+            } else {    
 
             //Find selected product from list.
             var product = await _db.Products.FindAsync(id);
@@ -92,10 +119,26 @@ namespace myWebApp
         }
 
         //For a defined productId find all rates, return average.
+        public async Task<double> OverallRating(int id)
+        {
+            //Get total number of ratings for selected productId.
+            var numberOfRatings = await NumberOfVotes(id);
+
+            //Get total sum of ratings for selected productId.
+            double totalRatingSum = await _db.Rates.SumAsync(x => x.Rate);
+
+            //Round result exsample: 12.54233565 to 12.54.
+            return System.Math.Round(totalRatingSum / numberOfRatings, 2);
+        }
+
+
+        /* 
+        //For a defined productId find all rates, return average.
         public double OverallRating(int id)
         {
             var result = 0.0;
             var foundAmountofTimes = 0;
+
             foreach (var rating in Rates)
             {
                 if (rating.ProductId == id)
@@ -107,11 +150,29 @@ namespace myWebApp
             //Round result exsample: 12.54233565 to 12.54.
             return System.Math.Round(result = result / foundAmountofTimes, 2);
         }
+        */
 
+        //For a defined productId tell if it exist, return true or false.
+        public async Task<bool> RatedYet(int id)
+        {
+            Rating rating = await _db.Rates.FirstOrDefaultAsync(x => x.ProductId == id);
+
+            if(rating != null)
+            {
+                return true;
+
+            } else {
+
+                return false;
+            }
+        }
+
+        /* 
         //For a defined productId tell if it exist, return true or false.
         public bool RatedYet(int id)
         {
             var result = false;
+
             foreach (var rating in Rates)
             {
                 if(rating.ProductId == id)
@@ -129,8 +190,17 @@ namespace myWebApp
             //Return statment.
             return result;
         }
+        */
 
-        //Find number of ratings for selected product, return count.
+        //Find number of ratings for selected product id, return count.
+        public async Task<int> NumberOfVotes(int id)
+        {
+            //Return count.
+            return await _db.Rates.Where(x => x.ProductId == id).CountAsync();
+        }
+
+        /* 
+        //Find number of ratings for selected product id, return count.
         public double NumberOfVotes(int id)
         {
             var result = 0.0;
@@ -141,14 +211,32 @@ namespace myWebApp
                     result ++;
                 }
             }
+            
             //Return count.
             return result;
         }
+        */
 
+        //For a defined productId tell if current User has rated or not, return true or false.
+        public async Task<bool> UserHasRatedProduct(int id)
+        {
+            Rating rating = await _db.Rates.FirstOrDefaultAsync(x => x.ProductId == id && x.UserName == User.Identity.Name);
+
+            if(rating != null)
+            {
+                return false;
+
+            } else {
+
+                return true;
+            }
+        }
+
+        /* 
         //For a defined productId tell if current User has rated or not, return true or false.
         public bool UserHasRatedProduct(int id)
         {
-            var result = false;
+         var result = false;
             foreach (var rating in Rates)
             {
                 if(rating.Id == id)
@@ -166,8 +254,10 @@ namespace myWebApp
                     }
                 }
             }
+            //Return result
             return result;
         }
+        */
 
         //On Search button-handler.
         public async Task<IActionResult> OnPostSearchAsync(string searchString)

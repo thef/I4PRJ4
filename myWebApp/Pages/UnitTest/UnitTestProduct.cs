@@ -16,7 +16,7 @@ namespace myWebApp.Pages.Product
         [Fact]
         public async Task TestCreateProductAsync()
         {
-            using (var db = new AppDbContext(Utilities.Utilities.TestDbContextOptions()))
+            using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
             {
                 // Arrange
                 var expectedProduct = new Product();
@@ -28,7 +28,7 @@ namespace myWebApp.Pages.Product
                 expectedProduct.Stock = 10;
 
                 // Act
-                await db.Products.AddAsync(expectedProduct);
+                db.Products.Add(expectedProduct);
                 await db.SaveChangesAsync();
 
                 var productId = 1;
@@ -45,7 +45,7 @@ namespace myWebApp.Pages.Product
         [Fact]
         public async Task TestEditProductAsync()
         {
-            using (var db = new AppDbContext(Utilities.Utilities.TestDbContextOptions()))
+            using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
             {
                 // Arrange
                 var expectedProduct = new Product();
@@ -82,7 +82,7 @@ namespace myWebApp.Pages.Product
         [Fact]
         public async Task TestDeleteProductAsync()
         {
-            using (var db = new AppDbContext(Utilities.Utilities.TestDbContextOptions()))
+            using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
             {
                 // Arrange
                 var product = new Product();
