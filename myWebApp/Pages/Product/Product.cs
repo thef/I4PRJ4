@@ -20,5 +20,7 @@ namespace myWebApp.Pages.Product
 
         [Range(1, int.MaxValue, ErrorMessage = "Price must be greater than: 0!")]
         public int Price { get; set; }
+
+        public List<Cart.cart> Carts { get; set; }
     }
 }

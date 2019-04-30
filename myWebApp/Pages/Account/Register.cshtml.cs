@@ -45,7 +45,7 @@ namespace myWebApp.Pages.Account
         public InputModel Input { get; set; }
 
         public string ReturnUrl { get; set; }
-        
+
         public string Username { get; set; }
 
         public class InputModel
@@ -56,14 +56,14 @@ namespace myWebApp.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(50, ErrorMessage = "The {0} must be atlest {2} and max {1} charaters long!", MinimumLength = 6)] 
+            [StringLength(50, ErrorMessage = "The {0} must be atlest {2} and max {1} charaters long!", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
-            
+
             [DataType(DataType.Password)]
             [Display(Name = "Confirm password")]
-            [Compare ("Password", ErrorMessage = "The password and confirm password do not match!")] 
+            [Compare ("Password", ErrorMessage = "The password and confirm password do not match!")]
             public string ConfirmPassword { get; set; }
         }
 
@@ -75,16 +75,16 @@ namespace myWebApp.Pages.Account
 
          public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            //Used to set redirect-option. This will redirect User back to the page which they come from, 
+            //Used to set redirect-option. This will redirect User back to the page which they come from,
             //after some process is completed.
             returnUrl = returnUrl ?? Url.Content("~/");
-        
+
             if(ModelState.IsValid)
             {
                 //Create new User
                 var user = new ApplicationDbUser { UserName = Input.Email, Email = Input.Email };
                 var userCreatedResult = await _userManager.CreateAsync(user, Input.Password);
-                
+
                 if(userCreatedResult.Succeeded)
                 {
                     //Create first user as Admin.

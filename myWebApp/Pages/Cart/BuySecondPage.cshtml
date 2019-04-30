@@ -1,0 +1,50 @@
+﻿@page
+@model BuySecondPageModel
+@{
+    ViewData["Title"] = "BuySecondPage";
+}
+
+<h1>Confirm your credit information.</h1>
+@*@Html.PartialAsync("_StatusMessage", Model).Result*@
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <h5>Your Credit information.</h5>
+            <hr />
+            <p>Shit: @Request.Form["Orders.FirstName"] FAKE</p>
+            <hr />
+            <p>First Name: @Model.GivenOrder.FirstName Last Name: @Model.GivenOrder.LastName</p>
+            <p>Address: @Model.GivenOrder.Address Country: @Model.GivenOrder.Country</p>
+            <p>Postal code: @Model.GivenOrder.PostalCode</p>
+            <p>Email: @Model.GivenOrder.Email</p>
+            <p>Card number: @Model.GivenOrder.cardNumber Exp Date: @Model.GivenOrder.experessionDate</p>
+            <hr />
+            
+            <table class="table">
+                <tbody>
+                    <tr>First Name</tr>
+                    <tr>Last Name</tr>
+                    <tr>Address</tr>
+                    <tr>Country</tr>
+                    <tr>Postal Code</tr>
+                    <tr>Email</tr>
+                    <tr>Card Number</tr>
+                    <tr>Exp Date</tr>
+                    <tr>
+                        <tr>@Model.GivenOrder.FirstName</tr>
+                        <tr>@Model.GivenOrder.LastName</tr>
+                        <tr>@Model.GivenOrder.Address</tr>
+                        <tr>@Model.GivenOrder.Country</tr>
+                        <tr>@Model.GivenOrder.PostalCode</tr>
+                        <tr>@Model.GivenOrder.Email</tr>
+                        <tr>@Model.GivenOrder.cardNumber</tr>
+                        <tr>@Model.GivenOrder.experessionDate</tr>
+                    </tr>
+               
+                </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-primary" asp-page="/Cart/BuyThirdPage">Confirm</button>
+        </form>
+    </div>
+</div>

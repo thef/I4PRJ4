@@ -51,7 +51,7 @@ namespace myWebApp
                 .AddDefaultTokenProviders();
 
             //Usage of Interface IEmailSender to send mails.
-            services.AddTransient<IEmailSender, EmailSender>(i => 
+            services.AddTransient<IEmailSender, EmailSender>(i =>
                 new EmailSender(
                     Configuration["EmailSender:Host"],
                     Configuration.GetValue<int>("EmailSender:Port"),
@@ -59,7 +59,7 @@ namespace myWebApp
                     Configuration["EmailSender:UserName"],
                     Configuration["EmailSender:Password"]
                 )
-            );            
+            );
         }
 
 

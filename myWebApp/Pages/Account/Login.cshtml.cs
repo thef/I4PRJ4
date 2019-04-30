@@ -18,7 +18,7 @@ namespace myWebApp.Pages.Account
         private readonly SignInManager<ApplicationDbUser> _signInManager;
 
         private readonly ILogger<LoginModel> _logger;
-        
+
         public LoginModel(
             SignInManager<ApplicationDbUser> signInManager,
             ILogger<LoginModel> logger)
@@ -60,7 +60,7 @@ namespace myWebApp.Pages.Account
                 ModelState.AddModelError(string.Empty, ErrorMessage);
             }
 
-            //Used to set redirect-option. This will redirect User back to the page which they come from, 
+            //Used to set redirect-option. This will redirect User back to the page which they come from,
             //after some process is completed.
             returnUrl = returnUrl ?? Url.Content("~/");
 
