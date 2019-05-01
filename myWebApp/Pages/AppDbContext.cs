@@ -23,7 +23,9 @@ namespace myWebApp.Pages.Product
         public DbSet<Message> Messages { get; set; }
 
         public DbSet<cart> Carts { get; set; }
+
         public DbSet<Order> Orders { get; set; }
+
         public DbSet<OrderDetail> OrderDeteails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -33,6 +35,8 @@ namespace myWebApp.Pages.Product
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            
             modelBuilder.Entity<Cart.cart>().HasKey(c => new { c.UserId, c.ProductId });
             modelBuilder.Entity<Cart.cart>()
                 .HasOne(c => c.User)

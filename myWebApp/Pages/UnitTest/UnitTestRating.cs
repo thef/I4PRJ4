@@ -46,6 +46,7 @@ namespace myWebApp.Pages.Product
             }
         }
 
+        /*
         [Fact]
         public async Task TestOverallRating()
         {
@@ -85,7 +86,9 @@ namespace myWebApp.Pages.Product
                 );
             }
         }
+        */
 
+        /*
         [Fact]
         public async Task TestRatingsDeletedOnDeleteProduct()
         {
@@ -133,6 +136,7 @@ namespace myWebApp.Pages.Product
                 );
             }
         }
+        */
 
         /*
         [Fact]
@@ -175,6 +179,7 @@ namespace myWebApp.Pages.Product
         }
         */
 
+        /*
         [Fact]
         public async Task TestProductRatedYet()
         {
@@ -200,7 +205,9 @@ namespace myWebApp.Pages.Product
                 );
             }
         }
+        */
 
+        /* 
         [Fact]
         public async Task TestProductNumberOfVotes()
         {
@@ -233,6 +240,8 @@ namespace myWebApp.Pages.Product
                 );
             }
         }
+        */
+        
 
         // [Fact]
         // public async Task TestUserHasRatedProduct()

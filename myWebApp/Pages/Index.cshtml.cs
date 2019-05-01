@@ -17,13 +17,15 @@ namespace myWebApp
     public class IndexModel : PageModel
     {
         private readonly AppDbContext _db;
+        private readonly UserManager<ApplicationDbUser> _userManager;
 
-        public IndexModel(AppDbContext db)
+        public IndexModel(
+            AppDbContext db,
+            UserManager<ApplicationDbUser> userManager)
         {
             _db = db;
+            _userManager = userManager;
         }
-
-        private readonly UserManager<ApplicationDbUser> _userManager;
 
         [TempData]
         public string StatusMessage { get; set; }
@@ -31,6 +33,8 @@ namespace myWebApp
         public List<Product> Products { get; set; }
 
         public List<Rating> Rates { get; set; }
+
+        public List<cart> Carts { get; set; }
 
         //Search funtion
         [BindProperty]
@@ -80,7 +84,7 @@ namespace myWebApp
                 {
                     if (product.Stock != 0)
                     {
-                        var Activeuser = _userManager.FindByEmailAsync(User.Identity.Name).Result;
+                        var Activeuser = await _userManager.FindByEmailAsync(User.Identity.Name);
                         _db.Carts.Add(new cart
                             {
                                 Product = product,

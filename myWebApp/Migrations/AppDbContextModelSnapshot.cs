@@ -15,7 +15,7 @@ namespace myWebApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
+                .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -180,6 +180,99 @@ namespace myWebApp.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("myWebApp.Pages.Cart.Order", b =>
+                {
+                    b.Property<int>("orderId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(70);
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(40);
+
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(160);
+
+                    b.Property<bool>("HasBeenShipped");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(160);
+
+                    b.Property<DateTime>("OrderDateTime");
+
+                    b.Property<string>("PaymentTransactionId");
+
+                    b.Property<string>("Phone")
+                        .HasMaxLength(24);
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasMaxLength(10);
+
+                    b.Property<decimal>("Total");
+
+                    b.Property<string>("Username");
+
+                    b.Property<string>("cardNumber")
+                        .IsRequired();
+
+                    b.Property<int>("cvc");
+
+                    b.Property<string>("experessionDate")
+                        .IsRequired();
+
+                    b.HasKey("orderId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("myWebApp.Pages.Cart.OrderDetail", b =>
+                {
+                    b.Property<int>("OrderDetailId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("OrderId");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<double?>("UnitPrice");
+
+                    b.Property<string>("Username");
+
+                    b.HasKey("OrderDetailId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderDeteails");
+                });
+
+            modelBuilder.Entity("myWebApp.Pages.Cart.cart", b =>
+                {
+                    b.Property<string>("UserId");
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("UserId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Carts");
+                });
+
             modelBuilder.Entity("myWebApp.Pages.Chat.Message", b =>
                 {
                     b.Property<int>("Id")
@@ -276,6 +369,27 @@ namespace myWebApp.Migrations
                 {
                     b.HasOne("myWebApp.Pages.Account.ApplicationDbUser")
                         .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("myWebApp.Pages.Cart.OrderDetail", b =>
+                {
+                    b.HasOne("myWebApp.Pages.Cart.Order")
+                        .WithMany("OrdersdDetails")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("myWebApp.Pages.Cart.cart", b =>
+                {
+                    b.HasOne("myWebApp.Pages.Product.Product", "Product")
+                        .WithMany("Carts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("myWebApp.Pages.Account.ApplicationDbUser", "User")
+                        .WithMany("Carts")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
