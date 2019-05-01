@@ -7,7 +7,7 @@
 }
 
 <head names="Development">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
 </head>
 
 <div class="text-center">
@@ -23,10 +23,12 @@
         <form method="post">
             <h5>Search</h5>
             <div class="form-group">
-                <input type="text" name="SearchString" class="form-control"/>
+                <input type="text" name="SearchString" class="form-control" />
                 <hr />
                 <button type="submit" class="btn btn-primary" asp-page-handler="Search"
-                    asp-route-id="SearchString">Search</button>
+                        asp-route-id="SearchString">
+                    Search
+                </button>
             </div>
 
         </form>
@@ -35,7 +37,7 @@
 
 
 <h5>List of Products in store</h5>
-<hr/>
+<hr />
 <form method="post">
     <table class="table">
         <thead>
@@ -52,7 +54,9 @@
                     <th>Edit</th>
                     <th>Delete</th>
 
-                } else {
+                }
+                else
+                {
                     <th>Name</th>
                     <th>Description</th>
                     <th>Stock</th>
@@ -66,133 +70,150 @@
         <tbody>
             @foreach (var product in Model.Products)
             {
-            <tr>
-                <!--Deny access to edit and delete IF NOT Admin or Manager role and show product Id-->
-                @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
-                {
-                    <td>@product.Id</td>
-                    <td>@product.Name</td>
-                    <td>@product.Description</td>
-                    <td>@product.Stock</td>
-                    <td>@product.Price</td>
-                    <td>
-                        <div class="form-group">
-                            <!--Create 5 radio-button for ratiing-->
-                            @if (Model.RatedYet(@product.Id).Result)
-                            {
-                                <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
-                                <hr />
-                                <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
-                            } else {
-                                <p>Not rated.</p>
-                            }
-                        </div>
-                    </td>
-                    <td>
-                        <a asp-page="/Product/Edit" class="link link-default"
-                            asp-route-id="@product.Id">Edit</a>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-danger" asp-page-handler="Delete"
-                            asp-route-id="@product.Id">Delete</button>
-
-                    </td>
-
-                <!--LOGGED IN AS CUSTOMER-->
-                } else if (User.IsInRole("Customer"))
-                {
-                    <td>@product.Name</td>
-                    <td>@product.Description</td>
-                    <td>@product.Stock</td>
-                    <td>@product.Price</td>
-
-                    <td>
-                        <div class="form-group">
-                            <!--Create 5 radio-button for ratiing-->
-                            @if (Model.RatedYet(@product.Id).Result)
-                            {
-                                <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
-                                <hr />
-                                <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
-
-                                if (!Model.UserHasRatedProduct(@product.Id).Result)
+                <tr>
+                    <!--Deny access to edit and delete IF NOT Admin or Manager role and show product Id-->
+                    @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
+                    {
+                        <td>@product.Id</td>
+                        <td>@product.Name</td>
+                        <td>@product.Description</td>
+                        <td>@product.Stock</td>
+                        <td>@product.Price</td>
+                        <td>
+                            <div class="form-group">
+                                <!--Create 5 radio-button for ratiing-->
+                                @if (Model.RatedYet(@product.Id).Result)
                                 {
+                                    <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
+                                    <hr />
+                                    <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
+                                }
+                                else
+                                {
+                                    <p>Not rated.</p>
+                                }
+                            </div>
+                        </td>
+                        <td>
+                            <a asp-page="/Product/Edit" class="link link-default"
+                               asp-route-id="@product.Id">Edit</a>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-danger" asp-page-handler="Delete"
+                                    asp-route-id="@product.Id">
+                                Delete
+                            </button>
+
+                        </td>
+
+                        <!--LOGGED IN AS CUSTOMER-->
+                    }
+                    else if (User.IsInRole("Customer"))
+                    {
+                        <td>@product.Name</td>
+                        <td>@product.Description</td>
+                        <td>@product.Stock</td>
+                        <td>@product.Price</td>
+
+                        <td>
+                            <div class="form-group">
+                                <!--Create 5 radio-button for ratiing-->
+                                @if (Model.RatedYet(@product.Id).Result)
+                                {
+                                    <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
+                                    <hr />
+                                    <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
+
+                                    if (!Model.UserHasRatedProduct(@product.Id).Result)
+                                    {
+                                        for (int i = 1; i < 6; i++)
+                                        {
+                                            <input type="radio" name="rate" value="@i" />
+                                        }
+                                        <!--Force button on next line-->
+                                        <br />
+                                        <button type="submit" class="btn btn-primary" asp-page-handler="Rate"
+                                                asp-route-id="@product.Id" asp-route-id="rate" class="form-control">
+                                            Rate
+                                        </button>
+                                    }
+
+                                }
+                                else
+                                {
+                                    <p>Be the first to rate this product.</p>
+                                    <hr />
+
                                     for (int i = 1; i < 6; i++)
                                     {
-                                        <input type="radio" name="rate" value="@i"/>
+                                        <input type="radio" name="rate" value="@i" />
                                     }
                                     <!--Force button on next line-->
                                     <br />
                                     <button type="submit" class="btn btn-primary" asp-page-handler="Rate"
-                                        asp-route-id="@product.Id" asp-route-id="rate" class="form-control">Rate</button>
-                                    }
-
-                            } else {
-                                <p>Be the first to rate this product.</p>
-                                <hr />
-
-                                for (int i = 1; i < 6; i++)
-                                {
-                                    <input type="radio" name="rate" value="@i"/>
+                                            asp-route-id="@product.Id" asp-route-id="rate" class="form-control">
+                                        Rate
+                                    </button>
                                 }
-                                <!--Force button on next line-->
-                                <br />
-                                <button type="submit" class="btn btn-primary" asp-page-handler="Rate"
-                                    asp-route-id="@product.Id" asp-route-id="rate" class="form-control">Rate</button>
-                            }
 
 
-                        </div>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-primary" asp-page-handler="AddToCart"
-                            asp-route-id="@product.Id">Add</button>
-                    </td>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary" asp-page-handler="AddToCart"
+                                    asp-route-id="@product.Id">
+                                Add
+                            </button>
+                        </td>
 
-                <!--IF NOT LOGGED IN-->
-                } else {
-                    <td>@product.Name</td>
-                    <td>@product.Description</td>
-                    <td>@product.Stock</td>
-                    <td>@product.Price</td>
+                        <!--IF NOT LOGGED IN-->
+                    }
+                    else
+                    {
+                        <td>@product.Name</td>
+                        <td>@product.Description</td>
+                        <td>@product.Stock</td>
+                        <td>@product.Price</td>
 
-                    <td>
-                        <div class="form-group">
-                            <!--Create 5 radio-button for ratiing-->
-                            @if (Model.RatedYet(@product.Id).Result)
-                            {
-                                <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
-                                <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
-                                <hr />
-                                <p><a asp-page="/Account/Login">Login</a> to rate.</p>
-                            } else {
-                                <p>Be the first to rate this product.</p>
-                                <hr />
-                                <p><a asp-page="/Account/Login">Login</a> to rate.</p>
-                            }
-                        </div>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-primary" asp-page-handler="AddToCart"
-                            asp-route-id="@product.Id">Add</button>
-                    </td>
-                }
-            </tr>
+                        <td>
+                            <div class="form-group">
+                                <!--Create 5 radio-button for ratiing-->
+                                @if (Model.RatedYet(@product.Id).Result)
+                                {
+                                    <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
+                                    <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
+                                    <hr />
+                                    <p><a asp-page="/Account/Login">Login</a> to rate.</p>
+                                }
+                                else
+                                {
+                                    <p>Be the first to rate this product.</p>
+                                    <hr />
+                                    <p><a asp-page="/Account/Login">Login</a> to rate.</p>
+                                }
+                            </div>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary" asp-page-handler="AddToCart"
+                                    asp-route-id="@product.Id">
+                                Add
+                            </button>
+                        </td>
+                    }
+                </tr>
             }
         </tbody>
-    </table id="table">
+    </table>
 </form>
-<hr/>
+<hr />
 
 <h5>Shopping Cart</h5>
-<tbody id="tableIncart">
-
-</tbody>
+<tbody id="tableIncart"></tbody>
 <label id="totalPrice">Total price: 0</label>
 
 <form method="">
     <button type="submit" class="btn btn-primary" asp-page="/Cart/BuyFirstPage">Buy</button>
 </form>
 
-<hr/>
+<hr />
 <h7>@Configuration["Message"]</h7>

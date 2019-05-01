@@ -41,7 +41,7 @@ namespace myWebApp.Pages.Cart
             int Price=0;
             foreach (var product in Carts)
             {
-                Price += product.Product.Price;
+                Price += product.Product.Price * product.Quantity;
             }
 
             return Price;
@@ -84,10 +84,10 @@ namespace myWebApp.Pages.Cart
             return Page();
         }
 
-        public async Task<IActionResult> OnPostIncreaseQuantityAsync(int id)
+        public async Task<IActionResult> OnPostIncreaseAsync(int id)
         {
             var Product = await _db.Products.FindAsync(id);
-            var Cart = await _db.Carts.FindAsync(new{User.Identity.Name,id});
+            var Cart = await _db.Carts.FindAsync(_userManager.GetUserId(User), id);
 
             if (Product != null)
             {
@@ -116,10 +116,10 @@ namespace myWebApp.Pages.Cart
             return RedirectToPage();
         }
 
-        public async Task<IActionResult> OnPostDecreaseQuantityAsync(int id)
+        public async Task<IActionResult> OnPostDecreaseAsync(int id)
         {
             var Product = await _db.Products.FindAsync(id);
-            var Cart = await _db.Carts.FindAsync(new { User.Identity.Name, id });
+            var Cart = await _db.Carts.FindAsync(_userManager.GetUserId(User), id);
 
             if (Product != null)
             {
@@ -152,10 +152,10 @@ namespace myWebApp.Pages.Cart
             return RedirectToPage();
         }
 
-        public async Task<IActionResult> OnPostRemoveFromCartAsync(int id)
+        public async Task<IActionResult> OnPostRemoveAsync(int id)
         {
             var Product = await _db.Products.FindAsync(id);
-            var Cart = await _db.Carts.FindAsync(new { User.Identity.Name, id });
+            var Cart = await _db.Carts.FindAsync(_userManager.GetUserId(User), id);
 
             //Delete selected product if found.
             if (Product != null)
