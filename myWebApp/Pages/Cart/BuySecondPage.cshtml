@@ -10,17 +10,16 @@
     <div class="col-md-6">
         <form method="post">
             <h5>Your Credit information.</h5>
+           
             <hr />
-            <p>Shit: @Request.Form["Orders.FirstName"] FAKE</p>
-            <hr />
-            <p>First Name: @Model.GivenOrder.FirstName Last Name: @Model.GivenOrder.LastName</p>
-            <p>Address: @Model.GivenOrder.Address Country: @Model.GivenOrder.Country</p>
-            <p>Postal code: @Model.GivenOrder.PostalCode</p>
-            <p>Email: @Model.GivenOrder.Email</p>
-            <p>Card number: @Model.GivenOrder.cardNumber Exp Date: @Model.GivenOrder.experessionDate</p>
+            <p><strong>First Name:</strong>  @Model.GivenOrder.FirstName <strong>Last Name:</strong>  @Model.GivenOrder.LastName</p>
+            <p><strong>Address:</strong>  @Model.GivenOrder.Address <strong>Country:</strong>  @Model.GivenOrder.Country</p>
+            <p><strong>Postal code:</strong>  @Model.GivenOrder.PostalCode</p>
+            <p><strong>Email:</strong>  @Model.GivenOrder.Email <strong>Phone number:</strong>  @Model.GivenOrder.Phone</p>
+            <p><strong>Card number:</strong>  @Model.GivenOrder.cardNumber <strong>Exp Date:</strong>  @Model.GivenOrder.experessionDate</p>
             <hr />
             
-            <table class="table">
+            @*<table class="table">
                 <tbody>
                     <tr>First Name</tr>
                     <tr>Last Name</tr>
@@ -42,7 +41,7 @@
                     </tr>
                
                 </tbody>
-            </table>
+            </table>*@
 
             <button type="submit" class="btn btn-primary" asp-page="/Cart/BuyThirdPage">Confirm</button>
         </form>
