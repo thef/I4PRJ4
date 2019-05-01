@@ -2,7 +2,7 @@
 
 namespace myWebApp.Migrations
 {
-    public partial class role : Migration
+    public partial class testmigr : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.EntityFrameworkCore.SqlServer;
 
 //For using folders.
 using myWebApp.Pages.Product;
@@ -42,18 +43,15 @@ namespace myWebApp
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //Add AppDbContext as a service for Products-database.
-            services.AddEntityFrameworkSqlite().AddDbContext<AppDbContext>();
-        
-            //Add ApplicaitonDbContext as a service for Users-database.
-            services.AddEntityFrameworkSqlite().AddDbContext<ApplicationDbContext>();
+            services.AddEntityFrameworkSqlServer().AddDbContext<AppDbContext>();
 
-            //Add IdentiryUser and IdentityRole as a service to use.
+            //Add IdentityUser and IdentityRole as a service to use.
             services.AddIdentity<ApplicationDbUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
             //Usage of Interface IEmailSender to send mails.
-            services.AddTransient<IEmailSender, EmailSender>(i => 
+            services.AddTransient<IEmailSender, EmailSender>(i =>
                 new EmailSender(
                     Configuration["EmailSender:Host"],
                     Configuration.GetValue<int>("EmailSender:Port"),
@@ -62,39 +60,6 @@ namespace myWebApp
                     Configuration["EmailSender:Password"]
                 )
             );
-
-            
-            
-            /*
-            //Used of Mssql local database server.
-            services.AddDbContext<ApplicationDbContext>(option =>
-                option.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-            */
-
-            //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlite(
-            //        Configuration.GetConnectionString("ApplicationDbContextConnection")));
-
-            //services.AddDefaultIdentity<ApplicationDbUser>()
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            /*
-            //for products to save database
-            services.AddDbContext<AppDbContext>(option =>
-                option.UseInMemoryDatabase("products"));
-
-            services.AddDbContext<ApplicationDbContext>(option =>
-                option.UseInMemoryDatabase("Users"));
-            */
-            
-            //Used of local InMemeryDatabae server.
-            //services.AddDefaultIdentity<IdentityUser>()
-            //    .AddEntityFrameworkStores<ApplicationDbContext>();
-
-            
         }
 
 

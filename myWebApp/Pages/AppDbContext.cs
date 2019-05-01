@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Sqlite;
+using Microsoft.EntityFrameworkCore.SqlServer;
 
 //For using folders.
 using myWebApp.Pages.Chat;
@@ -7,14 +8,13 @@ using myWebApp.Pages.Product;
 using myWebApp.Pages.Account;
 using myWebApp.Pages.Cart;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace myWebApp.Pages.Product
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<ApplicationDbUser>
     { 
-        public AppDbContext() : base() {}
-
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public AppDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Product> Products { get; set; }
 
@@ -28,10 +28,12 @@ namespace myWebApp.Pages.Product
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Filename=WebStoreDatabase.db");
+            //optionsBuilder.UseSqlite("Filename=WebStoreDatabase.db");
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=PRJ4;Integrated Security=True");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Cart.cart>().HasKey(c => new { c.UserId, c.ProductId });
             modelBuilder.Entity<Cart.cart>()
                 .HasOne(c => c.User)
