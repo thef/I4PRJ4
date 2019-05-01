@@ -1,37 +1,57 @@
 ﻿@page
-@using System.Xml
-@model myWebApp.Pages.Chat.Server.ChatServerModel
-@{
-    ViewData["Title"] = "ChatServer";
-}
+ChatHub <br />
+Your Name: <input type="text" id="userInput" /><br />
+Costumer 1
+<div class="container">
 
-<h3>@ViewData["Title"]</h3>
+    <div class="row">
+        <div class="col-6">
+            <br />
+            Message: <input type="text" id="messageInput1" />
+            <br />
+            Group: <input type="text" id="groupInput1" />
+            <input type="button" id="SendButton1" value="Send Message" />
+            <input type="button" id="ConnectButton1" value="Connect" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            <textarea rows="4" cols="50" id="TextArea1"></textarea>
 
-<p>Welcome to the server!</p><br/>
-Chathistory: 
-<br/>
-<textarea readonly="readonly" rows="15" cols="100" name="TextArea">
-Please press "Start Server" to activate Server.
-@if (Model.Messages != null)
-{
-    @foreach (var chatMsg in Model.Messages)
-     {
-         @chatMsg.Msg
-     }
-}
+            <ul id="List1"></ul>
+        </div>
+    </div>
+</div>
 
-</textarea>
-<br/>
-<form method="post">
-    <input type="submit" value="Start Server" asp-page-handler="StartServer"/>
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <br />
+            Message: <input type="text" id="messageInput2" />
+            <br />
+            Group: <input type="text" id="groupInput2" />
+            <input type="button" id="SendButton2" value="Send Message" />
+            <input type="button" id="ConnectButton2" value="Connect" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">&nbsp;</div>
+        <div class="col-6">
+            <ul id="List2"></ul>
+        </div>
+    </div>
+</div>
 
-<br/>
-
-<form method="post">
-    <input type="submit" value="TestButton" asp-page-handler="Test"/>
-</form>
-
-<form method="post">
-    <input type="submit" value="TestButton2" asp-page-handler="Test2" />
-</form>
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/SupportChat.js"></script>

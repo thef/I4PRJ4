@@ -18,17 +18,17 @@ namespace SignalRChat.Hubs
         public async Task SendMessage(string user, string message, string groupName)
         {
             //await Clients.All.SendAsync("ReceiveMessage", user, message);
-            await Clients.Group(groupName).SendAsync("ReceiveMessage", user, message);
+            await Clients.Group(groupName).SendAsync("ReceiveMessage", user, message, groupName);
             //Add message and user to database.
             //myWebApp.Pages.Chat.Message newMsg = new myWebApp.Pages.Chat.Message(user, message);
             //_db.Messages.Add(newMsg);
             //await _db.SaveChangesAsync();
         }
-
+        
         public async Task AddToGroup(string groupName)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
-            await Clients.Group(groupName).SendAsync("ReceiveGroupNotification", $"Someone has joined the group.");
+            await Clients.Group(groupName).SendAsync("ReceiveGroupNotification", $"Someone has joined the group.", groupName);
         }
 
     }
