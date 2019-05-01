@@ -57,7 +57,7 @@ namespace myWebApp.Pages.Cart
                 select crt;
             if (!string.IsNullOrEmpty(User.Identity.Name))
             {
-                cartcontains = cartcontains.Where(s => s.UserId==User.Identity.Name);
+                cartcontains = cartcontains.Where(s => s.User.Email==User.Identity.Name);
                 //Check if we found anyting
                 if (cartcontains.AsNoTracking().ToList().Count != 0)
                 {
@@ -65,12 +65,17 @@ namespace myWebApp.Pages.Cart
                 }
                 else
                 {
+                    StatusMessage = $"Error: No products in cart!";
+                    Carts = new List<cart>();
                     //Failed no match reload page - Show all.
-                    return RedirectToPage();
+                    return Page();
                 }
             }
             else
             {
+                StatusMessage = $"Error: No account logged in, cart is empty!";
+                Carts = new List<cart>();
+                return Page();
                 //Do nothing if no search-string id entered.
             }
             //Load list of StudentGroups
