@@ -29,7 +29,8 @@ namespace myWebApp.Pages.Product
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlite("Filename=WebStoreDatabase.db");
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=PRJ4;Integrated Security=True");
+            //optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=PRJ4;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=DAB_AFL2;Integrated Security=True");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

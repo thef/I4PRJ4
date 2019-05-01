@@ -3,14 +3,14 @@
 @{
     ViewData["Title"] = "BuySecondPage";
 }
+@*@Html.PartialAsync("_StatusMessage", Model.StatusMessage).Result*@
 
 <h1>Confirm your credit information.</h1>
-@*@Html.PartialAsync("_StatusMessage", Model).Result*@
 <div class="row">
     <div class="col-md-6">
         <form method="post">
             <h5>Your Credit information.</h5>
-           
+
             <hr />
             <p><strong>First Name:</strong>  @Model.GivenOrder.FirstName <strong>Last Name:</strong>  @Model.GivenOrder.LastName</p>
             <p><strong>Address:</strong>  @Model.GivenOrder.Address <strong>Country:</strong>  @Model.GivenOrder.Country</p>
@@ -18,30 +18,51 @@
             <p><strong>Email:</strong>  @Model.GivenOrder.Email <strong>Phone number:</strong>  @Model.GivenOrder.Phone</p>
             <p><strong>Card number:</strong>  @Model.GivenOrder.cardNumber <strong>Exp Date:</strong>  @Model.GivenOrder.experessionDate</p>
             <hr />
-            
-            @*<table class="table">
-                <tbody>
-                    <tr>First Name</tr>
-                    <tr>Last Name</tr>
-                    <tr>Address</tr>
-                    <tr>Country</tr>
-                    <tr>Postal Code</tr>
-                    <tr>Email</tr>
-                    <tr>Card Number</tr>
-                    <tr>Exp Date</tr>
+
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+
+                @*@foreach (var product in @Model.Carts)
+                {
                     <tr>
-                        <tr>@Model.GivenOrder.FirstName</tr>
-                        <tr>@Model.GivenOrder.LastName</tr>
-                        <tr>@Model.GivenOrder.Address</tr>
-                        <tr>@Model.GivenOrder.Country</tr>
-                        <tr>@Model.GivenOrder.PostalCode</tr>
-                        <tr>@Model.GivenOrder.Email</tr>
-                        <tr>@Model.GivenOrder.cardNumber</tr>
-                        <tr>@Model.GivenOrder.experessionDate</tr>
+                        <td>@product.Product.Name</td>
+                        <td>@product.Quantity</td>
+                        <td>@Model.getprice(product)</td>
                     </tr>
-               
-                </tbody>
-            </table>*@
+                    <tr>
+                        <td>Total Price</td>
+                        <td></td>
+                        <td>@Model.FullPrice()</td>
+                    </tr>
+                }*@
+            </table>
+            @*<table class="table">
+                    <tbody>
+                        <tr>First Name</tr>
+                        <tr>Last Name</tr>
+                        <tr>Address</tr>
+                        <tr>Country</tr>
+                        <tr>Postal Code</tr>
+                        <tr>Email</tr>
+                        <tr>Card Number</tr>
+                        <tr>Exp Date</tr>
+                        <tr>
+                            <tr>@Model.GivenOrder.FirstName</tr>
+                            <tr>@Model.GivenOrder.LastName</tr>
+                            <tr>@Model.GivenOrder.Address</tr>
+                            <tr>@Model.GivenOrder.Country</tr>
+                            <tr>@Model.GivenOrder.PostalCode</tr>
+                            <tr>@Model.GivenOrder.Email</tr>
+                            <tr>@Model.GivenOrder.cardNumber</tr>
+                            <tr>@Model.GivenOrder.experessionDate</tr>
+                        </tr>
+
+                    </tbody>
+                </table>*@
 
             <button type="submit" class="btn btn-primary" asp-page="/Cart/BuyThirdPage">Confirm</button>
         </form>
