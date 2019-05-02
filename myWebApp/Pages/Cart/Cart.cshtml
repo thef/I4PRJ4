@@ -26,13 +26,13 @@
                 <td>@product.Quantity</td>
                 <td>@Model.getprice(product)</td>
                 <td>
-                    <button type="submit" class="btn btn-danger" asp-page-handler="Increase"
+                    <button type="submit" class="btn btn-primary" asp-page-handler="Increase"
                             asp-route-id="@product.ProductId">
                         +
                     </button>
                 </td>
                 <td>
-                    <button type="submit" class="btn btn-danger" asp-page-handler="Decrease"
+                    <button type="submit" class="btn btn-primary" asp-page-handler="Decrease"
                             asp-route-id="@product.ProductId">
                         -
                     </button>
@@ -60,7 +60,7 @@
 
     <br>
 
-    <button type="submit" class="btn btn-danger" asp-page-handler=""
+    <button type="submit" class="btn btn-primary" asp-page-handler=""
             asp-route-id="">
         Go To Takeout
     </button>

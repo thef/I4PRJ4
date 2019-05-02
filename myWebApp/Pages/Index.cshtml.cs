@@ -161,7 +161,7 @@ namespace myWebApp
             return System.Math.Round(totalRatingSum / numberOfRatings, 2);
         }
 
-        //For a defined productId tell if it exist, return true or false.
+        //For a defined productId tell if it has a rating or not, return true or false.
         public async Task<bool> RatedYet(int id)
         {
             Rating rating = await _db.Rates.FirstOrDefaultAsync(x => x.ProductId == id);
@@ -179,7 +179,6 @@ namespace myWebApp
         //Find number of ratings for selected product, return count.
         public async Task<int> NumberOfVotes(int id)
         {
-            //Return count.
             return await _db.Rates.Where(x => x.ProductId == id).CountAsync();
         }
 
