@@ -14,6 +14,7 @@ using Moq;
 using myWebApp.Pages.Product;
 using myWebApp.Pages.Account;
 using myWebApp.Pages.Utilities;
+using Microsoft.AspNetCore.Http;
 
 namespace myWebApp.Pages.Product
 {
@@ -46,14 +47,14 @@ namespace myWebApp.Pages.Product
             }
         }
 
-        /*
         [Fact]
         public async Task TestOverallRating()
         {
             using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
+            using (var fakeUserManager = new Mock<FakeUserManager>().Object)
             {
                 // Arrange
-                IndexModel uut = new IndexModel(db);
+                IndexModel uut = new IndexModel(db, fakeUserManager);
 
                 Rating expectedRating = new Rating();
                 expectedRating.Id = 1;
@@ -86,16 +87,15 @@ namespace myWebApp.Pages.Product
                 );
             }
         }
-        */
 
-        /*
         [Fact]
         public async Task TestRatingsDeletedOnDeleteProduct()
         {
             using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
+            using (var fakeUserManager = new Mock<FakeUserManager>().Object)
             {
                 // Arrange
-                IndexModel uut = new IndexModel(db);
+                IndexModel uut = new IndexModel(db, fakeUserManager);
 
                 Rating expectedRating = new Rating();
                 expectedRating.Id = 1;
@@ -136,17 +136,15 @@ namespace myWebApp.Pages.Product
                 );
             }
         }
-        */
 
-        /*
         [Fact]
         public async Task TestCreateRatingForProduct()
         {
-            using (var db = new AppDbContext(Utilities.Utilities.TestDbContextOptions()))
-            using (var dbAccounts = new ApplicationDbContext(Utilities.Utilities.TestApplicationDbContext()))
+            using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
+            using (var userManager = new Mock<FakeUserManager>().Object)
             {
                 // Arrange
-                IndexModel uut = new IndexModel(db);
+                IndexModel uut = new IndexModel(db, userManager);
 
                 Product productToRate = new Product();
                 productToRate.Id = 1;
@@ -157,10 +155,42 @@ namespace myWebApp.Pages.Product
                 var productId = 1;
                 var rating = 5;
 
+
+                /*
                 //Generate Identity for usage of User.Identity.Name
                 var fakeIdentity = new GenericIdentity("TestUser");
                 var fakeUserRole = new string[1]{"Costumer"};
                 var fakePrincipal = new GenericPrincipal(fakeIdentity, fakeUserRole);
+                */
+
+                /* 
+                //Create fake User.
+                var user = new ApplicationDbUser
+                {
+                    UserName = "Test@User.com",
+                    //Id = Guid.NewGuid().ToString(),
+                    Email = "Test@User.com"
+                };
+
+                var claims = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.NameIdentifier, user.Id),
+                    new Claim("name", user.UserName),
+                };
+                */
+
+
+                var username = "Test@User.com";
+                var identity = new GenericIdentity(username, "");
+
+                var mockPrincipal = new Mock<ClaimsPrincipal>();
+                mockPrincipal.Setup(x => x.Identity).Returns(identity);
+                mockPrincipal.Setup(x => x.IsInRole(It.IsAny<string>())).Returns(true);
+
+                var mockHttpContext = new Mock<HttpContext>();
+                mockHttpContext.Setup(m => m.User).Returns(mockPrincipal.Object);
+                
 
                 await uut.OnPostRateAsync(productId, rating);
 
@@ -177,16 +207,16 @@ namespace myWebApp.Pages.Product
                 );
             }
         }
-        */
 
-        /*
+        
         [Fact]
         public async Task TestProductRatedYet()
         {
             using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
+            using (var fakeUserManager = new Mock<FakeUserManager>().Object)
             {
                 // Arrange
-                IndexModel uut = new IndexModel(db);
+                IndexModel uut = new IndexModel(db, fakeUserManager);
 
                 Rating rating = new Rating();
                 rating.Id = 1;
@@ -205,16 +235,15 @@ namespace myWebApp.Pages.Product
                 );
             }
         }
-        */
 
-        /* 
         [Fact]
         public async Task TestProductNumberOfVotes()
         {
-            using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext())) 
+            using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
+            using (var fakeUserManager = new Mock<FakeUserManager>().Object)
             {
                 // Arrange
-                IndexModel uut = new IndexModel(db);
+                IndexModel uut = new IndexModel(db, fakeUserManager);
 
                 Rating rating = new Rating();
                 rating.Id = 1;
@@ -240,59 +269,68 @@ namespace myWebApp.Pages.Product
                 );
             }
         }
-        */
         
+        /*
+        [Fact]
+        public async Task TestUserHasRatedProduct()
+        {
+            using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
+            {
+            // Arrange
+            var userManager = new Mock<FakeUserManager>().Object;
 
-        // [Fact]
-        // public async Task TestUserHasRatedProduct()
-        // {
-        //     using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
-        //     {
-        //         // Arrange
-        //         IndexModel uut = new IndexModel(db);
+            IndexModel uut = new IndexModel(db, userManager);
 
-        //         Rating rating = new Rating();
-        //         rating.Id = 1;
-        //         rating.ProductId = 1;
-        //         rating.UserName = "Test@User.com";
+            Rating rating = new Rating();
+            rating.Id = 1;
+            rating.ProductId = 1;
+            rating.UserName = "Test@User.com";
 
-        //         await db.Rates.AddAsync(rating);
-        //         await db.SaveChangesAsync();
+            await db.Rates.AddAsync(rating);
+            await db.SaveChangesAsync();
 
+            //Create fake User.
+            var user = new ApplicationDbUser
+            {
+                UserName = "Test@User.com",
+                Id = Guid.NewGuid().ToString(),
+                Email = "Test@User.com"
+            };
 
-        //         //Using Lib Moq for Creating Fakes.
+            var users = new List<ApplicationDbUser>
+            {
+                new ApplicationDbUser
+                {
+                    UserName = "Test@Mail.com",
+                    Id = Guid.NewGuid().ToString(),
+                    Email = "Test@Mail.com"
+                }
+            }.AsQueryable();
 
-        //         //Create fake User.
-        //         var user = new List<ApplicationDbUser>
-        //         {
-        //             new ApplicationDbUser
-        //             {
-        //                 UserName = "Test@User.com",
-        //                 Id = Guid.NewGuid().ToString(),
-        //                 Email = "Test@User.com"
-        //             }
-        //         }.AsQueryable();
+            var fakeUserManager = new Mock<FakeUserManager>();
+            fakeUserManager.Setup(fum => fum.Users)
+                .Returns(users);
 
-        //         var fakeUserManager = new Mock<FakeUserManager>();
+            fakeUserManager.Setup(fum => fum.CreateAsync(It.IsAny<ApplicationDbUser>(), It.IsAny<string>()))
+                .ReturnsAsync(IdentityResult.Success);
 
-        //         fakeUserManager.Setup(u => u.Users)
-        //             .Returns(user);
+            var fakeSignInManager = new Mock<FakeSignInManager>();
+            fakeSignInManager.Setup(fsim => fsim.PasswordSignInAsync(It.IsAny<ApplicationDbUser>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
+                .ReturnsAsync(SignInResult.Success);
 
-        //         var fakeSignInManager = new Mock<FakeSignInManager>();
+            var mock = new Mock<ClaimsPrincipal>();
+            mock.SetupGet(cp => cp.Identity.Name).Returns(user.UserName);
+            
+            // Act
+            var productId = 1;
+            var expectedResult = await uut.UserHasRatedProduct(productId);
 
-        //         //Sign fake user in.
-        //         fakeSignInManager.Setup(u => u.PasswordSignInAsync(It.IsAny<ApplicationDbUser>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
-        //             .ReturnsAsync(SignInResult.Success);
-
-        //         // Act
-        //         var productId = 1;
-        //         var actualHasUserRatedProduct = uut.UserHasRatedProduct(productId);
-
-        //         // Assert
-        //         Assert.True(
-        //             actualHasUserRatedProduct
-        //         );
-        //     }
-        // }
+            // Assert
+                Assert.True(
+                    expectedResult
+                );
+            }
+        }
+        */
     }
 }

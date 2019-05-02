@@ -26,8 +26,8 @@ namespace myWebApp.Pages.Product
                 new ApplicationDbUser
                 {
                     UserName = "Test@Mail.com",
-                    Id = Guid.NewGuid().ToString(),
-                    Email = "Test@Mail.com"
+                    //Id = Guid.NewGuid().ToString(),
+                    Email = "Test@Mail.com",
                 }
             }.AsQueryable();
 
@@ -36,7 +36,7 @@ namespace myWebApp.Pages.Product
                 new IdentityRole
                 {
                     Name = "Customer",
-                    Id = Guid.NewGuid().ToString()
+                    //Id = Guid.NewGuid().ToString()
                 }
             }.AsQueryable();
          
@@ -75,7 +75,7 @@ namespace myWebApp.Pages.Product
     public class UnitTestAccount : IClassFixture<Startup>
     {
         [Theory]
-        [InlineData("Test@User.com", "Qwerty1!")]
+        [InlineData("Test@Mail.com", "Qwerty1!")]
         public async Task TestCreateAccount(string email, string password)
         {   
             using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
@@ -103,14 +103,21 @@ namespace myWebApp.Pages.Product
                 };
 
                 // Act
-                var createdUser = await registerModel.OnPostAsync();
+                await registerModel.OnPostAsync("localhost:5001/Index");
 
                 // BadRequestResult (400), NotFoundResult (404), and OkObjectResult (200)
-                var result = createdUser.Equals(200);
+                //var result = userCreatedResult.Equals(200);
+
+                //var result = userCreatedResult.Equals(IdentityResult.Success);
+
+                var um = new FakeUserManager();
+
+                var createdUser = await um.FindByEmailAsync("Test@Mail.com");
 
                 // Assert
-                Assert.True(
-                    result
+                Assert.Equal(
+                    "Test@Mail.com",
+                    createdUser.Email
                 );
             }
         }

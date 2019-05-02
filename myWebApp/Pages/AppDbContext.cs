@@ -23,13 +23,16 @@ namespace myWebApp.Pages.Product
         public DbSet<Message> Messages { get; set; }
 
         public DbSet<cart> Carts { get; set; }
+
         public DbSet<Order> Orders { get; set; }
+
         public DbSet<OrderDetail> OrderDeteails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlite("Filename=WebStoreDatabase.db");
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=PRJ4;Integrated Security=True");
+            //optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=PRJ4;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Server=127.0.0.1,1433; Database=PRJ4; User Id=SA; Password=D15987532147er!");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

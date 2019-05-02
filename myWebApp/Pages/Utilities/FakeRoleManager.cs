@@ -21,7 +21,8 @@ namespace myWebApp.Pages.Utilities
     {
         public FakeRoleManager() : base(
             new Mock<IRoleStore<IdentityRole>>().Object,
-            new Mock<IEnumerable<IRoleValidator<IdentityRole>>>().Object,
+            new RoleValidator<IdentityRole>[0],
+            //new Mock<IEnumerable<IRoleValidator<IdentityRole>>>().Object,
             new Mock<ILookupNormalizer>().Object,
             new Mock<IdentityErrorDescriber>().Object,
             new Mock<ILogger<RoleManager<IdentityRole>>>().Object

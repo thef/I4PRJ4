@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -31,9 +32,27 @@ namespace myWebApp.Pages.Utilities
             new Mock<IdentityErrorDescriber>().Object,
             new Mock<IServiceProvider>().Object,
             new Mock<ILogger<UserManager<ApplicationDbUser>>>().Object
-        )
+        ) { }
+
+        public override Task<IdentityResult> CreateAsync(ApplicationDbUser user)
         {
-                
+            return Task.FromResult(IdentityResult.Success);
+        }
+
+        public override Task<ApplicationDbUser> FindByEmailAsync(string email)
+        {
+            return Task.FromResult( new ApplicationDbUser { Email = email } );
+        }
+
+        public override Task<bool> IsEmailConfirmedAsync(ApplicationDbUser user)
+        {
+            return Task.FromResult(user.Email == "Test@Mail.com");
+        }
+
+        //TODO FIX THIS
+        public override Task<string> GeneratePasswordResetTokenAsync(ApplicationDbUser user)
+        {
+            return Task.FromResult("");
         }
     }
 }

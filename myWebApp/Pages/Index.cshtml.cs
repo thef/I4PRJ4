@@ -155,8 +155,8 @@ namespace myWebApp
             var numberOfRatings = await NumberOfVotes(id);
 
             //Get total sum of ratings for selected productId.
-            double totalRatingSum = await _db.Rates.SumAsync(x => x.Rate);
-
+            var totalRatingSum = await _db.Rates.Where(x => x.ProductId == id).SumAsync(x => x.Rate);
+            
             //Round result exsample: 12.54233565 to 12.54.
             return System.Math.Round(totalRatingSum / numberOfRatings, 2);
         }
@@ -190,11 +190,11 @@ namespace myWebApp
 
             if(rating != null)
             {
-                return false;
+                return true;
 
             } else {
 
-                return true;
+                return false;
             }
         }
 
