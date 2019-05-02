@@ -1,54 +1,27 @@
 ﻿@page
 ChatHub <br />
-Your Name: <input type="text" id="userInput" /><br />
-Costumer 1
+Your Name: <input type="text" id="userInput" />
+<br/>
+<br/>
 <div class="container">
-
     <div class="row">
         <div class="col-6">
+            Costumer 1:
+            <br/>
+            <textarea style="resize:none" rows="15" cols="50" id="TextArea1" readonly=""></textarea>
             <br />
             Message: <input type="text" id="messageInput1" />
-            <br />
-            Group: <input type="text" id="groupInput1" />
+            <br/>
             <input type="button" id="SendButton1" value="Send Message" />
-            <input type="button" id="ConnectButton1" value="Connect" />
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <hr />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">&nbsp;</div>
         <div class="col-6">
-            <textarea rows="4" cols="50" id="TextArea1"></textarea>
-
-            <ul id="List1"></ul>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col-6">
+            Costumer 2
+            <br />
+            <textarea style="resize:none" rows="15" cols="50" id="TextArea2" readonly=""></textarea>
             <br />
             Message: <input type="text" id="messageInput2" />
             <br />
-            Group: <input type="text" id="groupInput2" />
             <input type="button" id="SendButton2" value="Send Message" />
-            <input type="button" id="ConnectButton2" value="Connect" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <hr />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-6">&nbsp;</div>
-        <div class="col-6">
-            <ul id="List2"></ul>
         </div>
     </div>
 </div>

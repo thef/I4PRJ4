@@ -1,9 +1,11 @@
 ﻿"use strict";
 
+//Function invocations for startup
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+//Connect to groups
 
 //Disable send button until connection is established
-document.getElementById("SendButton1").disabled = true;
+//document.getElementById("SendButton1").disabled = true;
 
 //Receive Message
 connection.on("ReceiveMessage", function (user, message, groupName) {
@@ -12,11 +14,12 @@ connection.on("ReceiveMessage", function (user, message, groupName) {
     var li = document.createElement("li");
     li.textContent = encodedMsg;
     
-    var SelectedList = "List" + groupName;
+    //var SelectedList = "List" + groupName;
+    var SelectedArea = "TextArea" + groupName;
 
-    document.getElementById("TextArea1").value = document.getElementById("TextArea1").value + encodedMsg + "\n";
+    document.getElementById(SelectedArea).value = document.getElementById(SelectedArea).value + encodedMsg + "\n";
         //appendChild(encodedMsg);
-    document.getElementById(SelectedList).appendChild(li);
+    //document.getElementById(SelectedList).appendChild(li);
 });
 
 
@@ -29,11 +32,18 @@ connection.on("ReceiveGroupNotification", function (message, groupName) {
     document.getElementById("List"+groupName).appendChild(li);
 });
 
-connection.start().then(function () {
-    document.getElementById("SendButton1").disabled = false;
-}).catch(function (err) {
-    return console.error(err.toString());
+connection.start().then(function() {
+    connect(1);
+    connect(2);
 });
+//    document.getElementById("SendButton1").disabled = false;
+//}).catch(function (err) {
+//    return console.error(err.toString());
+
+////    document.getElementById("SendButton2").disabled = false;
+////}).catch(function (err) {
+////    return console.error(err.toString());
+//});
 
 //document.getElementById("ConnectButton1").addEventListener("click", function (event) {
 //    var group = document.getElementById("groupInput1").value;
@@ -56,28 +66,26 @@ document.getElementById("SendButton1").addEventListener("click", function () {
     sendMessage(1);
 });
 
-document.getElementById("ConnectButton1").addEventListener("click", function () {
-    connect(1);
-});
+//document.getElementById("ConnectButton1").addEventListener("click", function () {
+//    connect(1);
+//});
 
 document.getElementById("SendButton2").addEventListener("click", function () {
     sendMessage(2);
 });
 
-document.getElementById("ConnectButton2").addEventListener("click", function () {
-    connect(2);
-});
+//document.getElementById("ConnectButton2").addEventListener("click", function () {
+//    connect(2);
+//});
 ////document.getElementById("SendButton2").addEventListener("click", sendMessage(2));
 
 //Connect Function
 function connect(Selector)
 {
-    var groupBoxID = "groupInput" + Selector;
-    var group = document.getElementById(groupBoxID).value;
-    connection.invoke("AddToGroup", group);
+    //var groupBoxID = "groupInput" + Selector;
+    //var group = document.getElementById(groupBoxID).value;
+    connection.invoke("AddToGroup", Selector);
 }
-
-
 
 //sending function
 function sendMessage(Selector) {
@@ -87,9 +95,12 @@ function sendMessage(Selector) {
     var messageBoxID = "messageInput" + Selector;
     var message = document.getElementById(messageBoxID).value;
 
-    //Choose correct groupbox
-    var groupBoxID = "groupInput" + Selector;
-    var group = document.getElementById(groupBoxID).value;//fuckup her
+    //ChooseCorrectTextarea
+    var group = Selector;
+
+    ////Choose correct groupbox
+    //var groupBoxID = "groupInput" + Selector;
+    //var group = document.getElementById(groupBoxID).value;
 
     //Invoke function in hub
     connection.invoke("SendMessage", user, message, group).catch(function (err) {
