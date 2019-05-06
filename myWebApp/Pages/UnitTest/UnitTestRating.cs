@@ -8,20 +8,26 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Routing;
 using Moq;
 
 //For using folders.
 using myWebApp.Pages.Product;
 using myWebApp.Pages.Account;
 using myWebApp.Pages.Utilities;
-using Microsoft.AspNetCore.Http;
+
 
 namespace myWebApp.Pages.Product
 {
     public class UnitTestRating
     {
         [Fact]
-        public async Task TestCreateRatingAsync()
+        public async Task TestCreateRating()
         {
             using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
             {
@@ -76,7 +82,7 @@ namespace myWebApp.Pages.Product
 
                 // Act
                 var ProductId = 5;
-                var actualOverallRating = uut.OverallRating(ProductId).Result;
+                var actualOverallRating = uut.AverageRating(ProductId).Result;
 
                 var expectedOverallRating = 3.0;
 
@@ -141,10 +147,40 @@ namespace myWebApp.Pages.Product
         public async Task TestCreateRatingForProduct()
         {
             using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
-            using (var userManager = new Mock<FakeUserManager>().Object)
+            using (var fakeUserManager = new Mock<FakeUserManager>().Object)
             {
+                //---* FOR USAGE OF User.Identity.Name *---//
+
+                //Create test user
+                var fakeIdentity = new GenericIdentity("User");
+                var principal = new ClaimsPrincipal(fakeIdentity);
+                var httpContext = new DefaultHttpContext()
+                {
+                    User = principal
+                };
+
+                //need these as well for the page context
+                var modelState = new ModelStateDictionary();
+                var actionContext = new ActionContext(httpContext, new RouteData(), new PageActionDescriptor(), modelState);
+                var modelMetadataProvider = new EmptyModelMetadataProvider();
+                var viewData = new ViewDataDictionary(modelMetadataProvider, modelState);
+
+                // need page context for the page model
+                var pageContext = new PageContext(actionContext) 
+                {
+                    ViewData = viewData
+                };
+
                 // Arrange
-                IndexModel uut = new IndexModel(db, userManager);
+                var indexModel = new IndexModel(
+                    db, 
+                    fakeUserManager
+                    )
+                {
+                    //Set PageContext
+                    PageContext = pageContext
+                };
+
 
                 Product productToRate = new Product();
                 productToRate.Id = 1;
@@ -154,45 +190,7 @@ namespace myWebApp.Pages.Product
                 // Act
                 var productId = 1;
                 var rating = 5;
-
-
-                /*
-                //Generate Identity for usage of User.Identity.Name
-                var fakeIdentity = new GenericIdentity("TestUser");
-                var fakeUserRole = new string[1]{"Costumer"};
-                var fakePrincipal = new GenericPrincipal(fakeIdentity, fakeUserRole);
-                */
-
-                /* 
-                //Create fake User.
-                var user = new ApplicationDbUser
-                {
-                    UserName = "Test@User.com",
-                    //Id = Guid.NewGuid().ToString(),
-                    Email = "Test@User.com"
-                };
-
-                var claims = new List<Claim>()
-                {
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(ClaimTypes.NameIdentifier, user.Id),
-                    new Claim("name", user.UserName),
-                };
-                */
-
-
-                var username = "Test@User.com";
-                var identity = new GenericIdentity(username, "");
-
-                var mockPrincipal = new Mock<ClaimsPrincipal>();
-                mockPrincipal.Setup(x => x.Identity).Returns(identity);
-                mockPrincipal.Setup(x => x.IsInRole(It.IsAny<string>())).Returns(true);
-
-                var mockHttpContext = new Mock<HttpContext>();
-                mockHttpContext.Setup(m => m.User).Returns(mockPrincipal.Object);
-                
-
-                await uut.OnPostRateAsync(productId, rating);
+                await indexModel.OnPostRateAsync(productId, rating);
 
                 var productRating = db.Rates.Single(r => r.ProductId.Equals(productId));
 
@@ -270,67 +268,61 @@ namespace myWebApp.Pages.Product
             }
         }
         
-        /*
         [Fact]
         public async Task TestUserHasRatedProduct()
         {
             using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
+            using (var fakeUserManager = new Mock<FakeUserManager>().Object)
             {
-            // Arrange
-            var userManager = new Mock<FakeUserManager>().Object;
+                //---* FOR USAGE OF User.Identity.Name *---//
 
-            IndexModel uut = new IndexModel(db, userManager);
-
-            Rating rating = new Rating();
-            rating.Id = 1;
-            rating.ProductId = 1;
-            rating.UserName = "Test@User.com";
-
-            await db.Rates.AddAsync(rating);
-            await db.SaveChangesAsync();
-
-            //Create fake User.
-            var user = new ApplicationDbUser
-            {
-                UserName = "Test@User.com",
-                Id = Guid.NewGuid().ToString(),
-                Email = "Test@User.com"
-            };
-
-            var users = new List<ApplicationDbUser>
-            {
-                new ApplicationDbUser
+                //Create test user
+                var fakeIdentity = new GenericIdentity("User");
+                var principal = new ClaimsPrincipal(fakeIdentity);
+                var httpContext = new DefaultHttpContext()
                 {
-                    UserName = "Test@Mail.com",
-                    Id = Guid.NewGuid().ToString(),
-                    Email = "Test@Mail.com"
-                }
-            }.AsQueryable();
+                    User = principal
+                };
 
-            var fakeUserManager = new Mock<FakeUserManager>();
-            fakeUserManager.Setup(fum => fum.Users)
-                .Returns(users);
+                //need these as well for the page context
+                var modelState = new ModelStateDictionary();
+                var actionContext = new ActionContext(httpContext, new RouteData(), new PageActionDescriptor(), modelState);
+                var modelMetadataProvider = new EmptyModelMetadataProvider();
+                var viewData = new ViewDataDictionary(modelMetadataProvider, modelState);
 
-            fakeUserManager.Setup(fum => fum.CreateAsync(It.IsAny<ApplicationDbUser>(), It.IsAny<string>()))
-                .ReturnsAsync(IdentityResult.Success);
+                // need page context for the page model
+                var pageContext = new PageContext(actionContext) 
+                {
+                    ViewData = viewData
+                };
 
-            var fakeSignInManager = new Mock<FakeSignInManager>();
-            fakeSignInManager.Setup(fsim => fsim.PasswordSignInAsync(It.IsAny<ApplicationDbUser>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
-                .ReturnsAsync(SignInResult.Success);
+                // Arrange
+                var indexModel = new IndexModel(
+                    db, 
+                    fakeUserManager
+                    )
+                {
+                    //Set PageContext
+                    PageContext = pageContext
+                };
 
-            var mock = new Mock<ClaimsPrincipal>();
-            mock.SetupGet(cp => cp.Identity.Name).Returns(user.UserName);
-            
-            // Act
-            var productId = 1;
-            var expectedResult = await uut.UserHasRatedProduct(productId);
+                Rating rating = new Rating();
+                rating.Id = 1;
+                rating.ProductId = 1;
+                rating.UserName = "User";
 
-            // Assert
+                await db.Rates.AddAsync(rating);
+                await db.SaveChangesAsync();
+                
+                // Act
+                var productId = 1;
+                var expectedResult = await indexModel.UserHasRatedProduct(productId);
+
+                // Assert
                 Assert.True(
                     expectedResult
                 );
             }
         }
-        */
     }
 }

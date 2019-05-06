@@ -149,7 +149,7 @@ namespace myWebApp
         }
 
         //For a defined productId find all rates, return average.
-        public async Task<double> OverallRating(int id)
+        public async Task<double> AverageRating(int id)
         {
             //Get total number of ratings for selected productId.
             var numberOfRatings = await NumberOfVotes(id);

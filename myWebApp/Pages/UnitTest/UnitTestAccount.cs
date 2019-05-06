@@ -17,6 +17,7 @@ using myWebApp.Pages.Utilities;
 
 namespace myWebApp.Pages.Product
 {
+    /*
     public class Startup
     {
         public Startup()
@@ -40,7 +41,7 @@ namespace myWebApp.Pages.Product
                 }
             }.AsQueryable();
          
-            var fakeUserManager = new Mock<FakeUserManager>();
+            fakeUserManager = new Mock<FakeUserManager>();
             fakeUserManager.Setup(fum => fum.Users)
                 .Returns(users);
 
@@ -71,47 +72,40 @@ namespace myWebApp.Pages.Product
                 .ReturnsAsync(IdentityResult.Success);
         }
     }
+    */
 
-    public class UnitTestAccount : IClassFixture<Startup>
+
+    public class UnitTestAccount //: IClassFixture<Startup>
     {
         [Theory]
         [InlineData("Test@Mail.com", "Qwerty1!")]
-        public async Task TestCreateAccount(string email, string password)
+        public async Task TestRegisterAccount(string email, string password)
         {   
             using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
             {
+                var userManagerMock = new Mock<FakeUserManager>();
+                userManagerMock.Setup(umm => umm.CreateAsync(It.IsAny<ApplicationDbUser>(), It.IsAny<string>()))
+                    .ReturnsAsync(IdentityResult.Success);
+
                 // Arrange
                 RegisterModel registerModel = new RegisterModel(
-                    new Mock<FakeUserManager>().Object,
+                    userManagerMock.Object,
                     new Mock<FakeSignInManager>().Object,
                     new Mock<FakeRoleManager>().Object,
                     new Mock<FakeEmailSender>().Object,
                     new Mock<FakeLogger>().Object
                     );
             
-                var indexModel = new RegisterModel.InputModel();
+                var inputModel = new RegisterModel.InputModel();
+                inputModel.Email = email;
+                inputModel.Password = password;
 
-                indexModel.Email = email;
-                indexModel.Password = password;
-
-                registerModel.Input = indexModel;
-
-                var user = new ApplicationDbUser
-                {
-                    UserName = email,
-                    Email = email
-                };
+                registerModel.Input = inputModel;
 
                 // Act
-                await registerModel.OnPostAsync("localhost:5001/Index");
-
-                // BadRequestResult (400), NotFoundResult (404), and OkObjectResult (200)
-                //var result = userCreatedResult.Equals(200);
-
-                //var result = userCreatedResult.Equals(IdentityResult.Success);
+                await registerModel.OnPostAsync("Index");
 
                 var um = new FakeUserManager();
-
                 var createdUser = await um.FindByEmailAsync("Test@Mail.com");
 
                 // Assert

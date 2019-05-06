@@ -34,11 +34,6 @@ namespace myWebApp.Pages.Utilities
             new Mock<ILogger<UserManager<ApplicationDbUser>>>().Object
         ) { }
 
-        public override Task<IdentityResult> CreateAsync(ApplicationDbUser user)
-        {
-            return Task.FromResult(IdentityResult.Success);
-        }
-
         public override Task<ApplicationDbUser> FindByEmailAsync(string email)
         {
             return Task.FromResult( new ApplicationDbUser { Email = email } );
