@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net;
 using System.Net.Sockets;
+using Microsoft.AspNetCore.Authorization;
 using System.Text;
 
 //Because AppDbContext is writtens in this namespace...
@@ -14,6 +15,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace myWebApp.Pages.Chat.Server
 {
+    [Authorize(Roles="Admin,Support")]
     public class ChatServerModel : PageModel
     {
         //Database setup

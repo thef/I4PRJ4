@@ -14,9 +14,11 @@ using Microsoft.AspNetCore.WebSockets;
 //For using folders.
 using myWebApp.Pages.Product;
 using myWebApp.Pages.Account;
+using Microsoft.AspNetCore.Authorization;
 
 namespace myWebApp.Pages.Chat.Client
 {
+    [Authorize(Roles = "Admin,Costumer")]
     public class ChatClient : PageModel
     {
         private static Socket _senderSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);

@@ -1,7 +1,7 @@
 @page
-
+@model myWebApp.Pages.Chat.Client.ChatClient
 Welcome to the Customersupport
-The 
+The
 
 <div class="container">
     <div class="row">&nbsp;</div>
@@ -29,5 +29,10 @@ The
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>

@@ -54,4 +54,4 @@ C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Cart\BuySecondPage.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Cart\BuyThirdPage.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Cart\Cart.g.cshtml.cs
-C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Chat\ChatServer.g.cshtml.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Chat\Client\CostumerChatSide.g.cshtml.cs
