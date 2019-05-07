@@ -22,20 +22,17 @@ namespace myWebApp.Pages.Account
         private readonly SignInManager<ApplicationDbUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailSender _emailSender;
-        private readonly ILogger<RegisterModel> _logger;
 
         public RegisterModel(
             UserManager<ApplicationDbUser> userManager,
             SignInManager<ApplicationDbUser> signInManager,
             RoleManager<IdentityRole> roleManager,
-            IEmailSender emailSender,
-            ILogger<RegisterModel> logger)
+            IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _emailSender = emailSender;
-            _logger = logger;
         }
 
         [TempData]
@@ -113,18 +110,12 @@ namespace myWebApp.Pages.Account
 
                             StatusMessage = $"User created with Email: {Input.Email}. Please check your Email to confirm it.";
 
-                            //Write to log
-                            _logger.LogInformation($"User {Input.Email} was created.");
-
                         } else {
 
                         //Assign role to seleced user.
                         await _userManager.AddToRoleAsync(user, "Customer");
 
                         StatusMessage = $"User created with Email: {Input.Email}. Please check your Email to confirm it.";
-
-                        //Write to log
-                        _logger.LogInformation($"User {Input.Email} was assigned to role: Customer.");
 
                         }
 
