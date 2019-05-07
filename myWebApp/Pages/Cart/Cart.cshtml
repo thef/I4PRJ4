@@ -1,0 +1,67 @@
+﻿@page
+@model myWebApp.Pages.Cart.CartModel
+@{
+    ViewData["Title"] = "Cart";
+}
+
+@Html.PartialAsync("_StatusMessage", Model.StatusMessage).Result
+
+<h1>Cart</h1>
+<form method="post">
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>increment amount</th>
+            <th>decrement amount</th>
+            <th>Remove</th>
+
+        </tr>
+
+        @foreach (var product in @Model.Carts)
+        {
+            <tr>
+                <td>@product.Product.Name</td>
+                <td>@product.Quantity</td>
+                <td>@Model.getprice(product)</td>
+                <td>
+                    <button type="submit" class="btn btn-primary" asp-page-handler="Increase"
+                            asp-route-id="@product.ProductId">
+                        +
+                    </button>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-primary" asp-page-handler="Decrease"
+                            asp-route-id="@product.ProductId">
+                        -
+                    </button>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-danger" asp-page-handler="Remove"
+                            asp-route-id="@product.ProductId">
+                        Delete
+                    </button>
+                </td>
+
+
+            </tr>
+        }
+        <tr>
+            <td>Total Price</td>
+            <td></td>
+            <td>@Model.FullPrice()</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+
+    <br>
+
+    <button type="submit" class="btn btn-primary" asp-page-handler=""
+            asp-route-id="">
+        Go To Takeout
+    </button>
+</form>
