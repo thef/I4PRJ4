@@ -20,68 +20,17 @@ namespace myWebApp.Pages.Chat.Server
     {
         //Database setup
         public AppDbContext _db;
-        public List<Message> Messages { get; set; }
+        //public List<Message> Messages { get; set; }
         
-        public Database ChatDB;
-
         public ChatServerModel(AppDbContext db)
         {
             _db = db;
         }
 
-        [BindProperty]
-        public InputModel Input { get; set; }
 
-        public class InputModel
-        {
-            public string Message { get; set; }
-            public string Log { get; set; }
-        }
-
-        public Task OnPostStartServer()
-        {
-            Database ChatDB = new Database();
-            Socket _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp); //Internetwork således at serveren fungerer på IPv4
-            int _Server_PORT = 1000;
-            MessageReceiver msgReceiver = new MessageReceiver(_serverSocket, _Server_PORT, _db);
-            msgReceiver.SetupServer();
-
-            while (true)
-            {
-                //Never end thread. Server needs Database Context.
-            }
-
-            return null;
-        }
-
-        public void OnPostTest()
-        {
-            Message msgtest = new Message();
-            msgtest.Msg = "Goddag";
-            _db.Messages.Add(msgtest);
-        }
-
-        public async Task<IActionResult> OnPostTest2Async()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            Message Message = new Message();
-
-            Message.Msg = "hejhej ";
-            Message.UserName = "Kaj";
-
-            _db.Messages.Add(Message);
-            await _db.SaveChangesAsync();
-
-            return RedirectToPage("/Chat/ChatServer");
-        }
-
-        public async Task OnGetAsync()
-        {
-            Messages = await _db.Messages.AsNoTracking().ToListAsync();
-        }
+        //public async Task OnGetAsync()
+        //{
+        //    Messages = await _db.Messages.AsNoTracking().ToListAsync();
+        //}
     }
 }

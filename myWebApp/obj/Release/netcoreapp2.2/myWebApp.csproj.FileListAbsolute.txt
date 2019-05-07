@@ -28,7 +28,6 @@ C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Account\ResetPassword.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Account\ResetPasswordConfirmation.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Chat\Client\ChatClient.g.cshtml.cs
-C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Chat\Client\ClientChatPage.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Chat\Server\ChatServer.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Index.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Product\Create.g.cshtml.cs
@@ -54,4 +53,3 @@ C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Cart\BuySecondPage.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Cart\BuyThirdPage.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Cart\Cart.g.cshtml.cs
-C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Chat\Client\CostumerChatSide.g.cshtml.cs

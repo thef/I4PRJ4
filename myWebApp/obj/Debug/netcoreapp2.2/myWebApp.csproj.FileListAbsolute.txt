@@ -174,5 +174,8 @@ C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.csproj.CopyComplete
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Chat\Client\ChatClient.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Chat\Server\ChatServer.g.cshtml.cs
-C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Chat\Client\ClientChatPage.g.cshtml.cs
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.csprojAssemblyReference.cache
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Cart\BuyFirstPage.g.cshtml.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Cart\BuySecondPage.g.cshtml.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Cart\BuyThirdPage.g.cshtml.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\Razor\Pages\Cart\Cart.g.cshtml.cs

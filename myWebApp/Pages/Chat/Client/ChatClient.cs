@@ -18,20 +18,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace myWebApp.Pages.Chat.Client
 {
-    [Authorize(Roles = "Admin,Costumer")]
+    [Authorize(Roles = "Admin,Customer")]
     public class ChatClient : PageModel
     {
-        private static Socket _senderSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        private static Socket _receiverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        private static MessageSenderClient MsgSender;
-        private static MessageReceiver MsgReceiver;
-
-        [BindProperty] public int SenderPort { get; set; }
-        [BindProperty] public int ReceiverPort { get; set; }
-        [BindProperty] public int ServerPort { get; set; }
-        [BindProperty] public string Message { get; set; }
-        [BindProperty] public string ReceivedMessage { get; set; }
-
         private readonly AppDbContext _db;
 
         public ChatClient(AppDbContext db)
@@ -39,27 +28,11 @@ namespace myWebApp.Pages.Chat.Client
             _db = db;
         }
 
-        public string ServerIPAddress = IPAddress.Loopback.ToString();
-
-        public List<Message> Messages { get; set; }
-
-        public List<string> TestList = new List<string>();
-
-        //On GET page load.
-        public void OnGet()
-        {
-            //Get all messages from database.
-            Messages = _db.Messages.AsNoTracking().ToList();
-        }
-
-        public Task OnPostSendMessage()
-        {
-            MessageSenderClient.Message = "hej fra client";
-            Task SendMessages = Task.Run(MsgSender.PromptUserAndSendMessageAction);
-            ReceivedMessage = ReceivedMessage + "\n" + MessageReceiver.ReceivedString;
-            //MsgSender.PromptUserAndSendMessageAction
-            return null;
-        }
+        //public void OnGet()
+        //{
+        //    //Get all messages from database.
+        //    Messages = _db.Messages.AsNoTracking().ToList();
+        //}
 
     }
 }
