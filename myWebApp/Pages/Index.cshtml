@@ -84,7 +84,7 @@
                                 <!--Create 5 radio-button for ratiing-->
                                 @if (Model.RatedYet(@product.Id).Result)
                                 {
-                                    <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
+                                    <p>Overall rating: @Model.AverageRating(@product.Id).Result</p>
                                     <hr />
                                     <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
                                 }
@@ -120,7 +120,7 @@
                                 <!--Create 5 radio-button for ratiing-->
                                 @if (Model.RatedYet(@product.Id).Result)
                                 {
-                                    <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
+                                    <p>Overall rating: @Model.AverageRating(@product.Id).Result</p>
                                     <hr />
                                     <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
 
@@ -180,7 +180,7 @@
                                 <!--Create 5 radio-button for ratiing-->
                                 @if (Model.RatedYet(@product.Id).Result)
                                 {
-                                    <p>Overall rating: @Model.OverallRating(@product.Id).Result</p>
+                                    <p>Overall rating: @Model.AverageRating(@product.Id).Result</p>
                                     <p>Ratings: @Model.NumberOfVotes(@product.Id).Result</p>
                                     <hr />
                                     <p><a asp-page="/Account/Login">Login</a> to rate.</p>

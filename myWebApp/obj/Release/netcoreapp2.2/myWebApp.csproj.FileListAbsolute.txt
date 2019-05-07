@@ -50,3 +50,8 @@ C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\myWebA
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\myWebApp.pdb
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\myWebApp.csproj.CopyComplete
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\myWebApp.csprojAssemblyReference.cache
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Cart\BuyFirstPage.g.cshtml.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Cart\BuySecondPage.g.cshtml.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Cart\BuyThirdPage.g.cshtml.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Cart\Cart.g.cshtml.cs
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Release\netcoreapp2.2\Razor\Pages\Chat\ChatServer.g.cshtml.cs
