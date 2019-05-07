@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
+using myWebApp.Hubs;
 using myWebApp.Pages.Product;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 //namespace myWebApp.Pages.Chat
 
 namespace SignalRChat.Hubs
 {
-    public class ChatHub : Hub
+    public class ChatHub : Hub, IChatHub
     {
         public AppDbContext _db;
 
