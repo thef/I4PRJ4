@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
@@ -28,9 +29,16 @@ namespace myWebApp.Pages.Utilities
             new Mock<IOptions<IdentityOptions>>().Object,
             new Mock<ILogger<SignInManager<ApplicationDbUser>>>().Object,
             new Mock<IAuthenticationSchemeProvider>().Object
-        )
+        ) { }
+
+        public override bool IsSignedIn(ClaimsPrincipal claimsPrincipal)
         {
-                
+            return claimsPrincipal.Identity.Name == "Test@Mail.com";
+        }
+
+        public bool IsSignedOut(ClaimsPrincipal claimsPrincipal)
+        {
+            return claimsPrincipal.Identity.Name != "Test@Mail.com";
         }
     }
 }

@@ -107,6 +107,10 @@ namespace myWebApp
                     {
                         StatusMessage = $"Error: Product with id: {id} out of stock!";
                     }
+                } 
+                else 
+                {
+                    StatusMessage = $"Error: Please sign in to add this product to cart!";
                 }
             }
             else

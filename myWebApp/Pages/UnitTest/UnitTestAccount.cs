@@ -8,6 +8,12 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Moq;
 
 //For using folders.
@@ -92,8 +98,7 @@ namespace myWebApp.Pages.Product
                     userManagerMock.Object,
                     new Mock<FakeSignInManager>().Object,
                     new Mock<FakeRoleManager>().Object,
-                    new Mock<FakeEmailSender>().Object,
-                    new Mock<FakeLogger>().Object
+                    new Mock<FakeEmailSender>().Object
                     );
             
                 var inputModel = new RegisterModel.InputModel();
@@ -112,6 +117,118 @@ namespace myWebApp.Pages.Product
                 Assert.Equal(
                     "Test@Mail.com",
                     createdUser.Email
+                );
+            }
+        }
+
+        [Theory]
+        [InlineData("Test@Mail.com", "Qwerty1!")]
+        public async Task TestLoginAccount(string email, string password)
+        {   
+            using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
+            {
+                var signInManagerMock = new Mock<FakeSignInManager>();
+                signInManagerMock.Setup(fsim => fsim.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
+                    .ReturnsAsync(Microsoft.AspNetCore.Identity.SignInResult.Success);
+
+                // Arrange
+                //---* FOR USAGE OF User.Identity *---//
+
+                //Create test user
+                var fakeIdentity = new GenericIdentity("Test@Mail.com");
+                var principal = new ClaimsPrincipal(fakeIdentity);
+                var httpContext = new DefaultHttpContext()
+                {
+                    User = principal
+                };
+
+                //need these as well for the page context
+                var modelState = new ModelStateDictionary();
+                var actionContext = new ActionContext(httpContext, new RouteData(), new PageActionDescriptor(), modelState);
+                var modelMetadataProvider = new EmptyModelMetadataProvider();
+                var viewData = new ViewDataDictionary(modelMetadataProvider, modelState);
+
+                // need page context for the page model
+                var pageContext = new PageContext(actionContext) 
+                {
+                    ViewData = viewData
+                };
+
+                LoginModel loginModel = new LoginModel(
+                    signInManagerMock.Object
+                    )
+                {
+                    PageContext = pageContext
+                };
+
+            
+                var inputModel = new LoginModel.InputModel();
+                inputModel.Email = email;
+                inputModel.Password = password;
+
+                loginModel.Input = inputModel;
+
+                // Act
+                await loginModel.OnPostAsync("Index");
+
+                var um = new FakeSignInManager();
+                var loginResult = um.IsSignedIn(loginModel.User);
+
+                // Assert
+                Assert.True(
+                    loginResult
+                );
+            }
+        }
+
+        [Fact]
+        public async Task TestLogoutAccount()
+        {   
+            using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
+            {
+                var signInManagerMock = new Mock<FakeSignInManager>(); 
+                signInManagerMock.Setup(fsim => fsim.SignOutAsync())
+                    .Returns(Task.FromResult(new ClaimsPrincipal()));
+
+                // Arrange
+                //---* FOR USAGE OF User.Identity *---//
+
+                //Create test user
+                var fakeIdentity = new GenericIdentity("Test@Mail.com");
+                var principal = new ClaimsPrincipal(fakeIdentity);
+                var httpContext = new DefaultHttpContext()
+                {
+                    User = principal
+                };
+
+                //need these as well for the page context
+                var modelState = new ModelStateDictionary();
+                var actionContext = new ActionContext(httpContext, new RouteData(), new PageActionDescriptor(), modelState);
+                var modelMetadataProvider = new EmptyModelMetadataProvider();
+                var viewData = new ViewDataDictionary(modelMetadataProvider, modelState);
+
+                // need page context for the page model
+                var pageContext = new PageContext(actionContext) 
+                {
+                    ViewData = viewData
+                };
+
+                LogoutModel logoutModel = new LogoutModel(
+                    signInManagerMock.Object
+                    )
+                {
+                    PageContext = pageContext
+                };
+
+                // Act
+                await logoutModel.OnPostAsync("Index");
+
+                var um = new FakeSignInManager();
+                var logoutResult = um.IsSignedOut(logoutModel.User);
+                
+                // Assert
+                Assert.False(
+                    logoutResult
                 );
             }
         }
