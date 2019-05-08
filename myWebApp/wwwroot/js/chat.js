@@ -7,14 +7,14 @@ document.getElementById("sendButton").disabled = true;
 
 connection.on("ReceiveMessage", function (user, message) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    var encodedMsg = user + " says " + msg;
+    var encodedMsg = user + " says: " + msg;
     var li = document.createElement("li");
     li.textContent = encodedMsg;
     document.getElementById("messagesList").appendChild(li);
 });
 
 //
-connection.on("ReceiveGroupNotification", function (message) {
+connection.on("ReceiveGroupNotification", function (message, groupname) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var encodedMsg = msg;
     var li = document.createElement("li");
@@ -33,7 +33,8 @@ connection.start().then(function () {
 //Connecting to group
 document.getElementById("connectButton").addEventListener("click",function(event) {
         var group = document.getElementById("groupInput").value;
-        connection.invoke("AddToGroup", group);
+        var name = document.getElementById("userInput").value
+        connection.invoke("AddToGroup", name, group);
         event.preventDefault();
     });
 

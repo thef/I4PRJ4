@@ -11,9 +11,9 @@ namespace SignalRChat.Hubs
     {
         public AppDbContext _db;
 
-        public ChatHub(AppDbContext db)
+        public ChatHub()//AppDbContext db)
         {
-            _db = db;
+            //_db = db;
         }
 
         public async Task SendMessage(string user, string message, string groupName)
@@ -26,11 +26,10 @@ namespace SignalRChat.Hubs
             //await _db.SaveChangesAsync();
         }
         
-        public async Task AddToGroup(string groupName)
+        public async Task AddToGroup(string name, string groupName)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
-            await Clients.Group(groupName).SendAsync("ReceiveGroupNotification", $"Someone has joined the group.", groupName);
+            await Clients.Group(groupName).SendAsync("ReceiveGroupNotification",  name + " has joined the group.", groupName); //, groupName);
         }
-
     }
 }

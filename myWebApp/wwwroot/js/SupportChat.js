@@ -10,7 +10,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 //Receive Message
 connection.on("ReceiveMessage", function (user, message, groupName) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    var encodedMsg = user + " says " + msg;
+    var encodedMsg = user + " says: " + msg;
     var li = document.createElement("li");
     li.textContent = encodedMsg;
     
@@ -27,9 +27,9 @@ connection.on("ReceiveMessage", function (user, message, groupName) {
 connection.on("ReceiveGroupNotification", function (message, groupName) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var encodedMsg = msg;
-    var li = document.createElement("li");
-    li.textContent = encodedMsg;
-    document.getElementById("List"+groupName).appendChild(li);
+
+    var SelectedArea = "TextArea" + groupName;
+    document.getElementById(SelectedArea).value = document.getElementById(SelectedArea).value + encodedMsg + "\n";
 });
 
 connection.start().then(function() {
@@ -84,7 +84,8 @@ function connect(Selector)
 {
     //var groupBoxID = "groupInput" + Selector;
     //var group = document.getElementById(groupBoxID).value;
-    connection.invoke("AddToGroup", Selector);
+    var name = document.getElementById("userInput").value;
+    connection.invoke("AddToGroup", name, Selector);
 }
 
 //sending function

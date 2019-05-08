@@ -8,6 +8,6 @@ namespace myWebApp.Hubs
     interface IChatHub
     {
         Task SendMessage(string user, string message, string groupName);
-        Task AddToGroup(string groupName);
+        Task AddToGroup(string name, string groupName);
     }
 }
