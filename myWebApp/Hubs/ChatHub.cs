@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
-using myWebApp.Hubs;
 using myWebApp.Pages.Product;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 //namespace myWebApp.Pages.Chat
@@ -10,7 +10,7 @@ namespace SignalRChat.Hubs
     public class ChatHub : Hub, IChatHub
     {
         public AppDbContext _db;
-
+        
         public ChatHub()//AppDbContext db)
         {
             //_db = db;
@@ -29,7 +29,21 @@ namespace SignalRChat.Hubs
         public async Task AddToGroup(string name, string groupName)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
-            await Clients.Group(groupName).SendAsync("ReceiveGroupNotification",  name + " has joined the group.", groupName); //, groupName);
+            await Clients.Group(groupName).SendAsync("ReceiveGroupNotification",  name + " has joined the chat.", groupName); //, groupName);
         }
+
+        public async Task RemoveFromGroup(string name, string groupName)
+        {
+            await Clients.Group(groupName).SendAsync("ReceiveGroupNotification", name + " has left the chat.", groupName);
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
+
+            //Todo Next customer in queue
+        }
+
+        //public async Task RemoveCustomerFromGroup(string name, string groupName)
+        //{
+        //    await Groups.RemoveFromGroupAsync(Context.ConnectionId)
+        //}
+
     }
 }

@@ -36,7 +36,15 @@ document.getElementById("connectButton").addEventListener("click",function(event
         var name = document.getElementById("userInput").value
         connection.invoke("AddToGroup", name, group);
         event.preventDefault();
-    });
+});
+
+//Disconnect form group
+document.getElementById("disconnectButton").addEventListener("click", function(event) {
+    var group = document.getElementById("groupInput").value;
+    var name = document.getElementById("userInput").value;
+    connection.invoke("RemoveFromGroup", name, group);
+    event.preventDefault();
+});
 
 //Sending a message
 document.getElementById("sendButton").addEventListener("click", function (event) {
