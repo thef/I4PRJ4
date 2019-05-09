@@ -24,7 +24,7 @@ namespace myWebApp.Pages.Account
         private readonly IEmailSender _emailSender;
 
         public RegisterModel(
-            UserManager<ApplicationDbUser> userManager,
+            UserManager<ApplicationDbUser> userManager, 
             SignInManager<ApplicationDbUser> signInManager,
             RoleManager<IdentityRole> roleManager,
             IEmailSender emailSender)

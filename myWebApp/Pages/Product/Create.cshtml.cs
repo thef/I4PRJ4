@@ -17,7 +17,7 @@ namespace myWebApp.Pages.Product
 
         public CreateModel(AppDbContext db)
         {
-            _db = db;
+            _db = db; 
         }
 
         [TempData]
