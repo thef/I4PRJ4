@@ -17,24 +17,27 @@
 </div>
 
 @Html.PartialAsync("_StatusMessage", Model.StatusMessage).Result
-
-<div class="row">
-    <div class="col-md-3">
-        <form method="post">
-            <h5>Search</h5>
-            <div class="form-group">
-                <input type="text" name="SearchString" class="form-control" />
-                <hr />
-                <button type="submit" class="btn btn-primary" asp-page-handler="Search"
-                        asp-route-id="SearchString">
-                    Search
-                </button>
-            </div>
-
-        </form>
-    </div>
+<div>
+    <button id="searchBtn" type="submit" class="btn btn-primary" onclick="showSearch()">Search</button>
 </div>
 
+<div id="search" class="row" style="display: none;">
+        <div class="col-md-3">
+            <form method="post">
+                <h5>Search by name.</h5>
+                <div class="form-group">
+                    <input type="text" name="SearchString" class="form-control" placeholder="Leave empty to show all"/>
+                    <hr />
+                    <button type="submit" class="btn btn-primary" asp-page-handler="Search"
+                            asp-route-id="SearchString">
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
+</div>
+
+<br>
 
 <h5>List of Products in store</h5>
 <hr />
