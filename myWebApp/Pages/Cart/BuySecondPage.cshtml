@@ -3,8 +3,23 @@
 @{
     ViewData["Title"] = "BuySecondPage";
 }
-
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window, document, 'script', 'dataLayer','GTM-T8DXX6V');</script>
+<!-- End Google Tag Manager -->
 <h1>Confirm your credit information.</h1>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8DXX6V"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
 @*@Html.PartialAsync("_StatusMessage", Model).Result*@
 <div class="row">
     <div class="col-md-6">
@@ -19,7 +34,7 @@
             <p>Email: @Model.GivenOrder.Email</p>
             <p>Card number: @Model.GivenOrder.cardNumber Exp Date: @Model.GivenOrder.experessionDate</p>
             <hr />
-            
+
             <table class="table">
                 <tbody>
                     <tr>First Name</tr>
@@ -31,16 +46,16 @@
                     <tr>Card Number</tr>
                     <tr>Exp Date</tr>
                     <tr>
-                        <tr>@Model.GivenOrder.FirstName</tr>
-                        <tr>@Model.GivenOrder.LastName</tr>
-                        <tr>@Model.GivenOrder.Address</tr>
-                        <tr>@Model.GivenOrder.Country</tr>
-                        <tr>@Model.GivenOrder.PostalCode</tr>
-                        <tr>@Model.GivenOrder.Email</tr>
-                        <tr>@Model.GivenOrder.cardNumber</tr>
-                        <tr>@Model.GivenOrder.experessionDate</tr>
-                    </tr>
-               
+                    <tr>@Model.GivenOrder.FirstName</tr>
+                    <tr>@Model.GivenOrder.LastName</tr>
+                    <tr>@Model.GivenOrder.Address</tr>
+                    <tr>@Model.GivenOrder.Country</tr>
+                    <tr>@Model.GivenOrder.PostalCode</tr>
+                    <tr>@Model.GivenOrder.Email</tr>
+                    <tr>@Model.GivenOrder.cardNumber</tr>
+                    <tr>@Model.GivenOrder.experessionDate</tr>
+
+
                 </tbody>
             </table>
 
