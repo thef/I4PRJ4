@@ -26,43 +26,26 @@
                     <th>Price</th>
                 </tr>
 
-                @*@foreach (var product in @Model.Carts)
+                @if (@Model.Carts != null)
                 {
-                    <tr>
-                        <td>@product.Product.Name</td>
-                        <td>@product.Quantity</td>
-                        <td>@Model.getprice(product)</td>
-                    </tr>
-                    <tr>
-                        <td>Total Price</td>
-                        <td></td>
-                        <td>@Model.FullPrice()</td>
-                    </tr>
-                }*@
-            </table>
-            @*<table class="table">
-                    <tbody>
-                        <tr>First Name</tr>
-                        <tr>Last Name</tr>
-                        <tr>Address</tr>
-                        <tr>Country</tr>
-                        <tr>Postal Code</tr>
-                        <tr>Email</tr>
-                        <tr>Card Number</tr>
-                        <tr>Exp Date</tr>
+                    @foreach (var product in @Model.Carts)
+                    {
                         <tr>
-                            <tr>@Model.GivenOrder.FirstName</tr>
-                            <tr>@Model.GivenOrder.LastName</tr>
-                            <tr>@Model.GivenOrder.Address</tr>
-                            <tr>@Model.GivenOrder.Country</tr>
-                            <tr>@Model.GivenOrder.PostalCode</tr>
-                            <tr>@Model.GivenOrder.Email</tr>
-                            <tr>@Model.GivenOrder.cardNumber</tr>
-                            <tr>@Model.GivenOrder.experessionDate</tr>
+                            <td>@product.Product.Name</td>
+                            <td>@product.Quantity</td>
+                            <td>@Model.getprice(product)</td>
                         </tr>
+                        <tr>
+                            <td>Total Price</td>
+                            <td></td>
+                            <td>@Model.FullPrice()</td>
+                        </tr>
+                    }  
+            }
 
-                    </tbody>
-                </table>*@
+
+            </table>
+            
 
             <button type="submit" class="btn btn-primary" asp-page="/Cart/BuyThirdPage">Confirm</button>
         </form>

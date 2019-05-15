@@ -15,6 +15,12 @@ namespace myWebApp.Pages.Cart
     {
 
         private readonly AppDbContext _db;
+        public BuySecondPageModel(AppDbContext db)
+        {
+            _db = db;
+            
+        }
+        
 
         [BindProperty]
         public Order GivenOrder { get; set; } = new Order();
@@ -24,7 +30,7 @@ namespace myWebApp.Pages.Cart
         {
             var price = c.Quantity * c.Product.Price;
             return price;
-        }
+        }   
         public int FullPrice()
         {
             int Price = 0;
