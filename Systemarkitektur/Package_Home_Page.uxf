@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>145</y>
+      <w>265</w>
+      <h>205</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+IndexModel : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_db: AppDbContext {readonly}
+«get/set» +input: InputModel
+«get/set» +statusMessage: String
+«get/set» +products: List&lt;Product&gt;
+«get/set» +rates: List&lt;Rating&gt;
+«get/set» +carts: List&lt;Cart&gt;
+«get/set» +search: String
+
+--
+
+«constructor» +IndexModel(
+						db: AppDbContext,
+						userManager: UserManager&lt;ApplicationDbUser&gt;)
++OnGetAsync(): Task
++OnPostDeleteAsync(int id): Task&lt;IActionResult&gt;
++OnPostAddToCartAsync(int id): Task&lt;IActionResult&gt;
++OnPostRateAsync(int id, double rate): Task&lt;IActionResult&gt;
++AverageRating(int id): Task&lt;double&gt; 
++RatedYet(int id): Task&lt;bool&gt; 
++NumberOfVotes(int id): Task&lt;int&gt;
++UserHasRatedProduct(int id): Task&lt;bool&gt; 
++OnPostSearchAsync(string searchString): Task&lt;IActionResult&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>800</x>
+      <y>145</y>
+      <w>265</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+PrivacyModel : PageModel
+--
+
+--
++OnGet: Void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>145</y>
+      <w>265</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ErrorModel : PageModel
+--
+«get/set» +RequestId: String
+ShowRequestId :Bool
+
+--
++OnGet: Void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>145</x>
+      <y>100</y>
+      <w>940</w>
+      <h>415</h>
+    </coordinates>
+    <panel_attributes>Package HomePage</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>180</x>
+      <y>405</y>
+      <w>115</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+Product
+--
+«get/set» +Id: int
+«get/set» +Name: string
+«get/set» +Description: sting
+«get/set» +Stock: int
+«get/set» +Price: int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>235</x>
+      <y>375</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>260.0;10.0;10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>405</y>
+      <w>115</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+Rating
+--
+«get/set» +Id: Int
+«get/set» +ProduktId: Int
+«get/set» +Rate: Double
+«get/set» +UserName: String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>345</y>
+      <w>15</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>405</y>
+      <w>115</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+Cart
+--
+«get/set» +UserId: String
+«get/set» +Quantity: Int
+«get/set» +ProductId: Int
+«get/set» +Product : Product
+«get/set» +User : ApplicationDbUser
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>375</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;280.0;10.0;280.0;60.0</additional_attributes>
+  </element>
+</diagram>
