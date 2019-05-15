@@ -123,8 +123,8 @@ namespace myWebApp.Pages.Account
                         await _signInManager.SignInAsync(user, isPersistent: false);
 
                         //Send emailconfirmation to new created user.
-                        //var callbaclUrl = await GenerateEmailConfirmation(user);
-                        //await SendEmailConfirmation(user, callbaclUrl);
+                        var callbaclUrl = await GenerateEmailConfirmation(user);
+                        await SendEmailConfirmation(user, callbaclUrl);
 
                     //Using LocalRedirect to ensures that the "returnUrl" is a route actually on your site. For safe.
                     return LocalRedirect("/Index");
@@ -174,7 +174,8 @@ namespace myWebApp.Pages.Account
                 await _signInManager.SignInAsync(user, isPersistent: false);
 
                 //Send emailconfirmation to new created user.
-                //var callbaclUrl = await GenerateEmailConfirmation(user);
+                var callbaclUrl = await GenerateEmailConfirmation(user);
+                await SendEmailConfirmation(user, callbaclUrl);
             }
         }
 

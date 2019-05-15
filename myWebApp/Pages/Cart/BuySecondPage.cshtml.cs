@@ -31,14 +31,14 @@ namespace myWebApp.Pages.Cart
  
         public Order GivenOrder { get; set; } = new Order();
 
-        public int getprice(cart c)
+        public decimal getprice(cart c)
         {
             var price = c.Quantity * c.Product.Price;
             return price;
         }   
-        public int FullPrice()
+        public decimal FullPrice()
         {
-            int Price = 0;
+            decimal Price = 0;
             foreach (var product in Carts)
             {
                 Price += product.Product.Price * product.Quantity;

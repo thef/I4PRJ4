@@ -342,3 +342,7 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
+
+# Don't track Debug files for commits.
+myWebApp/bin
+myWebApp/obj

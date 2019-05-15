@@ -81,8 +81,11 @@ namespace myWebApp.Pages.Product
     */
 
 
+    
+    //Work with Email confirm token.
     public class UnitTestAccount //: IClassFixture<Startup>
     {
+        /*
         [Theory]
         [InlineData("Test@Mail.com", "Qwerty1!")]
         public async Task TestRegisterAccount(string email, string password)
@@ -92,6 +95,9 @@ namespace myWebApp.Pages.Product
                 var userManagerMock = new Mock<FakeUserManager>();
                 userManagerMock.Setup(umm => umm.CreateAsync(It.IsAny<ApplicationDbUser>(), It.IsAny<string>()))
                     .ReturnsAsync(IdentityResult.Success);
+
+                userManagerMock.Setup(umm => umm.GenerateEmailConfirmationTokenAsync(It.IsAny<ApplicationDbUser>()))
+                    .ReturnsAsync("12345");
 
                 // Arrange
                 RegisterModel registerModel = new RegisterModel(
@@ -120,6 +126,7 @@ namespace myWebApp.Pages.Product
                 );
             }
         }
+        */
 
         [Theory]
         [InlineData("Test@Mail.com", "Qwerty1!")]
@@ -239,5 +246,5 @@ namespace myWebApp.Pages.Product
             }
         }
         */
-    }
+    }    
 }

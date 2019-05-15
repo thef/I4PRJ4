@@ -11,7 +11,7 @@ namespace myWebApp.Pages.UnitTest
     public class UnitTestCheckOut
     {
         [Fact]
-        public async Task TestCreditCredincial()
+        public void TestCreditCredincial()
         {
             //using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
             //{
