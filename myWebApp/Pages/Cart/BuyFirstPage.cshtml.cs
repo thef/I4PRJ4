@@ -72,8 +72,6 @@ namespace myWebApp.Pages.Cart
 
         [ScaffoldColumn(false)]
         public bool HasBeenShipped { get; set; }
-
-        public List<OrderDetail> OrdersdDetails { get; set; }
     }
 
     public class BuyFirstPageModel : PageModel
@@ -90,9 +88,7 @@ namespace myWebApp.Pages.Cart
         [BindProperty]
         public Order Orders { get; set; }
 
-        
-
-        
+    
     }
     
 }

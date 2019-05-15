@@ -27,8 +27,6 @@ namespace myWebApp.Pages.Product
 
         public DbSet<Order> Orders { get; set; }
 
-        public DbSet<OrderDetail> OrderDeteails { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlite("Filename=WebStoreDatabase.db");

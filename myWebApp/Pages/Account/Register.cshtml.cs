@@ -148,12 +148,27 @@ namespace myWebApp.Pages.Account
             if(!await _roleManager.RoleExistsAsync("Admin"))
             {
                 //Create the new role: Admin
-                var role = new IdentityRole();
-                role.Name = "Admin";
-                await _roleManager.CreateAsync(role);
+                var roleAdmin = new IdentityRole();
+                roleAdmin.Name = "Admin";
+                await _roleManager.CreateAsync(roleAdmin);
+
+                //Create the new role: Manager
+                var roleManager = new IdentityRole();
+                roleManager.Name = "Manager";
+                await _roleManager.CreateAsync(roleManager);
+
+                //Create the new role: Support
+                var roleSupport = new IdentityRole();
+                roleSupport.Name = "Support"; 
+                await _roleManager.CreateAsync(roleSupport);
+
+                //Create the new role: Customer
+                var roleCustomer = new IdentityRole();
+                roleCustomer.Name = "Customer";
+                await _roleManager.CreateAsync(roleCustomer);
 
                 //Assign role to seleced user.
-                await _userManager.AddToRoleAsync(user, role.Name);
+                await _userManager.AddToRoleAsync(user, roleAdmin.Name);
 
                 //Sign User in.
                 await _signInManager.SignInAsync(user, isPersistent: false);
