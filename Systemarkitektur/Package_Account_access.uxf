@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>116</x>
+      <y>100</y>
+      <w>480</w>
+      <h>212</h>
+    </coordinates>
+    <panel_attributes>Package Account access</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>140</x>
+      <y>132</y>
+      <w>208</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+LoginModel : PageModel
+--
+-_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
+«get/set» +statusMessage: String
+«get/set» +input: InputModel
+«get/set» +errorMessage: String
+«get/set» +returnUrl: String
+--
+«constructor» +LoginModel(
+            signInManager: SignInManager&lt;ApplicationDbUser&gt;)
++OnGetAsync(string returnUrl = null): Task
++OnPostAsync(string returnUrl = null): Task&lt;IActionResult&gt; 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>240</x>
+      <y>216</y>
+      <w>12</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>196</x>
+      <y>244</y>
+      <w>92</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+InputModel
+--
+«get/set» +Email: string
+«get/set» +Password: string
+«get/set» +RememberMe: bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>364</x>
+      <y>132</y>
+      <w>208</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+LogoutModel : PageModel
+--
+-_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
+«get/set» +statusMessage: String
+«get/set» +input: InputModel
+«get/set» +errorMessage: String
+«get/set» +returnUrl: String
+
+--
+«constructor» +LogoutModel(
+            signInManager: SignInManager&lt;ApplicationDbUser&gt;)
++OnGet(): Void
++OnPostAsync(string returnUrl = null): Task&lt;IActionResult&gt; 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

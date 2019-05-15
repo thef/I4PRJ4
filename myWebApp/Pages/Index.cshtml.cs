@@ -16,8 +16,8 @@ namespace myWebApp
 {
     public class IndexModel : PageModel
     {
-        private readonly AppDbContext _db;
-        private readonly UserManager<ApplicationDbUser> _userManager;
+            private readonly AppDbContext _db;
+            private readonly UserManager<ApplicationDbUser> _userManager;
 
         public IndexModel(
             AppDbContext db,

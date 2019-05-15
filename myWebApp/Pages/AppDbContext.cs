@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace myWebApp.Pages.Product
 {
     public class AppDbContext : IdentityDbContext<ApplicationDbUser>
-    { 
+    {
         public AppDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Product> Products { get; set; }
@@ -27,12 +27,11 @@ namespace myWebApp.Pages.Product
 
         public DbSet<Order> Orders { get; set; }
 
-        public DbSet<OrderDetail> OrderDeteails { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlite("Filename=WebStoreDatabase.db");
             //optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=PRJ4;Integrated Security=True");
+            //optionsBuilder.UseSqlServer("Server=tcp:dabexercise.database.windows.net,1433;Initial Catalog=DAB;Persist Security Info=False;User ID=DAB;Password=Qwerty1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             optionsBuilder.UseSqlServer("Server=127.0.0.1,1433; Database=PRJ4; User Id=SA; Password=D15987532147er!");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

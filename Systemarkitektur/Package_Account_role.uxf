@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>90</x>
+      <y>78</y>
+      <w>378</w>
+      <h>366</h>
+    </coordinates>
+    <panel_attributes>Package Account role</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>108</y>
+      <w>318</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ManageRoles : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_roleManager: RoleManager&lt;IdentityRole&gt; {readonly}
+«get/set» +username: String
+«get/set» +listUser: List&lt;SelectListItem&gt;
+«get/set» +listRole: List&lt;SelectListItem&gt;
+«get/set» +users: IList&lt;string&gt;
+«get/set» +statusMessage: String
+«get/set» +input: InputModel
+
+--
+«constructor» +ManageRoles(
+            userManager: UserManager&lt;ApplicationDbUser&gt;,
+            roleManager: RoleManager&lt;IdentityRole&gt;)
++OnGet(): Void
++OnPostAsync(): Task&lt;IActionResult&gt;
++listsForDropDowns(): Void
++GetRolesForUser(string userName): IList&lt;string&gt;
++OnPostDeleteAsync(): Task&lt;IActionResult&gt;
+ 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>198</x>
+      <y>348</y>
+      <w>156</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+InputModel
+--
+«get/set» +User: string
+«get/set» +RoleFromlist: string
+«get/set» +Role: sting</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>312</y>
+      <w>18</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+</diagram>

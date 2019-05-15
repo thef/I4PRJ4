@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>340</x>
-      <y>140</y>
+      <y>128</y>
       <w>200</w>
       <h>52</h>
     </coordinates>
@@ -24,8 +24,8 @@ PageModel
     <id>UMLFrame</id>
     <coordinates>
       <x>0</x>
-      <y>64</y>
-      <w>2800</w>
+      <y>52</y>
+      <w>3696</w>
       <h>380</h>
     </coordinates>
     <panel_attributes>Class Webstore</panel_attributes>
@@ -35,7 +35,7 @@ PageModel
     <id>UMLClass</id>
     <coordinates>
       <x>388</x>
-      <y>80</y>
+      <y>68</y>
       <w>108</w>
       <h>40</h>
     </coordinates>
@@ -53,7 +53,7 @@ ModelStateDictionary
     <id>Relation</id>
     <coordinates>
       <x>436</x>
-      <y>116</y>
+      <y>104</y>
       <w>12</w>
       <h>32</h>
     </coordinates>
@@ -64,12 +64,12 @@ ModelStateDictionary
     <id>UMLClass</id>
     <coordinates>
       <x>28</x>
-      <y>224</y>
+      <y>212</y>
       <w>140</w>
       <h>68</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-CreateModel
+CreateModel : PageModel
 --
 -_db: AppDbContext {readonly}
 «get/set» +statusMessage: String
@@ -85,7 +85,7 @@ CreateModel
     <id>Relation</id>
     <coordinates>
       <x>96</x>
-      <y>208</y>
+      <y>196</y>
       <w>164</w>
       <h>24</h>
     </coordinates>
@@ -96,12 +96,12 @@ CreateModel
     <id>UMLClass</id>
     <coordinates>
       <x>180</x>
-      <y>224</y>
+      <y>212</y>
       <w>140</w>
       <h>68</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-EditModel
+EditModel : PageModel
 --
 -_db: AppDbContext {readonly}
 «get/set» +statusMessage: String
@@ -117,12 +117,12 @@ EditModel
     <id>UMLClass</id>
     <coordinates>
       <x>332</x>
-      <y>224</y>
+      <y>212</y>
       <w>212</w>
       <h>148</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-RegisterModel
+RegisterModel : PageModel
 --
 -_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
 -_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
@@ -151,7 +151,7 @@ RegisterModel
     <id>Relation</id>
     <coordinates>
       <x>248</x>
-      <y>208</y>
+      <y>196</y>
       <w>12</w>
       <h>24</h>
     </coordinates>
@@ -162,7 +162,7 @@ RegisterModel
     <id>Relation</id>
     <coordinates>
       <x>248</x>
-      <y>208</y>
+      <y>196</y>
       <w>200</w>
       <h>24</h>
     </coordinates>
@@ -173,7 +173,7 @@ RegisterModel
     <id>UMLClass</id>
     <coordinates>
       <x>128</x>
-      <y>332</y>
+      <y>320</y>
       <w>92</w>
       <h>56</h>
     </coordinates>
@@ -192,7 +192,7 @@ Product
     <id>Relation</id>
     <coordinates>
       <x>172</x>
-      <y>288</y>
+      <y>276</y>
       <w>88</w>
       <h>40</h>
     </coordinates>
@@ -203,7 +203,7 @@ Product
     <id>Relation</id>
     <coordinates>
       <x>96</x>
-      <y>288</y>
+      <y>276</y>
       <w>88</w>
       <h>52</h>
     </coordinates>
@@ -214,7 +214,7 @@ Product
     <id>UMLClass</id>
     <coordinates>
       <x>388</x>
-      <y>392</y>
+      <y>380</y>
       <w>104</w>
       <h>40</h>
     </coordinates>
@@ -231,7 +231,7 @@ InputModel
     <id>Relation</id>
     <coordinates>
       <x>436</x>
-      <y>368</y>
+      <y>356</y>
       <w>12</w>
       <h>32</h>
     </coordinates>
@@ -242,12 +242,12 @@ InputModel
     <id>UMLClass</id>
     <coordinates>
       <x>556</x>
-      <y>224</y>
+      <y>212</y>
       <w>208</w>
       <h>88</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-LoginModel
+LoginModel : PageModel
 --
 -_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
 «get/set» +statusMessage: String
@@ -266,7 +266,7 @@ LoginModel
     <id>UMLClass</id>
     <coordinates>
       <x>612</x>
-      <y>336</y>
+      <y>324</y>
       <w>92</w>
       <h>40</h>
     </coordinates>
@@ -283,7 +283,7 @@ InputModel
     <id>Relation</id>
     <coordinates>
       <x>656</x>
-      <y>308</y>
+      <y>296</y>
       <w>12</w>
       <h>36</h>
     </coordinates>
@@ -294,7 +294,7 @@ InputModel
     <id>Relation</id>
     <coordinates>
       <x>436</x>
-      <y>188</y>
+      <y>176</y>
       <w>232</w>
       <h>44</h>
     </coordinates>
@@ -305,12 +305,12 @@ InputModel
     <id>UMLClass</id>
     <coordinates>
       <x>776</x>
-      <y>224</y>
+      <y>212</y>
       <w>212</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-IndexModel
+IndexModel : PageModel
 --
 -_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
 -_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
@@ -338,7 +338,7 @@ IndexModel
     <id>UMLClass</id>
     <coordinates>
       <x>832</x>
-      <y>388</y>
+      <y>376</y>
       <w>92</w>
       <h>40</h>
     </coordinates>
@@ -355,7 +355,7 @@ InputModel
     <id>Relation</id>
     <coordinates>
       <x>876</x>
-      <y>360</y>
+      <y>348</y>
       <w>12</w>
       <h>36</h>
     </coordinates>
@@ -366,12 +366,12 @@ InputModel
     <id>UMLClass</id>
     <coordinates>
       <x>1000</x>
-      <y>224</y>
+      <y>212</y>
       <w>212</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-AccessDeniedModel
+AccessDeniedModel : PageModel
 --
 
 --
@@ -383,12 +383,12 @@ AccessDeniedModel
     <id>UMLClass</id>
     <coordinates>
       <x>1224</x>
-      <y>224</y>
+      <y>212</y>
       <w>212</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-ConfirmEmailModel
+ConfirmEmailModel : PageModel
 --
 -_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
 
@@ -403,12 +403,12 @@ ConfirmEmailModel
     <id>UMLClass</id>
     <coordinates>
       <x>1448</x>
-      <y>224</y>
+      <y>212</y>
       <w>212</w>
       <h>84</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-ForgotPasswordModel
+ForgotPasswordModel : PageModel
 --
 -_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
 -_emailSender: IEmailSender {readonly}
@@ -426,7 +426,7 @@ ForgotPasswordModel
     <id>UMLClass</id>
     <coordinates>
       <x>1520</x>
-      <y>332</y>
+      <y>320</y>
       <w>76</w>
       <h>32</h>
     </coordinates>
@@ -441,7 +441,7 @@ InputModel
     <id>Relation</id>
     <coordinates>
       <x>1552</x>
-      <y>304</y>
+      <y>292</y>
       <w>12</w>
       <h>36</h>
     </coordinates>
@@ -452,12 +452,12 @@ InputModel
     <id>UMLClass</id>
     <coordinates>
       <x>1672</x>
-      <y>224</y>
+      <y>212</y>
       <w>212</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-ForgotPasswordConfirmation
+ForgotPasswordConfirmation : PageModel
 --
 
 --
@@ -469,12 +469,12 @@ ForgotPasswordConfirmation
     <id>UMLClass</id>
     <coordinates>
       <x>1896</x>
-      <y>224</y>
+      <y>212</y>
       <w>212</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-LockoutModel
+LockoutModel : PageModel
 --
 
 --
@@ -486,18 +486,19 @@ LockoutModel
     <id>UMLClass</id>
     <coordinates>
       <x>2120</x>
-      <y>224</y>
+      <y>212</y>
       <w>208</w>
       <h>88</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-LogoutModel
+LogoutModel : PageModel
 --
 -_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
 «get/set» +statusMessage: String
 «get/set» +input: InputModel
 «get/set» +errorMessage: String
 «get/set» +returnUrl: String
+
 --
 «constructor» +LogoutModel(
             signInManager: SignInManager&lt;ApplicationDbUser&gt;)
@@ -510,12 +511,12 @@ LogoutModel
     <id>UMLClass</id>
     <coordinates>
       <x>2340</x>
-      <y>224</y>
+      <y>212</y>
       <w>212</w>
       <h>84</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-ResetPasswordModel
+ResetPasswordModel : PageModel
 --
 -_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
 «get/set» +input: InputModel
@@ -532,7 +533,7 @@ ResetPasswordModel
     <id>UMLClass</id>
     <coordinates>
       <x>2396</x>
-      <y>336</y>
+      <y>324</y>
       <w>104</w>
       <h>48</h>
     </coordinates>
@@ -549,7 +550,7 @@ InputModel
     <id>Relation</id>
     <coordinates>
       <x>2444</x>
-      <y>304</y>
+      <y>292</y>
       <w>12</w>
       <h>40</h>
     </coordinates>
@@ -560,12 +561,12 @@ InputModel
     <id>UMLClass</id>
     <coordinates>
       <x>2564</x>
-      <y>224</y>
+      <y>212</y>
       <w>212</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-ResetPasswordConfirmationModel
+ResetPasswordConfirmationModel : PageModel
 --
 
 --
@@ -577,7 +578,7 @@ ResetPasswordConfirmationModel
     <id>Relation</id>
     <coordinates>
       <x>656</x>
-      <y>208</y>
+      <y>196</y>
       <w>236</w>
       <h>24</h>
     </coordinates>
@@ -588,7 +589,7 @@ ResetPasswordConfirmationModel
     <id>Relation</id>
     <coordinates>
       <x>880</x>
-      <y>208</y>
+      <y>196</y>
       <w>236</w>
       <h>24</h>
     </coordinates>
@@ -599,7 +600,7 @@ ResetPasswordConfirmationModel
     <id>Relation</id>
     <coordinates>
       <x>1104</x>
-      <y>208</y>
+      <y>196</y>
       <w>236</w>
       <h>24</h>
     </coordinates>
@@ -610,7 +611,7 @@ ResetPasswordConfirmationModel
     <id>Relation</id>
     <coordinates>
       <x>1328</x>
-      <y>208</y>
+      <y>196</y>
       <w>236</w>
       <h>24</h>
     </coordinates>
@@ -621,7 +622,7 @@ ResetPasswordConfirmationModel
     <id>Relation</id>
     <coordinates>
       <x>1552</x>
-      <y>208</y>
+      <y>196</y>
       <w>236</w>
       <h>24</h>
     </coordinates>
@@ -632,7 +633,7 @@ ResetPasswordConfirmationModel
     <id>Relation</id>
     <coordinates>
       <x>1776</x>
-      <y>208</y>
+      <y>196</y>
       <w>236</w>
       <h>24</h>
     </coordinates>
@@ -643,7 +644,7 @@ ResetPasswordConfirmationModel
     <id>Relation</id>
     <coordinates>
       <x>2000</x>
-      <y>208</y>
+      <y>196</y>
       <w>232</w>
       <h>24</h>
     </coordinates>
@@ -654,7 +655,7 @@ ResetPasswordConfirmationModel
     <id>Relation</id>
     <coordinates>
       <x>2220</x>
-      <y>208</y>
+      <y>196</y>
       <w>236</w>
       <h>24</h>
     </coordinates>
@@ -665,11 +666,205 @@ ResetPasswordConfirmationModel
     <id>Relation</id>
     <coordinates>
       <x>2444</x>
-      <y>208</y>
+      <y>196</y>
       <w>236</w>
       <h>24</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2788</x>
+      <y>212</y>
+      <w>212</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ErrorModel : PageModel
+--
+«get/set» +RequestId: String
+ShowRequestId :Bool
+
+--
++OnGet: Void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2668</x>
+      <y>196</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3012</x>
+      <y>212</y>
+      <w>212</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+PrivacyModel : PageModel
+--
+
+--
++OnGet: Void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2892</x>
+      <y>196</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3236</x>
+      <y>212</y>
+      <w>212</w>
+      <h>164</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+IndexModel : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_db: AppDbContext {readonly}
+«get/set» +input: InputModel
+«get/set» +statusMessage: String
+«get/set» +products: List&lt;Product&gt;
+«get/set» +rates: List&lt;Rating&gt;
+«get/set» +carts: List&lt;Cart&gt;
+«get/set» +search: String
+
+--
+
+«constructor» +IndexModel(
+				db: AppDbContext,
+				userManager: UserManager&lt;ApplicationDbUser&gt;)
++OnGetAsync(): Task
++OnPostDeleteAsync(int id): Task&lt;IActionResult&gt;
++OnPostAddToCartAsync(int id): Task&lt;IActionResult&gt;
++OnPostRateAsync(int id, double rate): Task&lt;IActionResult&gt;
++AverageRating(int id): Task&lt;double&gt; 
++RatedYet(int id): Task&lt;bool&gt; 
++NumberOfVotes(int id): Task&lt;int&gt;
++UserHasRatedProduct(int id): Task&lt;bool&gt; 
++OnPostSearchAsync(string searchString): Task&lt;IActionResult&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3116</x>
+      <y>196</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3248</x>
+      <y>124</y>
+      <w>96</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>IndexModel for HomePage</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3292</x>
+      <y>148</y>
+      <w>28</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>50.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>792</x>
+      <y>120</y>
+      <w>96</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>IndexModel for Account</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>836</x>
+      <y>144</y>
+      <w>28</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>50.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3460</x>
+      <y>212</y>
+      <w>212</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ManageRoles : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_roleManager: RoleManager&lt;IdentityRole&gt; {readonly}
+«get/set» +username: String
+«get/set» +listUser: List&lt;SelectListItem&gt;
+«get/set» +listRole: List&lt;SelectListItem&gt;
+«get/set» +users: IList&lt;string&gt;
+«get/set» +statusMessage: String
+«get/set» +input: InputModel
+
+--
+«constructor» +ManageRoles(
+            userManager: UserManager&lt;ApplicationDbUser&gt;,
+            roleManager: RoleManager&lt;IdentityRole&gt;)
++OnGet(): Void
++OnPostAsync(): Task&lt;IActionResult&gt;
++listsForDropDowns(): Void
++GetRolesForUser(string userName): IList&lt;string&gt;
++OnPostDeleteAsync(): Task&lt;IActionResult&gt;
+ 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3340</x>
+      <y>196</y>
+      <w>232</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;560.0;10.0;560.0;40.0</additional_attributes>
   </element>
 </diagram>

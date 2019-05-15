@@ -7,7 +7,18 @@
 }
 
 <head names="Development">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    <!-- Google Tag Manager -->
+    <script>
+    (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-T8DXX6V');</script>
+    <!-- End Google Tag Manager -->
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
 </head>
 
 <div class="text-center">
@@ -22,19 +33,19 @@
 </div>
 
 <div id="search" class="row" style="display: none;">
-        <div class="col-md-3">
-            <form method="post">
-                <h5>Search by name.</h5>
-                <div class="form-group">
-                    <input type="text" name="SearchString" class="form-control" placeholder="Leave empty to show all"/>
-                    <hr />
-                    <button type="submit" class="btn btn-primary" asp-page-handler="Search"
-                            asp-route-id="SearchString">
-                        Search
-                    </button>
-                </div>
-            </form>
-        </div>
+    <div class="col-md-3">
+        <form method="post">
+            <h5>Search by name.</h5>
+            <div class="form-group">
+                <input type="text" name="SearchString" class="form-control" placeholder="Leave empty to show all" />
+                <hr />
+                <button type="submit" class="btn btn-primary" asp-page-handler="Search"
+                        asp-route-id="SearchString">
+                    Search
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <br>

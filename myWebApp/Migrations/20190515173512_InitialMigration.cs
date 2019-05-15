@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace myWebApp.Migrations
 {
-    public partial class CartTest : Migration
+    public partial class InitialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -97,7 +97,7 @@ namespace myWebApp.Migrations
                     Name = table.Column<string>(maxLength: 25, nullable: false),
                     Description = table.Column<string>(maxLength: 40, nullable: false),
                     Stock = table.Column<int>(nullable: false),
-                    Price = table.Column<int>(nullable: false)
+                    Price = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -226,29 +226,6 @@ namespace myWebApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderDeteails",
-                columns: table => new
-                {
-                    OrderDetailId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    OrderId = table.Column<int>(nullable: false),
-                    Username = table.Column<string>(nullable: true),
-                    ProductId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<int>(nullable: false),
-                    UnitPrice = table.Column<double>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_OrderDeteails", x => x.OrderDetailId);
-                    table.ForeignKey(
-                        name: "FK_OrderDeteails_Orders_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Orders",
-                        principalColumn: "orderId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Carts",
                 columns: table => new
                 {
@@ -316,11 +293,6 @@ namespace myWebApp.Migrations
                 name: "IX_Carts_ProductId",
                 table: "Carts",
                 column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderDeteails_OrderId",
-                table: "OrderDeteails",
-                column: "OrderId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -347,7 +319,7 @@ namespace myWebApp.Migrations
                 name: "Messages");
 
             migrationBuilder.DropTable(
-                name: "OrderDeteails");
+                name: "Orders");
 
             migrationBuilder.DropTable(
                 name: "Rates");
@@ -360,9 +332,6 @@ namespace myWebApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Orders");
         }
     }
 }

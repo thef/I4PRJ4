@@ -10,7 +10,7 @@
       <h>170</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-CreateModel
+CreateModel : PageModel
 --
 -_db: AppDbContext {readonly}
 «get/set» +statusMessage: String
@@ -31,7 +31,7 @@ CreateModel
       <h>170</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
-EditModel
+EditModel : PageModel
 --
 -_db: AppDbContext {readonly}
 «get/set» +statusMessage: String
@@ -92,7 +92,7 @@ Product
       <w>790</w>
       <h>520</h>
     </coordinates>
-    <panel_attributes>Class Product</panel_attributes>
+    <panel_attributes>Package Product</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

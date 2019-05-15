@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 //For using folders.
 using myWebApp.Pages.Product;
 using myWebApp.Pages.Account;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace myWebApp
 {
@@ -50,6 +51,12 @@ namespace myWebApp
             services.AddIdentity<ApplicationDbUser, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+
+            // Register the Google Analytics configuration
+            services.Configure<GoogleAnalyticsOptions>(options => Configuration.GetSection("GoogleAnalytics").Bind(options));
+
+            // Register the TagHelperComponent
+            services.AddTransient<ITagHelperComponent, GoogleAnalyticsTagHelperComponent>();
 
             //For the chat
             services.AddSignalR();
