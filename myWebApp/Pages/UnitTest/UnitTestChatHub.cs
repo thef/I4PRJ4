@@ -41,9 +41,11 @@ namespace SignalRChat.Hubs
             var MockClientProxy = new Mock<IClientProxy>();
             var MockClientContext = new Mock<HubCallerContext>();
             var MockClientGroupManager = new Mock<IGroupManager>();
+
+            // Mock Setup
             MockClients.Setup(mc => mc.Group(Group)).Returns(MockClientProxy.Object);
 
-            //Property Injection
+            // Property Injection
             uut.Clients = MockClients.Object;
             uut.Context = MockClientContext.Object;
             uut.Groups = MockClientGroupManager.Object;
