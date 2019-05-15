@@ -1,9 +1,10 @@
 ﻿@page
-@model BuySecondPageModel
+@model myWebApp.Pages.Cart.BuySecondPageModel
 @{
     ViewData["Title"] = "BuySecondPage";
 }
-@*@Html.PartialAsync("_StatusMessage", Model.StatusMessage).Result*@
+
+@Html.PartialAsync("_StatusMessage", Model.StatusMessage).Result
 
 <h1>Confirm your credit information.</h1>
 <div class="row">
@@ -25,24 +26,20 @@
                     <th>Quantity</th>
                     <th>Price</th>
                 </tr>
-
-                @if (@Model.Carts != null)
-                {
                     @foreach (var product in @Model.Carts)
-                    {
-                        <tr>
-                            <td>@product.Product.Name</td>
-                            <td>@product.Quantity</td>
-                            <td>@Model.getprice(product)</td>
-                        </tr>
-                        <tr>
-                            <td>Total Price</td>
-                            <td></td>
-                            <td>@Model.FullPrice()</td>
-                        </tr>
-                    }  
-            }
-
+                     {
+                         <tr>
+                             <td>@product.Product.Name</td>
+                             <td>@product.Quantity</td>
+                             <td>@Model.getprice(product)</td>
+                         </tr>
+                         
+                }
+                    <tr>
+                        <td>Total Price</td>
+                        <td></td>
+                        <td>@Model.FullPrice()</td>
+                    </tr>
 
             </table>
             
