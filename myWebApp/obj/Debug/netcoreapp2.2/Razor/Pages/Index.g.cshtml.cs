@@ -69,7 +69,7 @@ using Microsoft.Extensions.Configuration;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
 #line 5 "/Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/Pages/Index.cshtml"
-  
+
     ViewData["Title"] = "Home page";
 
 #line default

@@ -55,7 +55,7 @@ using myWebApp;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
 #line 3 "/Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/Pages/Account/ForgotPassword.cshtml"
-  
+
     ViewData["Title"] = "Forgot your password?";
 
 #line default

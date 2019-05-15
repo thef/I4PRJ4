@@ -54,7 +54,7 @@ using Microsoft.AspNetCore.Http.Features;
             WriteLiteral("\n");
             EndContext();
 #line 3 "/Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/Pages/Shared/_CookieConsentPartial.cshtml"
-  
+
     var consentFeature = Context.Features.Get<ITrackingConsentFeature>();
     var showBanner = !consentFeature?.CanTrack ?? false;
     var cookieString = consentFeature?.CreateConsentCookie();

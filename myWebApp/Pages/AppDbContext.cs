@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace myWebApp.Pages.Product
 {
     public class AppDbContext : IdentityDbContext<ApplicationDbUser>
-    { 
+    {
         public AppDbContext(DbContextOptions options) : base(options) { }
 
         public DbSet<Product> Products { get; set; }

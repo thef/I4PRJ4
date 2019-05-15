@@ -42,6 +42,7 @@ using myWebApp;
                 return __backed__tagHelperScopeManager;
             }
         }
+        private global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.BodyTagHelper __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_BodyTagHelper;
         private global::Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper __Microsoft_AspNetCore_Mvc_TagHelpers_FormTagHelper;
         private global::Microsoft.AspNetCore.Mvc.TagHelpers.RenderAtEndOfFormTagHelper __Microsoft_AspNetCore_Mvc_TagHelpers_RenderAtEndOfFormTagHelper;
         private global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper;
@@ -49,7 +50,7 @@ using myWebApp;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
 #line 3 "/Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/Pages/Chat/Client/ChatClient.cshtml"
-  
+
     ViewData["Title"] = "Welcome to the Customersupport";
 
 #line default

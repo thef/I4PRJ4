@@ -42,12 +42,13 @@ using myWebApp;
                 return __backed__tagHelperScopeManager;
             }
         }
+        private global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.BodyTagHelper __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_BodyTagHelper;
         private global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper;
         #pragma warning disable 1998
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
 #line 3 "/Users/danielappelgren/Documents/GitHub/I4PRJ4/myWebApp/Pages/Chat/Server/ChatServer.cshtml"
-  
+
     ViewData["Title"] = "ChatHub";
 
 #line default
@@ -81,14 +82,14 @@ Write(ViewData["Title"]);
                     <label class=""col-xs-12"">Message:</label>
                     <input type=""text"" id=""messageInput1"" class=""form-control"" />
                     <hr />
-                    <button type=""submit"" class=""btn btn-primary"" id=""SendButton1"">Send Message</button> 
+                    <button type=""submit"" class=""btn btn-primary"" id=""SendButton1"">Send Message</button>
                 </div>
 
-                <div class=""col-xs-12 col-sm-6"">    
-                    <label class=""col-xs-12"">Chat Group 2:</label>          
+                <div class=""col-xs-12 col-sm-6"">
+                    <label class=""col-xs-12"">Chat Group 2:</label>
                  ");
             WriteLiteral(@"   <textarea style=""resize:none"" rows=""15"" cols=""50"" id=""TextArea2"" readonly="""" class=""form-control"" type=""text""></textarea>
-                    <br /> 
+                    <br />
                     <label class=""col-xs-12"">Message:</label>
                     <input type=""text"" id=""messageInput2"" class=""form-control"" />
                     <hr />
@@ -96,7 +97,7 @@ Write(ViewData["Title"]);
                 </div>
                 <hr />
             </div>
-        </div>  
+        </div>
     </div>
 </div>
 
