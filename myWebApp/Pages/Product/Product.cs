@@ -12,7 +12,7 @@ namespace myWebApp.Pages.Product
         [Required, StringLength(25)]
         public string Name { get; set; }
 
-        [Required, StringLength(40)]
+        [Required, StringLength(150)]
         public string Description { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Stock must be atleast: 0!")]
