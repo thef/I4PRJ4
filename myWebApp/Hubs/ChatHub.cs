@@ -21,9 +21,9 @@ namespace SignalRChat.Hubs
             //await Clients.All.SendAsync("ReceiveMessage", user, message);
             await Clients.Group(groupName).SendAsync("ReceiveMessage", user, message, groupName);
             //Add message and user to database.
-            //myWebApp.Pages.Chat.Message newMsg = new myWebApp.Pages.Chat.Message(user, message);
-            //_db.Messages.Add(newMsg);
-            //await _db.SaveChangesAsync();
+            myWebApp.Pages.Chat.Message newMsg = new myWebApp.Pages.Chat.Message(user, message);
+            _db.Messages.Add(newMsg);
+            await _db.SaveChangesAsync();
         }
         
         public async Task AddToGroup(string groupName)
