@@ -22,6 +22,9 @@ namespace myWebApp.Pages.Product
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
+        [Required, StringLength(25)]
+        public string Department { get; set; }
+
         public List<Cart.cart> Carts { get; set; }
     }
 }

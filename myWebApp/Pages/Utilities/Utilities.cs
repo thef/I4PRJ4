@@ -24,7 +24,7 @@ namespace myWebApp.Pages.Utilities
 
             return builder.Options;
         }
-
+        
         /*
         public static DbContextOptions<ApplicationDbContext> TestApplicationDbContext()
         {

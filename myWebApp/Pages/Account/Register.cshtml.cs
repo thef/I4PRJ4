@@ -36,14 +36,14 @@ namespace myWebApp.Pages.Account
         }
 
         [TempData]
-        public String StatusMessage { get; set; }
-
-        [BindProperty]
-        public InputModel Input { get; set; }
+        public string StatusMessage { get; set; }
 
         public string ReturnUrl { get; set; }
 
         public string Username { get; set; }
+
+        [BindProperty]
+        public InputModel Input { get; set; }
 
         public class InputModel
         {
@@ -70,7 +70,7 @@ namespace myWebApp.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             //Used to set redirect-option. This will redirect User back to the page which they come from,
             //after some process is completed.
