@@ -33,6 +33,9 @@ namespace myWebApp.Pages.Product
                 return Page();
             }
 
+            //Work around for Product.Department in LagerKing App.
+            Product.Department = string.Empty;
+
             _db.Products.Add(Product);
             await _db.SaveChangesAsync();
 
