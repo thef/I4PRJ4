@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.2">
+<diagram program="umlet" version="14.3.0">
   <zoom_level>10</zoom_level>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>320</x>
-      <y>160</y>
+      <y>150</y>
       <w>190</w>
       <h>300</h>
     </coordinates>
@@ -18,7 +18,7 @@ halign=center</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>340</x>
-      <y>210</y>
+      <y>200</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
@@ -30,24 +30,24 @@ fra lager</panel_attributes>
     <id>UMLActor</id>
     <coordinates>
       <x>160</x>
-      <y>270</y>
+      <y>260</y>
       <w>140</w>
       <h>110</h>
     </coordinates>
     <panel_attributes>Lagermedarbejder
-bg=black</panel_attributes>
+bg=Blue</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>250</x>
-      <y>230</y>
+      <y>220</y>
       <w>110</w>
       <h>100</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-bg=black
+bg=blue
 </panel_attributes>
     <additional_attributes>90.0;10.0;10.0;80.0</additional_attributes>
   </element>
@@ -55,12 +55,12 @@ bg=black
     <id>Relation</id>
     <coordinates>
       <x>250</x>
-      <y>280</y>
+      <y>270</y>
       <w>110</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-bg=black
+bg=blue
 </panel_attributes>
     <additional_attributes>90.0;10.0;10.0;30.0</additional_attributes>
   </element>
@@ -68,12 +68,12 @@ bg=black
     <id>Relation</id>
     <coordinates>
       <x>250</x>
-      <y>300</y>
+      <y>290</y>
       <w>110</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-bg=black
+bg=blue
 </panel_attributes>
     <additional_attributes>90.0;50.0;10.0;10.0</additional_attributes>
   </element>
@@ -81,7 +81,7 @@ bg=black
     <id>UMLUseCase</id>
     <coordinates>
       <x>340</x>
-      <y>270</y>
+      <y>260</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
@@ -93,7 +93,7 @@ produkt fra lager</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>340</x>
-      <y>330</y>
+      <y>320</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
@@ -105,7 +105,7 @@ produkt fra lager</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>150</x>
-      <y>110</y>
+      <y>100</y>
       <w>480</w>
       <h>420</h>
     </coordinates>
@@ -116,7 +116,7 @@ produkt fra lager</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>340</x>
-      <y>390</y>
+      <y>380</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
@@ -128,12 +128,12 @@ Filhåndtering</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>250</x>
-      <y>300</y>
+      <y>290</y>
       <w>110</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
-bg=black
+bg=blue
 </panel_attributes>
     <additional_attributes>90.0;110.0;10.0;10.0</additional_attributes>
   </element>
