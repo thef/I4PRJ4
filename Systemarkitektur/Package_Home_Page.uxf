@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>240</x>
-      <y>145</y>
+      <x>225</x>
+      <y>160</y>
       <w>265</w>
       <h>205</h>
     </coordinates>
@@ -41,8 +41,8 @@ IndexModel : PageModel
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>800</x>
-      <y>145</y>
+      <x>505</x>
+      <y>255</y>
       <w>265</w>
       <h>50</h>
     </coordinates>
@@ -58,8 +58,8 @@ PrivacyModel : PageModel
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>520</x>
-      <y>145</y>
+      <x>505</x>
+      <y>160</y>
       <w>265</w>
       <h>70</h>
     </coordinates>
@@ -77,10 +77,10 @@ ShowRequestId :Bool
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>145</x>
-      <y>100</y>
-      <w>940</w>
-      <h>415</h>
+      <x>150</x>
+      <y>130</y>
+      <w>635</w>
+      <h>375</h>
     </coordinates>
     <panel_attributes>Package HomePage</panel_attributes>
     <additional_attributes/>
@@ -88,8 +88,8 @@ ShowRequestId :Bool
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>180</x>
-      <y>405</y>
+      <x>165</x>
+      <y>420</y>
       <w>115</w>
       <h>70</h>
     </coordinates>
@@ -107,8 +107,8 @@ Product
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>235</x>
-      <y>375</y>
+      <x>220</x>
+      <y>390</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -118,8 +118,8 @@ Product
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>310</x>
-      <y>405</y>
+      <x>295</x>
+      <y>420</y>
       <w>115</w>
       <h>70</h>
     </coordinates>
@@ -136,8 +136,8 @@ Rating
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>345</y>
+      <x>345</x>
+      <y>360</y>
       <w>15</w>
       <h>70</h>
     </coordinates>
@@ -147,8 +147,8 @@ Rating
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
-      <y>405</y>
+      <x>425</x>
+      <y>420</y>
       <w>115</w>
       <h>70</h>
     </coordinates>
@@ -166,8 +166,8 @@ Cart
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
-      <y>375</y>
+      <x>345</x>
+      <y>390</y>
       <w>150</w>
       <h>40</h>
     </coordinates>
