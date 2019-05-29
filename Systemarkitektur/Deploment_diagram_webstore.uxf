@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<diagram program="umlet" version="14.2">
+<diagram program="umlet" version="14.3.0">
   <zoom_level>9</zoom_level>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>0</x>
-      <y>36</y>
-      <w>918</w>
-      <h>657</h>
+      <x>126</x>
+      <y>126</y>
+      <w>981</w>
+      <h>720</h>
     </coordinates>
     <panel_attributes>Deployment Diagram Webstore</panel_attributes>
     <additional_attributes/>
@@ -15,8 +15,8 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>225</x>
-      <y>180</y>
+      <x>351</x>
+      <y>243</y>
       <w>315</w>
       <h>333</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>297</x>
-      <y>333</y>
+      <x>423</x>
+      <y>396</y>
       <w>162</w>
       <h>63</h>
     </coordinates>
@@ -37,8 +37,8 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>297</x>
-      <y>243</y>
+      <x>423</x>
+      <y>306</y>
       <w>162</w>
       <h>63</h>
     </coordinates>
@@ -48,8 +48,8 @@
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>45</x>
-      <y>198</y>
+      <x>171</x>
+      <y>261</y>
       <w>126</w>
       <h>63</h>
     </coordinates>
@@ -60,8 +60,8 @@ Web-client</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>45</x>
-      <y>405</y>
+      <x>171</x>
+      <y>468</y>
       <w>126</w>
       <h>63</h>
     </coordinates>
@@ -72,8 +72,8 @@ LagerKing client</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>657</x>
-      <y>117</y>
+      <x>801</x>
+      <y>288</y>
       <w>225</w>
       <h>72</h>
     </coordinates>
@@ -83,8 +83,8 @@ LagerKing client</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>648</x>
-      <y>243</y>
+      <x>801</x>
+      <y>387</y>
       <w>225</w>
       <h>414</h>
     </coordinates>
@@ -94,8 +94,8 @@ LagerKing client</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>693</x>
-      <y>288</y>
+      <x>846</x>
+      <y>432</y>
       <w>135</w>
       <h>54</h>
     </coordinates>
@@ -105,8 +105,8 @@ LagerKing client</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>693</x>
-      <y>360</y>
+      <x>846</x>
+      <y>504</y>
       <w>135</w>
       <h>54</h>
     </coordinates>
@@ -116,8 +116,8 @@ LagerKing client</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>693</x>
-      <y>576</y>
+      <x>846</x>
+      <y>720</y>
       <w>135</w>
       <h>54</h>
     </coordinates>
@@ -127,8 +127,8 @@ LagerKing client</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>693</x>
-      <y>504</y>
+      <x>846</x>
+      <y>648</y>
       <w>135</w>
       <h>54</h>
     </coordinates>
@@ -138,8 +138,8 @@ LagerKing client</panel_attributes>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>693</x>
-      <y>432</y>
+      <x>846</x>
+      <y>576</y>
       <w>135</w>
       <h>54</h>
     </coordinates>
@@ -149,8 +149,8 @@ LagerKing client</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>162</x>
-      <y>216</y>
+      <x>288</x>
+      <y>279</y>
       <w>81</w>
       <h>135</h>
     </coordinates>
@@ -160,8 +160,8 @@ LagerKing client</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>162</x>
-      <y>324</y>
+      <x>288</x>
+      <y>387</y>
       <w>81</w>
       <h>126</h>
     </coordinates>
@@ -171,37 +171,58 @@ LagerKing client</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
-      <y>360</y>
-      <w>135</w>
-      <h>99</h>
+      <x>657</x>
+      <y>423</y>
+      <w>162</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>Connection
 lt=-
 </panel_attributes>
-    <additional_attributes>10.0;10.0;130.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;160.0;180.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
-      <y>144</y>
-      <w>144</w>
-      <h>243</h>
+      <x>657</x>
+      <y>315</y>
+      <w>162</w>
+      <h>135</h>
     </coordinates>
-    <panel_attributes>lt=-
-API</panel_attributes>
-    <additional_attributes>10.0;250.0;140.0;10.0</additional_attributes>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;130.0;160.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLDeployment</id>
     <coordinates>
-      <x>297</x>
-      <y>423</y>
+      <x>423</x>
+      <y>486</y>
       <w>162</w>
       <h>63</h>
     </coordinates>
     <panel_attributes>User profile</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLDeployment</id>
+    <coordinates>
+      <x>801</x>
+      <y>189</y>
+      <w>225</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Logging (Google analytics)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>657</x>
+      <y>225</y>
+      <w>162</w>
+      <h>225</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;230.0;160.0;10.0</additional_attributes>
   </element>
 </diagram>
