@@ -44,7 +44,6 @@ namespace myWebApp
         public async Task OnGetAsync()
         {
             Products = await _db.Products.AsNoTracking().ToListAsync();
-
             Rates = await _db.Rates.AsNoTracking().ToListAsync();
         }
 

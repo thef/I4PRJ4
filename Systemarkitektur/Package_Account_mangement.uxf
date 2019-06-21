@@ -62,14 +62,13 @@ IndexModel : PageModel
       <x>90</x>
       <y>335</y>
       <w>115</w>
-      <h>50</h>
+      <h>35</h>
     </coordinates>
     <panel_attributes>&lt;&lt;public class&gt;&gt;
 InputModel
 --
 «get/set» +Email: string
-«get/set» +Password: string
-«get/set» +RememberMe: bool
+
 </panel_attributes>
     <additional_attributes/>
   </element>

@@ -54,7 +54,7 @@
       <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;device&gt;&gt;
-Web client</panel_attributes>
+Web-client</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -66,7 +66,7 @@ Web client</panel_attributes>
       <h>63</h>
     </coordinates>
     <panel_attributes>&lt;&lt;device&gt;&gt;
-Stock client</panel_attributes>
+LagerKing client</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
