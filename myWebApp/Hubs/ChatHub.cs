@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 using myWebApp.Pages.Product;
+using myWebApp.Hubs.CustomerQueue
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 //namespace myWebApp.Pages.Chat
 
@@ -9,6 +10,7 @@ namespace SignalRChat.Hubs
 {
     public class ChatHub : Hub, IChatHub
     {
+        private CustomerQueue queue_ = new CustomerQueue(100);
         public AppDbContext _db;
         
         public ChatHub()//AppDbContext db)
@@ -25,7 +27,12 @@ namespace SignalRChat.Hubs
             //_db.Messages.Add(newMsg);
             //await _db.SaveChangesAsync();
         }
-        
+
+        public async Task NewConnection(string name)
+        {
+            s
+        }
+
         public async Task AddToGroup(string name, string groupName)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
