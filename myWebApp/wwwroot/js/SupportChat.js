@@ -12,6 +12,13 @@ connection.on("ReceiveMessage", function (user, message, groupName) {
     document.getElementById(SelectedArea).value = document.getElementById(SelectedArea).value + encodedMsg + "\n";
 });
 
+connection.on("ReceiveErrorMessage",
+    function(message, groupName) {
+        var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        var SelectedArea = "TextArea" + groupName;
+        document.getElementById(SelectedArea).value = document.getElementById(SelectedArea).value + msg + "\n";
+    });
+
 //Receive Groupnotification
 connection.on("ReceiveGroupNotification", function (message, groupName) {
     var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -34,6 +41,19 @@ document.getElementById("SendButton1").addEventListener("click", function () {
 document.getElementById("SendButton2").addEventListener("click", function () {
     sendMessage(2);
 });
+
+document.getElementById("NextButton1").addEventListener("click", function () {
+    next(1);
+});
+
+document.getElementById("NextButton2").addEventListener("click", function () {
+    next(2);
+});
+
+// Get next customer in queue
+function next(Selector) {
+    connection.invoke("NextInQueue", Selector);
+}
 
 //Connect Function
 function connect(Selector)

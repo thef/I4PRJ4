@@ -138,7 +138,6 @@ C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\bin\Debug\netcoreapp2.2\myWebApp
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\bin\Debug\netcoreapp2.2\myWebApp.pdb
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\bin\Debug\netcoreapp2.2\myWebApp.Views.dll
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\bin\Debug\netcoreapp2.2\myWebApp.Views.pdb
-C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.csprojAssemblyReference.cache
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.csproj.CoreCompileInputs.cache
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.RazorAssemblyInfo.cache
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.RazorAssemblyInfo.cs
@@ -183,3 +182,4 @@ C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.dll
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.pdb
 C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.csproj.CopyComplete
+C:\Users\Sebas\Documents\GitHub\I4PRJ4\myWebApp\obj\Debug\netcoreapp2.2\myWebApp.csprojAssemblyReference.cache

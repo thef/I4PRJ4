@@ -9,16 +9,14 @@ namespace myWebApp.Hubs.CustomerQueue
 {
     public class Customer
     {
-        public Customer(string name, string groupName, string connectionId)
+        public Customer(string name, string connectionId)
         {
             name_ = name;
-            groupName_ = groupName;
             connectionID_ = connectionId;
         }
 
-        private string connectionID_;
-        private string name_;
-        private string groupName_;
+        public string connectionID_;
+        public string name_;
     }
 
     public class CustomerQueue
@@ -32,13 +30,14 @@ namespace myWebApp.Hubs.CustomerQueue
         public CustomerQueue(int maxSize)
         {
             maxSize_ = maxSize;
+            cq_ = new Queue<Customer>();
         }
 
-        public void Enqueue(string name, string groupName, string connectionId)
+        public void Enqueue(string name, string connectionId)
         {
+            Customer newCustomer = new Customer(name, connectionId);
 
-            Customer newCustomer = new Customer(name, groupName, connectionId);
-
+            // Synchronization
             mut_.WaitOne();
             cq_.Enqueue(newCustomer);
             mut_.ReleaseMutex();

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 using myWebApp.Pages.Product;
-using myWebApp.Hubs.CustomerQueue
+using myWebApp.Hubs.CustomerQueue;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 //namespace myWebApp.Pages.Chat
 
@@ -10,27 +11,42 @@ namespace SignalRChat.Hubs
 {
     public class ChatHub : Hub, IChatHub
     {
-        private CustomerQueue queue_ = new CustomerQueue(100);
+        public static CustomerQueue queue_ = new CustomerQueue(100);
         public AppDbContext _db;
         
         public ChatHub()//AppDbContext db)
         {
+            
             //_db = db;
         }
 
         public async Task SendMessage(string user, string message, string groupName)
         {
-            //await Clients.All.SendAsync("ReceiveMessage", user, message);
             await Clients.Group(groupName).SendAsync("ReceiveMessage", user, message, groupName);
-            //Add message and user to database.
-            //myWebApp.Pages.Chat.Message newMsg = new myWebApp.Pages.Chat.Message(user, message);
-            //_db.Messages.Add(newMsg);
-            //await _db.SaveChangesAsync();
         }
 
         public async Task NewConnection(string name)
         {
-            s
+           queue_.Enqueue(name,Context.ConnectionId);
+           await Clients.Caller.SendAsync("ReceiveMessage_NewConnection", "Hello " + name + ", you are now in queue");
+        }
+
+        public async Task NextInQueue(string groupName)
+        {
+            try
+            {
+                Customer nextCustomer = queue_.Dequeue();
+                await Groups.AddToGroupAsync(nextCustomer.connectionID_, groupName);
+
+                //Send groupnumber to client
+                await Clients.Client(nextCustomer.connectionID_).SendAsync("ReceiveGroupNumber", groupName);
+                await Clients.Group(groupName).SendAsync("ReceiveGroupNotification",
+                    nextCustomer.name_ + "has joined the chat.", groupName);
+            }
+            catch
+            {
+                await Clients.Caller.SendAsync("ReceiveErrorMessage", "ERROR: Queue is empty", groupName);
+            }
         }
 
         public async Task AddToGroup(string name, string groupName)

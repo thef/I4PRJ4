@@ -25,39 +25,21 @@
 <h3>@ViewData["Title"]</h3>
 
 <div class="row">
-    <div class="col-md-6">
-        <form>
-            <h5>Start a chat session</h5>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <label>Enter your name:</label><br />
+            <input id="usernameInput" class="form-control" /><br/>
+            <button type="button" class="btn btn-primary" id="startChatButton">Start Chat</button><br />
+            <textarea style="resize:none" rows="15" cols="100" id="TextArea1" readonly="" class="form-control" type="text"></textarea>
+            <br />
+            <label class="col-xs-12">Message:</label>
+            <input type="text" id="messageInput1" class="form-control" />
             <hr />
-            <div class="form-group">
-                <label>Username</label>
-                <input id="userInput" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label>Message</label>
-                <input type="text" id="messageInput" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label>Group</label>
-                <input id="groupInput" class="form-control" />
-            </div>
-            <hr />
-            <button type="button" class="btn btn-primary" id="connectButton">Connect</button>
-            <button type="button" class="btn btn-primary" id="sendButton">Send Message</button>
-            <button type="button" class="btn btn-primary" id="disconnectButton">Disconnect</button>
-        </form>
-
-        <br />
-
-        <form>
-            <h5>Chat log</h5>
-            <hr />
-            <div>
-                <ul id="messagesList"></ul>
-            </div>
-        </form>
+            <button type="submit" class="btn btn-primary" id="SendButton1">Send Message</button>
+        </div>
     </div>
-</div>
+</div>    
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
