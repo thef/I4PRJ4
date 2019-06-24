@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 using myWebApp.Pages.Product;
-using myWebApp.Hubs.CustomerQueue
+using myWebApp.Hubs.CustomerQueue;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 //namespace myWebApp.Pages.Chat
 
@@ -30,7 +30,7 @@ namespace SignalRChat.Hubs
 
         public async Task NewConnection(string name)
         {
-            s
+            //s
         }
 
         public async Task AddToGroup(string name, string groupName)
