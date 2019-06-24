@@ -31,30 +31,46 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <!--Deny access to edit and delete IF NOT Admin or manager role-->
+                        <!--Manager & Admin abilities-->
                         @if (User.IsInRole("Admin") || User.IsInRole("Manager"))
                         {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Product/Create">Create</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Product/Create">Create</a>
+                            </li>
                         }
-                        <!--Deny access to edit and delete IF NOT Admin role-->
+                        <!--Admin abilities-->
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Roles/ManageRoles">Admin</a>
-                        </li>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Roles/ManageRoles">Admin</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Chat/Server/ChatServer">Support-chat</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Chat/Client/ChatClient">Costumer-chat</a>
+                            </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Chat/Server/ChatServer">Supporter ChatPage</a>
-                        </li>
+                        <!--Customer abilities-->
+                        @if (User.IsInRole("Customer"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Chat/Client/ChatClient">Costumer-chat</a>
+                            </li>
+                        }
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Chat/Client/ChatClient">Costumer Chatpage</a>
-                        </li>
+                        <!--Support abilities-->
+                        @if (User.IsInRole("Support"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Chat/Server/ChatServer">Support-chat</a>
+                            </li>
+                        }
 
+                        <!--Anybody abilities-->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Product/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
 
                         <li class="nav-item">

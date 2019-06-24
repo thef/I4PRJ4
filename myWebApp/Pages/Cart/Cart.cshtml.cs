@@ -30,21 +30,21 @@ namespace myWebApp.Pages.Cart
         }
         private readonly UserManager<ApplicationDbUser> _userManager;
 
-        public int getprice(cart c)
+        public decimal getprice(cart c)
         {
             var price = c.Quantity * c.Product.Price;
             return price;
         }
 
-        public int FullPrice()
+        public decimal FullPrice()
         {
-            int Price=0;
+            decimal price = 0;
             foreach (var product in Carts)
             {
-                Price += product.Product.Price * product.Quantity;
+                price += product.Product.Price * product.Quantity;
             }
 
-            return Price;
+            return price;
         }
         [TempData]
         public string StatusMessage { get; set; }
@@ -135,7 +135,7 @@ namespace myWebApp.Pages.Cart
                 else
                 {
                     _db.Carts.Remove(Cart);
-                    Product.Stock += Cart.Quantity;
+                    Product.Stock += Convert.ToInt16(Cart.Quantity);
                     _db.Attach(Product).State = EntityState.Modified;
 
                     await _db.SaveChangesAsync();
@@ -162,7 +162,7 @@ namespace myWebApp.Pages.Cart
             {
                 //Remove selected product.
                 _db.Carts.Remove(Cart);
-                Product.Stock+=Cart.Quantity;
+                Product.Stock += Convert.ToInt16(Cart.Quantity);
                 _db.Attach(Product).State = EntityState.Modified;
 
                 await _db.SaveChangesAsync();

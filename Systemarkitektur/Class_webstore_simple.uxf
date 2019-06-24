@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>343</x>
+      <y>448</y>
+      <w>259</w>
+      <h>294</h>
+    </coordinates>
+    <panel_attributes>Account management
+--
+bg=orange
+layer=1
+group=3
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>364</x>
+      <y>490</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Register
+bg=cyan
+layer=2
+group=3
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>637</x>
+      <y>448</y>
+      <w>259</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>Account access
+--
+bg=orange
+layer=1
+group=2
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>364</x>
+      <y>616</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>ConfirmMail
+bg=cyan
+layer=3
+group=3
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>777</x>
+      <y>483</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Logout
+bg=cyan
+layer=3
+group=2
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>483</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Login
+bg=cyan
+layer=2
+group=2
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>483</x>
+      <y>490</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Index
+bg=cyan
+layer=2
+group=3
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>931</x>
+      <y>448</y>
+      <w>259</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>Account recovery
+--
+bg=orange
+layer=1
+group=1
+fontsize=20
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>952</x>
+      <y>483</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Forgot
+Password
+bg=cyan
+layer=2
+group=1
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1071</x>
+      <y>483</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Reset
+Password
+bg=cyan
+layer=2
+group=1
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>189</x>
+      <y>161</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Edit
+bg=white
+layer=3
+group=4
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>161</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Create
+bg=white
+layer=2
+group=4
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>49</x>
+      <y>126</y>
+      <w>259</w>
+      <h>294</h>
+    </coordinates>
+    <panel_attributes>Product management
+--
+bg=blue
+layer=1
+group=4
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>672</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Access
+Denied
+bg=cyan
+layer=2
+group=5
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>777</x>
+      <y>672</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Lockout
+bg=cyan
+layer=2
+group=5
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>637</x>
+      <y>637</y>
+      <w>259</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>Account denied
+--
+bg=orange
+layer=1
+
+group=5
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>343</x>
+      <y>126</y>
+      <w>259</w>
+      <h>294</h>
+    </coordinates>
+    <panel_attributes>Chat
+--
+bg=red
+layer=1
+group=9
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>952</x>
+      <y>672</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>ManageRoles
+bg=cyan
+layer=2
+group=10
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>931</x>
+      <y>637</y>
+      <w>259</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>Account role
+--
+bg=orange
+layer=1
+
+group=10
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>189</x>
+      <y>483</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>BuyFirst
+Page
+bg=white
+layer=3
+group=11
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>483</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Cart
+bg=white
+layer=2
+group=11
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>49</x>
+      <y>448</y>
+      <w>259</w>
+      <h>294</h>
+    </coordinates>
+    <panel_attributes>Product cart
+--
+bg=blue
+layer=1
+group=11
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>616</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>BuySecond
+Page
+bg=white
+layer=2
+group=11
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>189</x>
+      <y>616</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>BuyThird
+Page
+bg=white
+layer=2
+group=11
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>483</x>
+      <y>161</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>ChatClient
+bg=yellow
+layer=2
+group=9
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>364</x>
+      <y>161</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>ChatServer
+bg=yellow
+layer=2
+group=9
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>637</x>
+      <y>126</y>
+      <w>259</w>
+      <h>294</h>
+    </coordinates>
+    <panel_attributes>HomePage
+--
+bg=green
+layer=1
+
+group=12
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>161</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Index
+bg=white
+layer=2
+group=12
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>777</x>
+      <y>161</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Error
+bg=white
+layer=2
+group=12
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>658</x>
+      <y>294</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Privacy
+bg=white
+layer=2
+group=12
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>21</x>
+      <y>63</y>
+      <w>1197</w>
+      <h>777</h>
+    </coordinates>
+    <panel_attributes>Package Web-klient
+fontsize=25</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>294</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Delete
+bg=white
+layer=2
+group=4
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>777</x>
+      <y>294</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Rating
+bg=white
+layer=2
+group=12
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1071</x>
+      <y>294</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Google 
+Analytics
+taghelper
+bg=yellow
+layer=2
+group=13
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>952</x>
+      <y>294</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>Google 
+Analytics
+options
+bg=yellow
+layer=2
+group=13
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>931</x>
+      <y>259</y>
+      <w>259</w>
+      <h>161</h>
+    </coordinates>
+    <panel_attributes>Logging
+--
+bg=cyan
+layer=1
+
+group=13
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>364</x>
+      <y>287</y>
+      <w>98</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>ChatHub
+bg=yellow
+layer=2
+group=9
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

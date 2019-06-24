@@ -17,7 +17,7 @@ namespace myWebApp.Pages.Product
 
         public CreateModel(AppDbContext db)
         {
-            _db = db;
+            _db = db; 
         }
 
         [TempData]
@@ -32,6 +32,9 @@ namespace myWebApp.Pages.Product
             {
                 return Page();
             }
+
+            //Work around for Product.Department in LagerKing App.
+            Product.Department = string.Empty;
 
             _db.Products.Add(Product);
             await _db.SaveChangesAsync();

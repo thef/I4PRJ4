@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>0</x>
+      <y>90</y>
+      <w>865</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>Package Account management</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>20</x>
+      <y>130</y>
+      <w>265</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+IndexModel : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
+-_roleManager: RoleManager&lt;IdentityRole&gt; {readonly}
+-_emailSender: IEmailSender {readonly}
+«get/set» +username: String
+«get/set» +roles: IList&lt;string&gt;
+«get/set» +IsEmailConfirmed: bool
+«get/set» +statusMessage: String
+«get/set» +input: InputModel
+
+--
+«constructor» +RegisterModel(
+            userManager: UserManager&lt;ApplicationDbUser&gt;,
+            signInManager: SignInManager&lt;ApplicationDbUser&gt;,
+            roleManager: RoleManager&lt;IdentityRole&gt;,
+            emailSender: IEmailSender)
++OnGetAsync(): Task&lt;IActionResult&gt;
++OnPostAsync(): Task&lt;IActionResult&gt;
++OnPostSendVerificationEmailAsync(): Task&lt;IActionResult&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>145</x>
+      <y>300</y>
+      <w>15</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
+      <y>335</y>
+      <w>115</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+InputModel
+--
+«get/set» +Email: string
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>300</x>
+      <y>130</y>
+      <w>265</w>
+      <h>185</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+RegisterModel : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
+-_roleManager: RoleManager&lt;IdentityRole&gt; {readonly}
+-_emailSender: IEmailSender {readonly}
+«get/set» +statusMessage: String
+«get/set» +input: InputModel
+«get/set» +username: String
+«get/set» +returnUrl: String
+--
+«constructor» +RegisterModel(
+            userManager: UserManager&lt;ApplicationDbUser&gt;,
+            signInManager: SignInManager&lt;ApplicationDbUser&gt;,
+            roleManager: RoleManager&lt;IdentityRole&gt;,
+            emailSender: IEmailSender)
++OnGet(string returnUrl = null): void
++OnPostAsync(string returnUrl = null): Task&lt;IActionResult&gt;
++FirstAccountAdmin(ApplicationDbUser user): Task
++GenerateEmailConfirmation(ApplicationDbUser user): Task&lt;String&gt;
++SendEmailConfirmation(ApplicationDbUser user, string callbackUrl): Task
+ 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>310</y>
+      <w>15</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>370</x>
+      <y>340</y>
+      <w>130</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+InputModel
+--
+«get/set» +Email: string
+«get/set» +Password: string
+«get/set» +ConfirmPassword: sting
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>580</x>
+      <y>130</y>
+      <w>265</w>
+      <h>75</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ConfirmEmailModel : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+
+--
+«constructor» +ConfirmEmailModel(
+            userManager: UserManager&lt;ApplicationDbUser&gt;)
++OnGetAsync(string userId, string code): Task&lt;IActionResult&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

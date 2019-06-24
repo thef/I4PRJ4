@@ -17,14 +17,10 @@ namespace myWebApp.Pages.Account
     {
         private readonly SignInManager<ApplicationDbUser> _signInManager;
 
-        private readonly ILogger<LoginModel> _logger;
-
         public LoginModel(
-            SignInManager<ApplicationDbUser> signInManager,
-            ILogger<LoginModel> logger)
+            SignInManager<ApplicationDbUser> signInManager)
         {
             _signInManager = signInManager;
-            _logger = logger;
         }
 
         [BindProperty]
@@ -77,25 +73,19 @@ namespace myWebApp.Pages.Account
 
             if (ModelState.IsValid)
             {
-                //Sign in User with it's information.
+                //SignIn User with it's information.
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
                     StatusMessage = $"User was logged in! with Email: {Input.Email}.";
 
-                    //Write to log
-                    _logger.LogInformation($"User: {Input.Email} logged in.");
-
-                    //Using LocalRedirect to ensures that the "returnUrl" is a route actually on your site. For safe.
+                    //Using LocalRedirect to ensures that the "returnUrl" is a route actually on your site. For safety.
                     return LocalRedirect(returnUrl);
                 }
 
                 if (result.IsLockedOut)
                 {
                     StatusMessage = $"User was lockout due to to many failed logins in! with Email: {Input.Email}.";
-
-                    //Write to log
-                    _logger.LogWarning($"User: {Input.Email} locked out.");
 
                     //Redirect User to lockout-page.
                     return RedirectToPage("./Lockout");

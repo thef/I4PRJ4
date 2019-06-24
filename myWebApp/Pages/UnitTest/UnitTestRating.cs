@@ -149,7 +149,7 @@ namespace myWebApp.Pages.Product
             using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
             using (var fakeUserManager = new Mock<FakeUserManager>().Object)
             {
-                //---* FOR USAGE OF User.Identity.Name *---//
+                //---* FOR USAGE OF User.Identity *---//
 
                 //Create test user
                 var fakeIdentity = new GenericIdentity("User");
@@ -274,7 +274,7 @@ namespace myWebApp.Pages.Product
             using (var db = new AppDbContext(Utilities.Utilities.TestAppDbContext()))
             using (var fakeUserManager = new Mock<FakeUserManager>().Object)
             {
-                //---* FOR USAGE OF User.Identity.Name *---//
+                //---* FOR USAGE OF User.Identity *---//
 
                 //Create test user
                 var fakeIdentity = new GenericIdentity("User");

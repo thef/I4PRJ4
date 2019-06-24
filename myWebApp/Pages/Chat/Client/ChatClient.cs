@@ -21,18 +21,6 @@ namespace myWebApp.Pages.Chat.Client
     [Authorize(Roles = "Admin,Customer")]
     public class ChatClient : PageModel
     {
-        private readonly AppDbContext _db;
-
-        public ChatClient(AppDbContext db)
-        {
-            _db = db;
-        }
-
-        //public void OnGet()
-        //{
-        //    //Get all messages from database.
-        //    Messages = _db.Messages.AsNoTracking().ToList();
-        //}
-
+        
     }
 }

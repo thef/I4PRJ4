@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using myWebApp.Pages.Product;
 
@@ -15,9 +14,7 @@ namespace myWebApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "2.2.2-servicing-10034");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -37,8 +34,7 @@ namespace myWebApp.Migrations
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
                 });
@@ -46,8 +42,7 @@ namespace myWebApp.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
 
@@ -66,8 +61,7 @@ namespace myWebApp.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("ClaimType");
 
@@ -174,8 +168,7 @@ namespace myWebApp.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+                        .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -183,8 +176,7 @@ namespace myWebApp.Migrations
             modelBuilder.Entity("myWebApp.Pages.Cart.Order", b =>
                 {
                     b.Property<int>("orderId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -235,29 +227,6 @@ namespace myWebApp.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("myWebApp.Pages.Cart.OrderDetail", b =>
-                {
-                    b.Property<int>("OrderDetailId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("OrderId");
-
-                    b.Property<int>("ProductId");
-
-                    b.Property<int>("Quantity");
-
-                    b.Property<double?>("UnitPrice");
-
-                    b.Property<string>("Username");
-
-                    b.HasKey("OrderDetailId");
-
-                    b.HasIndex("OrderId");
-
-                    b.ToTable("OrderDeteails");
-                });
-
             modelBuilder.Entity("myWebApp.Pages.Cart.cart", b =>
                 {
                     b.Property<string>("UserId");
@@ -276,8 +245,7 @@ namespace myWebApp.Migrations
             modelBuilder.Entity("myWebApp.Pages.Chat.Message", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Msg");
 
@@ -291,18 +259,19 @@ namespace myWebApp.Migrations
             modelBuilder.Entity("myWebApp.Pages.Product.Product", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Department");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(40);
+                        .HasMaxLength(150);
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(25);
 
-                    b.Property<int>("Price");
+                    b.Property<decimal>("Price");
 
                     b.Property<int>("Stock");
 
@@ -314,8 +283,7 @@ namespace myWebApp.Migrations
             modelBuilder.Entity("myWebApp.Rating", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .ValueGeneratedOnAdd();
 
                     b.Property<int>("ProductId");
 
@@ -370,14 +338,6 @@ namespace myWebApp.Migrations
                     b.HasOne("myWebApp.Pages.Account.ApplicationDbUser")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("myWebApp.Pages.Cart.OrderDetail", b =>
-                {
-                    b.HasOne("myWebApp.Pages.Cart.Order")
-                        .WithMany("OrdersdDetails")
-                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

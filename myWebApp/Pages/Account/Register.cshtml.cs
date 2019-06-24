@@ -22,31 +22,28 @@ namespace myWebApp.Pages.Account
         private readonly SignInManager<ApplicationDbUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailSender _emailSender;
-        private readonly ILogger<RegisterModel> _logger;
 
         public RegisterModel(
-            UserManager<ApplicationDbUser> userManager,
+            UserManager<ApplicationDbUser> userManager, 
             SignInManager<ApplicationDbUser> signInManager,
             RoleManager<IdentityRole> roleManager,
-            IEmailSender emailSender,
-            ILogger<RegisterModel> logger)
+            IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _emailSender = emailSender;
-            _logger = logger;
         }
 
         [TempData]
-        public String StatusMessage { get; set; }
-
-        [BindProperty]
-        public InputModel Input { get; set; }
+        public string StatusMessage { get; set; }
 
         public string ReturnUrl { get; set; }
 
         public string Username { get; set; }
+
+        [BindProperty]
+        public InputModel Input { get; set; }
 
         public class InputModel
         {
@@ -73,7 +70,7 @@ namespace myWebApp.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             //Used to set redirect-option. This will redirect User back to the page which they come from,
             //after some process is completed.
@@ -113,9 +110,6 @@ namespace myWebApp.Pages.Account
 
                             StatusMessage = $"User created with Email: {Input.Email}. Please check your Email to confirm it.";
 
-                            //Write to log
-                            _logger.LogInformation($"User {Input.Email} was created.");
-
                         } else {
 
                         //Assign role to seleced user.
@@ -123,17 +117,14 @@ namespace myWebApp.Pages.Account
 
                         StatusMessage = $"User created with Email: {Input.Email}. Please check your Email to confirm it.";
 
-                        //Write to log
-                        _logger.LogInformation($"User {Input.Email} was assigned to role: Customer.");
-
                         }
 
                         //Sign created User in.
                         await _signInManager.SignInAsync(user, isPersistent: false);
 
                         //Send emailconfirmation to new created user.
-                        //var callbaclUrl = await GenerateEmailConfirmation(user);
-                        //await SendEmailConfirmation(user, callbaclUrl);
+                        var callbaclUrl = await GenerateEmailConfirmation(user);
+                        await SendEmailConfirmation(user, callbaclUrl);
 
                     //Using LocalRedirect to ensures that the "returnUrl" is a route actually on your site. For safe.
                     return LocalRedirect("/Index");
@@ -157,18 +148,34 @@ namespace myWebApp.Pages.Account
             if(!await _roleManager.RoleExistsAsync("Admin"))
             {
                 //Create the new role: Admin
-                var role = new IdentityRole();
-                role.Name = "Admin";
-                await _roleManager.CreateAsync(role);
+                var roleAdmin = new IdentityRole();
+                roleAdmin.Name = "Admin";
+                await _roleManager.CreateAsync(roleAdmin);
+
+                //Create the new role: Manager
+                var roleManager = new IdentityRole();
+                roleManager.Name = "Manager";
+                await _roleManager.CreateAsync(roleManager);
+
+                //Create the new role: Support
+                var roleSupport = new IdentityRole();
+                roleSupport.Name = "Support"; 
+                await _roleManager.CreateAsync(roleSupport);
+
+                //Create the new role: Customer
+                var roleCustomer = new IdentityRole();
+                roleCustomer.Name = "Customer";
+                await _roleManager.CreateAsync(roleCustomer);
 
                 //Assign role to seleced user.
-                await _userManager.AddToRoleAsync(user, role.Name);
+                await _userManager.AddToRoleAsync(user, roleAdmin.Name);
 
                 //Sign User in.
                 await _signInManager.SignInAsync(user, isPersistent: false);
 
                 //Send emailconfirmation to new created user.
-                //var callbaclUrl = await GenerateEmailConfirmation(user);
+                var callbaclUrl = await GenerateEmailConfirmation(user);
+                await SendEmailConfirmation(user, callbaclUrl);
             }
         }
 

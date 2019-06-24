@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>60</x>
+      <y>110</y>
+      <w>350</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+CreateModel : PageModel
+--
+-_db: AppDbContext {readonly}
+«get/set» +statusMessage: String
+«get/set» +product: Product
+--
+«constructor» +CreateModel(db: AppDbContext)
++OnPostAsync(): Task&lt;IActionResult&gt;
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>440</x>
+      <y>110</y>
+      <w>350</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+EditModel : PageModel
+--
+-_db: AppDbContext {readonly}
+«get/set» +statusMessage: String
+«get/set» +product: Product
+--
+«constructor» +EditModel(db: AppDbContext)
++OnPostAsync(): Task&lt;IActionResult&gt; 
++OnGetAsync(int id): Task&lt;IActionResult&gt; 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>270</y>
+      <w>220</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>200.0;10.0;200.0;80.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>230</x>
+      <y>270</y>
+      <w>220</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;200.0;80.0;200.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>310</x>
+      <y>380</y>
+      <w>230</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+Product
+--
+«get/set» +Id: int
+«get/set» +Name: string
+«get/set» +Description: sting
+«get/set» +Stock: int
+«get/set» +Price: int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>30</x>
+      <y>30</y>
+      <w>790</w>
+      <h>520</h>
+    </coordinates>
+    <panel_attributes>Package Product</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

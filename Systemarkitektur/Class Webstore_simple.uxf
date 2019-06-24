@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>4</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>184</y>
+      <w>200</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>
+PageModel
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>40</x>
+      <y>76</y>
+      <w>3696</w>
+      <h>380</h>
+    </coordinates>
+    <panel_attributes>Class Webstore
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>428</x>
+      <y>136</y>
+      <w>108</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>
+ModelStateDictionary
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>476</x>
+      <y>156</y>
+      <w>12</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>68</x>
+      <y>236</y>
+      <w>140</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+CreateModel : PageModel
+--
+-_db: AppDbContext {readonly}
+«get/set» +statusMessage: String
+«get/set» +product: Product
+--
+«constructor» +CreateModel(db: AppDbContext)
++OnPostAsync(): Task&lt;IActionResult&gt;
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>136</x>
+      <y>220</y>
+      <w>164</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>390.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>220</x>
+      <y>236</y>
+      <w>140</w>
+      <h>68</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+EditModel : PageModel
+--
+-_db: AppDbContext {readonly}
+«get/set» +statusMessage: String
+«get/set» +product: Product
+--
+«constructor» +EditModel(db: AppDbContext)
++OnPostAsync(): Task&lt;IActionResult&gt; 
++OnGetAsync(int id): Task&lt;IActionResult&gt; 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>372</x>
+      <y>236</y>
+      <w>212</w>
+      <h>148</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+RegisterModel : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
+-_roleManager: RoleManager&lt;IdentityRole&gt; {readonly}
+-_emailSender: IEmailSender {readonly}
+«get/set» +statusMessage: String
+«get/set» +input: InputModel
+«get/set» +username: String
+«get/set» +returnUrl: String
+--
+«constructor» +RegisterModel(
+            userManager: UserManager&lt;ApplicationDbUser&gt;,
+            signInManager: SignInManager&lt;ApplicationDbUser&gt;,
+            roleManager: RoleManager&lt;IdentityRole&gt;,
+            emailSender: IEmailSender)
++OnGet(string returnUrl = null): void
++OnPostAsync(string returnUrl = null): Task&lt;IActionResult&gt;
++FirstAccountAdmin(ApplicationDbUser user): Task
++GenerateEmailConfirmation(ApplicationDbUser user): Task&lt;String&gt;
++SendEmailConfirmation(ApplicationDbUser user, string callbackUrl): Task
+ 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>220</y>
+      <w>12</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>288</x>
+      <y>220</y>
+      <w>200</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;480.0;10.0;480.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>168</x>
+      <y>344</y>
+      <w>92</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+Product
+--
+«get/set» +Id: int
+«get/set» +Name: string
+«get/set» +Description: sting
+«get/set» +Stock: int
+«get/set» +Price: int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>212</x>
+      <y>300</y>
+      <w>88</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>200.0;10.0;200.0;80.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>136</x>
+      <y>300</y>
+      <w>88</w>
+      <h>52</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0;200.0;80.0;200.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>428</x>
+      <y>404</y>
+      <w>104</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+InputModel
+--
+«get/set» +Email: string
+«get/set» +Password: string
+«get/set» +ConfirmPassword: sting
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>476</x>
+      <y>380</y>
+      <w>12</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>596</x>
+      <y>236</y>
+      <w>208</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+LoginModel : PageModel
+--
+-_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
+«get/set» +statusMessage: String
+«get/set» +input: InputModel
+«get/set» +errorMessage: String
+«get/set» +returnUrl: String
+--
+«constructor» +LoginModel(
+            signInManager: SignInManager&lt;ApplicationDbUser&gt;)
++OnGetAsync(string returnUrl = null): Task
++OnPostAsync(string returnUrl = null): Task&lt;IActionResult&gt; 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>652</x>
+      <y>348</y>
+      <w>92</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+InputModel
+--
+«get/set» +Email: string
+«get/set» +Password: string
+«get/set» +RememberMe: bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>696</x>
+      <y>320</y>
+      <w>12</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>476</x>
+      <y>204</y>
+      <w>232</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0;560.0;50.0;560.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>816</x>
+      <y>236</y>
+      <w>212</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+IndexModel : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
+-_roleManager: RoleManager&lt;IdentityRole&gt; {readonly}
+-_emailSender: IEmailSender {readonly}
+«get/set» +username: String
+«get/set» +roles: IList&lt;string&gt;
+«get/set» +IsEmailConfirmed: bool
+«get/set» +statusMessage: String
+«get/set» +input: InputModel
+
+--
+«constructor» +RegisterModel(
+            userManager: UserManager&lt;ApplicationDbUser&gt;,
+            signInManager: SignInManager&lt;ApplicationDbUser&gt;,
+            roleManager: RoleManager&lt;IdentityRole&gt;,
+            emailSender: IEmailSender)
++OnGetAsync(): Task&lt;IActionResult&gt;
++OnPostAsync(): Task&lt;IActionResult&gt;
++OnPostSendVerificationEmailAsync(): Task&lt;IActionResult&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>872</x>
+      <y>400</y>
+      <w>92</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+InputModel
+--
+«get/set» +Email: string
+«get/set» +Password: string
+«get/set» +RememberMe: bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>916</x>
+      <y>372</y>
+      <w>12</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1040</x>
+      <y>236</y>
+      <w>212</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+AccessDeniedModel : PageModel
+--
+
+--
++OnGet: Void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1264</x>
+      <y>236</y>
+      <w>212</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ConfirmEmailModel : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+
+--
+«constructor» +ConfirmEmailModel(
+            userManager: UserManager&lt;ApplicationDbUser&gt;)
++OnGetAsync(string userId, string code): Task&lt;IActionResult&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1488</x>
+      <y>236</y>
+      <w>212</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ForgotPasswordModel : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_emailSender: IEmailSender {readonly}
+«get/set» +input: InputModel
+«get/set» +forgotPasswordEmail: String
+
+--
+«constructor» +ForgotPasswordModel(
+            userManager: UserManager&lt;ApplicationDbUser&gt;,
+            emailSender: IEmailSender)
++OnPostAsync(): Task&lt;IActionResult&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1560</x>
+      <y>344</y>
+      <w>76</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+InputModel
+--
+«get/set» +Email: string
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1592</x>
+      <y>316</y>
+      <w>12</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1712</x>
+      <y>236</y>
+      <w>212</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ForgotPasswordConfirmation : PageModel
+--
+
+--
++OnGet: Void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1936</x>
+      <y>236</y>
+      <w>212</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+LockoutModel : PageModel
+--
+
+--
++OnGet: Void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2160</x>
+      <y>236</y>
+      <w>208</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+LogoutModel : PageModel
+--
+-_signInManager: SignInManager&lt;ApplicationDbUser&gt; {readonly}
+«get/set» +statusMessage: String
+«get/set» +input: InputModel
+«get/set» +errorMessage: String
+«get/set» +returnUrl: String
+
+--
+«constructor» +LogoutModel(
+            signInManager: SignInManager&lt;ApplicationDbUser&gt;)
++OnGet(): Void
++OnPostAsync(string returnUrl = null): Task&lt;IActionResult&gt; 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2380</x>
+      <y>236</y>
+      <w>212</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ResetPasswordModel : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+«get/set» +input: InputModel
+«get/set» +forgotPasswordEmail: String
+
+--
+«constructor» +ResetPasswordModel(
+            userManager: UserManager&lt;ApplicationDbUser&gt;)
++OnGet(string code = null): IActionResult
++OnPostAsync(): Task&lt;IActionResult&gt;</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2436</x>
+      <y>348</y>
+      <w>104</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+InputModel
+--
+«get/set» +Email: string
+«get/set» +Password: string
+«get/set» +ConfirmPassword: sting
+«get/set» +Code: sting</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2484</x>
+      <y>316</y>
+      <w>12</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2604</x>
+      <y>236</y>
+      <w>212</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ResetPasswordConfirmationModel : PageModel
+--
+
+--
++OnGet: Void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>696</x>
+      <y>220</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>920</x>
+      <y>220</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1144</x>
+      <y>220</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1368</x>
+      <y>220</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1592</x>
+      <y>220</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1816</x>
+      <y>220</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2040</x>
+      <y>220</y>
+      <w>232</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;560.0;10.0;560.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2260</x>
+      <y>220</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2484</x>
+      <y>220</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2828</x>
+      <y>236</y>
+      <w>212</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ErrorModel : PageModel
+--
+«get/set» +RequestId: String
+ShowRequestId :Bool
+
+--
++OnGet: Void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2708</x>
+      <y>220</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3052</x>
+      <y>236</y>
+      <w>212</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+PrivacyModel : PageModel
+--
+
+--
++OnGet: Void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2932</x>
+      <y>220</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3276</x>
+      <y>236</y>
+      <w>212</w>
+      <h>164</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+IndexModel : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_db: AppDbContext {readonly}
+«get/set» +input: InputModel
+«get/set» +statusMessage: String
+«get/set» +products: List&lt;Product&gt;
+«get/set» +rates: List&lt;Rating&gt;
+«get/set» +carts: List&lt;Cart&gt;
+«get/set» +search: String
+
+--
+
+«constructor» +IndexModel(
+				db: AppDbContext,
+				userManager: UserManager&lt;ApplicationDbUser&gt;)
++OnGetAsync(): Task
++OnPostDeleteAsync(int id): Task&lt;IActionResult&gt;
++OnPostAddToCartAsync(int id): Task&lt;IActionResult&gt;
++OnPostRateAsync(int id, double rate): Task&lt;IActionResult&gt;
++AverageRating(int id): Task&lt;double&gt; 
++RatedYet(int id): Task&lt;bool&gt; 
++NumberOfVotes(int id): Task&lt;int&gt;
++UserHasRatedProduct(int id): Task&lt;bool&gt; 
++OnPostSearchAsync(string searchString): Task&lt;IActionResult&gt;
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3156</x>
+      <y>220</y>
+      <w>236</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;570.0;10.0;570.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>3288</x>
+      <y>148</y>
+      <w>96</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>IndexModel for HomePage</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3332</x>
+      <y>172</y>
+      <w>28</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>50.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>832</x>
+      <y>144</y>
+      <w>96</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>IndexModel for Account</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>876</x>
+      <y>168</y>
+      <w>28</w>
+      <h>76</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>50.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>3500</x>
+      <y>236</y>
+      <w>212</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;public class&gt;&gt;
+ManageRoles : PageModel
+--
+-_userManager: UserManager&lt;ApplicationDbUser&gt; {readonly}
+-_roleManager: RoleManager&lt;IdentityRole&gt; {readonly}
+«get/set» +username: String
+«get/set» +listUser: List&lt;SelectListItem&gt;
+«get/set» +listRole: List&lt;SelectListItem&gt;
+«get/set» +users: IList&lt;string&gt;
+«get/set» +statusMessage: String
+«get/set» +input: InputModel
+
+--
+«constructor» +ManageRoles(
+            userManager: UserManager&lt;ApplicationDbUser&gt;,
+            roleManager: RoleManager&lt;IdentityRole&gt;)
++OnGet(): Void
++OnPostAsync(): Task&lt;IActionResult&gt;
++listsForDropDowns(): Void
++GetRolesForUser(string userName): IList&lt;string&gt;
++OnPostDeleteAsync(): Task&lt;IActionResult&gt;
+ 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>3380</x>
+      <y>220</y>
+      <w>232</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;560.0;10.0;560.0;40.0</additional_attributes>
+  </element>
+</diagram>

@@ -16,8 +16,8 @@ namespace myWebApp
 {
     public class IndexModel : PageModel
     {
-        private readonly AppDbContext _db;
-        private readonly UserManager<ApplicationDbUser> _userManager;
+            private readonly AppDbContext _db;
+            private readonly UserManager<ApplicationDbUser> _userManager;
 
         public IndexModel(
             AppDbContext db,
@@ -44,7 +44,6 @@ namespace myWebApp
         public async Task OnGetAsync()
         {
             Products = await _db.Products.AsNoTracking().ToListAsync();
-
             Rates = await _db.Rates.AsNoTracking().ToListAsync();
         }
 
@@ -77,36 +76,54 @@ namespace myWebApp
         {
             var product = await _db.Products.FindAsync(id);
 
-            //Delete selected product if found.
+            //If selected product is found.
             if (product != null)
             {
                 if (User.IsInRole("Customer"))
                 {
                     if (product.Stock != 0)
                     {
-                        var Activeuser = await _userManager.FindByEmailAsync(User.Identity.Name);
-                        _db.Carts.Add(new cart
-                            {
-                                Product = product,
-                                ProductId = id,
-                                Quantity = 1,
-                                User = Activeuser,
-                                UserId = User.Identity.Name
-                            }
-                        );
+                        var activeUser = await _userManager.FindByEmailAsync(User.Identity.Name);
 
-                        product.Stock--;
-                        _db.Attach(product).State = EntityState.Modified;
+                        if (_db.Carts.Where(p => p.User.Equals(activeUser) && p.Product.Equals(product)).ToList().Count != 0)
+                        {
+                            var cart = await _db.Carts.FindAsync(_userManager.GetUserId(User), id);
+                            product.Stock--;
+                            _db.Attach(product).State = EntityState.Modified;
+                            cart.Quantity++;
+                            _db.Attach(cart).State = EntityState.Modified;
 
-                        //Delete ratings for selected product
+                            StatusMessage = $"Cart quantity of product: {product.Name} increased by one";
+                        }
+                        else
+                        {
+                            _db.Carts.Add(new cart
+                                {
+                                    Product = product,
+                                    ProductId = id,
+                                    Quantity = 1,
+                                    User = activeUser,
+                                    UserId = User.Identity.Name
+                                }
+                            );
+
+                            product.Stock--;
+                            _db.Attach(product).State = EntityState.Modified;
+
+                            StatusMessage = $"Product: {product.Name} was added to cart";
+                        }
+
+                        //Save changes.
                         await _db.SaveChangesAsync();
-
-                        StatusMessage = $"Product with ID: {id} added to cart";
                     }
                     else
                     {
-                        StatusMessage = $"Error: Product with id: {id} out of stock!";
+                        StatusMessage = $"Error: Product: {product.Name} is out of stock!";
                     }
+                } 
+                else 
+                {
+                    StatusMessage = $"Error: Please sign-in to add this product to your cart!";
                 }
             }
             else

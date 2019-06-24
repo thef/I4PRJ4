@@ -112,7 +112,7 @@ namespace myWebApp.Pages.Roles
                 }
 
             //IF ROLE ALREADY DOES EXIST!.
-            } else {
+            } else {    
                 
                 //Get current user.
                 var selectedUser = await _userManager.FindByEmailAsync(Input.User);

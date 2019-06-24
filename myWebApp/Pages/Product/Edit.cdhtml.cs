@@ -39,6 +39,8 @@ namespace myWebApp.Pages.Product
             {
                 return Page();
             }
+            //Work around for Product.Department in LagerKing App.
+            Product.Department = string.Empty;
 
             //Check for state-changes (some or all values) and attached new values.
             _db.Attach(Product).State = EntityState.Modified;

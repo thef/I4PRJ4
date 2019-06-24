@@ -12,14 +12,17 @@ namespace myWebApp.Pages.Product
         [Required, StringLength(25)]
         public string Name { get; set; }
 
-        [Required, StringLength(40)]
+        [Required, StringLength(150)]
         public string Description { get; set; }
 
         [Range(0, int.MaxValue, ErrorMessage = "Stock must be atleast: 0!")]
         public int Stock { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Price must be greater than: 0!")]
-        public int Price { get; set; }
+        //[Range(0.25, double.MaxValue, ErrorMessage = "Price must be greater than: 0.25!")]
+        [DataType(DataType.Currency)]
+        public decimal Price { get; set; }
+
+        public string Department { get; set; }
 
         public List<Cart.cart> Carts { get; set; }
     }

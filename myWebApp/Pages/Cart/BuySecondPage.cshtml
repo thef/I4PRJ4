@@ -1,48 +1,65 @@
 ﻿@page
-@model BuySecondPageModel
+@model myWebApp.Pages.Cart.BuySecondPageModel
 @{
     ViewData["Title"] = "BuySecondPage";
 }
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window, document, 'script', 'dataLayer','GTM-T8DXX6V');</script>
+<!-- End Google Tag Manager -->
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8DXX6V"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+
+@Html.PartialAsync("_StatusMessage", Model.StatusMessage).Result
 
 <h1>Confirm your credit information.</h1>
-@*@Html.PartialAsync("_StatusMessage", Model).Result*@
+
 <div class="row">
     <div class="col-md-6">
         <form method="post">
             <h5>Your Credit information.</h5>
+
             <hr />
-            <p>Shit: @Request.Form["Orders.FirstName"] FAKE</p>
+            <p><strong>First Name:</strong>  @Model.GivenOrder.FirstName <strong>Last Name:</strong>  @Model.GivenOrder.LastName</p>
+            <p><strong>Address:</strong>  @Model.GivenOrder.Address <strong>Country:</strong>  @Model.GivenOrder.Country</p>
+            <p><strong>Postal code:</strong>  @Model.GivenOrder.PostalCode</p>
+            <p><strong>Email:</strong>  @Model.GivenOrder.Email <strong>Phone number:</strong>  @Model.GivenOrder.Phone</p>
+            <p><strong>Card number:</strong>  @Model.GivenOrder.cardNumber <strong>Exp Date:</strong>  @Model.GivenOrder.experessionDate</p>
             <hr />
-            <p>First Name: @Model.GivenOrder.FirstName Last Name: @Model.GivenOrder.LastName</p>
-            <p>Address: @Model.GivenOrder.Address Country: @Model.GivenOrder.Country</p>
-            <p>Postal code: @Model.GivenOrder.PostalCode</p>
-            <p>Email: @Model.GivenOrder.Email</p>
-            <p>Card number: @Model.GivenOrder.cardNumber Exp Date: @Model.GivenOrder.experessionDate</p>
-            <hr />
-            
-            <table class="table">
-                <tbody>
-                    <tr>First Name</tr>
-                    <tr>Last Name</tr>
-                    <tr>Address</tr>
-                    <tr>Country</tr>
-                    <tr>Postal Code</tr>
-                    <tr>Email</tr>
-                    <tr>Card Number</tr>
-                    <tr>Exp Date</tr>
+
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+                    @foreach (var product in @Model.Carts)
+                     {
+                         <tr>
+                             <td>@product.Product.Name</td>
+                             <td>@product.Quantity</td>
+                             <td>@Model.getprice(product)</td>
+                         </tr>
+
+                }
                     <tr>
-                        <tr>@Model.GivenOrder.FirstName</tr>
-                        <tr>@Model.GivenOrder.LastName</tr>
-                        <tr>@Model.GivenOrder.Address</tr>
-                        <tr>@Model.GivenOrder.Country</tr>
-                        <tr>@Model.GivenOrder.PostalCode</tr>
-                        <tr>@Model.GivenOrder.Email</tr>
-                        <tr>@Model.GivenOrder.cardNumber</tr>
-                        <tr>@Model.GivenOrder.experessionDate</tr>
+                        <td>Total Price</td>
+                        <td></td>
+                        <td>@Model.FullPrice()</td>
                     </tr>
-               
-                </tbody>
+
             </table>
+
 
             <button type="submit" class="btn btn-primary" asp-page="/Cart/BuyThirdPage">Confirm</button>
         </form>
